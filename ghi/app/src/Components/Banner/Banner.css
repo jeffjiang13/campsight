@@ -1,0 +1,59 @@
+.banner {
+  background: url("./Bg2.jpg"
+    ) center center;
+  height: 50vh;
+  background-color: black;
+  background-size: cover;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.banner_info {
+  background-color: black;
+  color: white;
+  padding-top: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 60px;
+  margin-top: 12.5vh;
+  width: 23.5vh;
+  min-width: 20vh;
+  opacity: 0.9;
+  border-radius: 8px;
+  margin-left: 1rem;
+  display: flex;
+  flex-flow: column nowrap;
+  overflow: hidden;
+}
+
+.banner_info>button {
+  background-color: #d07737;
+  color: white;
+  text-transform: inherit;
+  margin-top: 20px;
+  font-weight: 600;
+  border-color: transparent;
+}
+
+.banner_info>button:hover {
+  background-color: white;
+  color: #d07737;
+}
+
+.banner_info>h5 {
+  margin-top: 10px;
+}
+
+.banner_search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.banner_searchButton {
+  background-color: white !important;
+  font-weight: 900 !important;
+  text-transform: inherit !important;
+  color: #d07737 !important;
+  border-color: lightgray !important;
+}
