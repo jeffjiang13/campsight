@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Banner.css";
 import { Button } from "@mui/material";
+import Search from "../Search/Search";
 
 function Banner() {
   const [showSearch, setShowSearch] = useState(false);
@@ -8,10 +9,14 @@ function Banner() {
   return (
     <div className="banner">
       <div className="banner_search">
-        <Button className="banner_searchButton" variant="outlined">
-          Search
+        <Button
+          onClick={() => setShowSearch(!showSearch)}
+          className="banner_searchButton"
+          variant="outlined"
+        >
+          {showSearch ? "Hide" : "Search Dates"}
         </Button>
-        {showSearch && <h1>Show Date</h1>}
+        {showSearch && <Search />}
       </div>
       <div className="banner_info">
         <h1>Go Free, Go Lively, Go Camping</h1>

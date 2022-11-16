@@ -56,4 +56,5 @@
   text-transform: inherit !important;
   color: #d07737 !important;
   border-color: lightgray !important;
+  border-radius: 0 !important;
 }
