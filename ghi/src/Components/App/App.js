@@ -5,7 +5,6 @@ import Footer from "../Footer/Footer";
 import SearchPage from "../SearchPage/SearchPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { AuthProvider } from "../Login/Authorization"
-import NavBar from '../Header/Header'
 import UserProfile from '../Profile/ProfilePage'
 import LogIn from '../Login/Login'
 import LogOut from '../Login/Logout'
@@ -48,10 +47,6 @@ function App() {
       }}>
         <AuthProvider>
           <Router basename={basename}>
-
-            {/* <Cards /> */}
-            {/* <Favorites /> */}
-            {/* <Login/> */}
             <Header />
             <Routes>
               <Route path="/search" element={<SearchPage />} />
