@@ -36,11 +36,11 @@ export default function LogIn() {
 			<form>
 				<h1> Log in </h1>
 				<div className="form-floating mb-3">
-					<input type="text"  placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} id="username" className="form-control" />
+					<input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} id="username" className="form-control" />
 					<label htmlFor="username">  </label>
 				</div>
 				<div className="form-floating mb-3">
-					<input type="password"  placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} id="password" className="form-control" />
+					<input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} id="password" className="form-control" />
 					<label htmlFor="password">  </label>
 				</div>
 				<p className="fs-5" hidden={loginResponse ? true : false}>

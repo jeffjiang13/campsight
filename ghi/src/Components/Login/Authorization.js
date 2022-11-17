@@ -1,15 +1,15 @@
 import { createContext, useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import {UserContext} from "./UserContext"
+import { Context } from "./Context"
 
 let internalToken = null
 
 function parseJwt(token) {
-	try {
-		return JSON.parse(atob(token.split(".")[1]));
-	} catch (e) {
-		return null;
-	}
+  try {
+    return JSON.parse(atob(token.split(".")[1]));
+  } catch (e) {
+    return null;
+  }
 }
 
 export function getUserInfo() {
@@ -36,7 +36,7 @@ export async function getTokenInternal() {
       internalToken = await data.token
       return internalToken
     }
-  } catch (e) { console.log("test ")}
+  } catch (e) { console.log("test ") }
   return false
 }
 
@@ -86,7 +86,7 @@ export function useToken() {
 
   const { token, setToken } = useAuthContext();
   const navigate = useNavigate();
-  const {setUserId} = useContext(UserContext)
+  const { setUserId } = useContext(Context)
 
   useEffect(() => {
     async function fetchToken() {
@@ -102,12 +102,12 @@ export function useToken() {
     if (token) {
       const url = `${process.env.REACT_APP_USERS}/api/token/refresh/logout/`
       const response = await fetch(url, { method: "delete", credentials: "include" })
-      if (response.ok){
+      if (response.ok) {
         internalToken = null
-      setToken(null)
-      navigate("/")
-      window.location.reload()
-      return(response)
+        setToken(null)
+        navigate("/")
+        window.location.reload()
+        return (response)
       }
     }
   }
@@ -125,7 +125,6 @@ export function useToken() {
     if (response.ok) {
       const token = await getTokenInternal();
       setToken(token);
-      // console.log("Token from Auth: ", token)
       let tokeninfo = await parseJwt(token)
       setUserId(tokeninfo.user)
       navigate("/intro/");

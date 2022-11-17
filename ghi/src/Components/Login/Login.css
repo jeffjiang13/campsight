@@ -8,3 +8,36 @@
     margin: 10px auto;
 
     }
+.login1 {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #ccc;
+    padding: 20px;
+    width: 400px;
+    margin: 10px auto;
+
+}
+
+.login2 {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #ccc;
+    padding: 20px;
+    width: 600px;
+    margin: 10px auto;
+
+}
+
+
+
+.profile_circle {
+    border-radius: 100ch;
+    height: 4rem;
+    width: 4rem;
+    display: flex;
+    justify-content: right;
+    align-items: right;
+    border: 3px solid #ffc507e0;
+  }
