@@ -6,17 +6,27 @@
   box-shadow: 0px 6px 18px -9px rgba(0, 0, 0, 0.75);
   transform-origin: transform 100ms ease-in;
   cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.25s ease;
 }
 
-.card > img {
+.card:hover {
+  transform: scale(1.01);
+  transition: transform 0.15s ease;
+}
+
+.card>img {
   object-fit: fill;
   min-width: 300px;
   min-height: 200px;
   width: 100%;
+  opacity: 1;
+  transition: opacity 0.25 ease;
 }
 
-.card:hover {
-  transform: scale(1.07);
+.card>img:hover {
+  opacity: .95;
+  transition: opacity 0.15s ease;
 }
 
 .card_info {
@@ -25,21 +35,22 @@
   padding: 20px;
   padding-top: 20px;
   border: 1;
+  overflow: hidden;
 }
 
-.card_info > h2 {
+.card_info>h2 {
   font-size: 18px;
   font-weight: 600;
 }
 
-.card_info > h3 {
+.card_info>h3 {
   font-size: 14px;
   font-weight: 300;
   margin-top: 8px;
   margin-top: 8px;
 }
 
-.card_info > h4 {
+.card_info>h4 {
   font-size: 14px;
   font-weight: 500;
   margin-top: 8px;

@@ -7,5 +7,8 @@ Each team member is required to keep a development journal, which should be a si
 Recommended naming convention is `first_last.md`.
 
 Tyler:
-11/14/2021
-Feat: adding Cards and footer to home page
+11/14/2022
+Feat: adding Cards and footer to home page.
+
+11/15/2022
+Feat: adding Details Page and Map API.
