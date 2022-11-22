@@ -58,37 +58,37 @@ function NavBar() {
   const { userId } = useContext(Context)
 
 
-  useEffect(() => {
-    const checkUserID = () => {
-      if (userId.id) {
-        setLoggedIn(true)
-      } else {
-        setLoggedIn(false)
-      }
-    }
-    checkUserID()
-  }, [userId])
+  // useEffect(() => {
+  //   const checkUserID = () => {
+  //     if (userId.id) {
+  //       setLoggedIn(true)
+  //     } else {
+  //       setLoggedIn(false)
+  //     }
+  //   }
+  //   checkUserID()
+  // }, [userId])
 
 
-  function checkLoggedIn(token) {
-    if (token) {
-      setLoggedIn(true)
-    }
-  }
+  // function checkLoggedIn(token) {
+  //   if (token) {
+  //     setLoggedIn(true)
+  //   }
+  // }
 
 
-  useEffect(() => { checkLoggedIn(token) }, [token])
+  // useEffect(() => { checkLoggedIn(token) }, [token])
 
-  async function onLogout() {
-    const result = await logout()
-    console.log("Logout result: ", result)
-    if (await result) {
-      setLoggedIn(false)
-    }
-    setLogoutResponse(result)
-    console.log('LOGGED OUT SUCCESSFULLY')
-    setLoggedIn(false)
-  }
+  // async function onLogout() {
+  //   const result = await logout()
+  //   console.log("Logout result: ", result)
+  //   if (await result) {
+  //     setLoggedIn(false)
+  //   }
+  //   setLogoutResponse(result)
+  //   console.log('LOGGED OUT SUCCESSFULLY')
+  //   setLoggedIn(false)
+  // }
 
   return (
     <div className="header">
@@ -116,7 +116,7 @@ function NavBar() {
               <Dropdown.Item href={eventsLink} className={"mx-1" + (loggedIn ? "" : " d-none")}> Events </Dropdown.Item>
               <Dropdown.Item href={signupLink} className={"mx-1" + (loggedIn ? " d-none" : "")}> Sign Up </Dropdown.Item>
               <Dropdown.Item href={loginLink} className={"xy-1" + (loggedIn ? " d-none" : "")}> Login </Dropdown.Item>
-              <Dropdown.Item onClick={onLogout} className={"mx-1" + (loggedIn ? "" : " d-none")}> Logout </Dropdown.Item>
+              {/* <Dropdown.Item onClick={onLogout} className={"mx-1" + (loggedIn ? "" : " d-none")}> Logout </Dropdown.Item> */}
             </div>
           </Dropdown.Menu>
         </Dropdown>

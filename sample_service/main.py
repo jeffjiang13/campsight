@@ -1,6 +1,7 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Response, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-import os
+import os, httpx, asyncio
+from keys import CAMP_API
 
 app = FastAPI()
 
@@ -13,6 +14,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.get("/detailtest")
+async def submit(states: str, parkCode: str):
+    return httpx.get(f'https://developer.nps.gov/api/v1/parks?parkCode={parkCode}&stateCode={states}&api_key={CAMP_API}').json()
 
 
 @app.get("/api/launch-details")
@@ -27,3 +32,4 @@ def launch_details():
             "tz:": "PST"
         }
     }
+

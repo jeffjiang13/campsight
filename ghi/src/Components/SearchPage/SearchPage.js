@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './SearchPage.css'
 import { Button } from '@mui/material'
 import SearchResult from '../SearchResult/SearchResult';
 import Map from '../Map/Map';
 
 function SearchPage() {
+  const fetchDetail = async () => {
+    const states = 'tx'
+    const parkCode = 'bibe'
+    const detailResponse = await (await fetch(`http://localhost:8000/detailtest?states=${states}&parkCode=${parkCode}`)).json()
+    console.log(detailResponse)
+  }
+
+  useEffect(() => {
+    fetchDetail()
+  }, []);
+
   return (
     <div className="searchPage">
       <div className="SearchPage_info">
