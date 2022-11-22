@@ -3,11 +3,13 @@ import './SearchPage.css'
 import { Button } from '@mui/material'
 import SearchResult from '../SearchResult/SearchResult';
 import Map from '../Map/Map';
+import { states } from '../Search/Search.js'
+import { parkCode } from '../Search/Search.js'
 
 function SearchPage() {
   const fetchDetail = async () => {
-    const states = 'tx'
-    const parkCode = 'bibe'
+    // const states = 'tx'
+    // const parkCode = 'bibe'
     const detailResponse = await (await fetch(`http://localhost:8000/detailtest?states=${states}&parkCode=${parkCode}`)).json()
     console.log(detailResponse)
   }

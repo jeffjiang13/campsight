@@ -7,6 +7,9 @@ import { Button } from "@mui/material";
 import PeopleIcon from "@mui/icons-material/People";
 
 function Search() {
+
+  const states = ''
+  const parkCode = ''
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
 
