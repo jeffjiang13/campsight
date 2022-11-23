@@ -1,18 +1,13 @@
 import React from "react";
-import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
+import { GoogleMap, useJsApiLoader, Marker, StreetViewService } from "@react-google-maps/api";
 
-function Map() {
+function Map(props) {
   //pass { location } here
   const MAPS_API = process.env.REACT_APP_MAPS_API;
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: MAPS_API,
   });
-
-  const containerStyle = {
-    width: "1000px",
-    height: "400px",
-  };
 
   const center = {
     lat: 25.7459, //location.lat
@@ -35,12 +30,13 @@ function Map() {
 
   return isLoaded ? (
     <GoogleMap
-      mapContainerStyle={containerStyle}
+      mapContainerStyle={props.style}
       center={center}
       zoom={9.5}
       // onLoad={onLoad}
       onUnmount={onUnmount}
     >
+      <StreetViewService position={center} draggable={true} />
       <Marker position={center} draggable={true} />
       {/* Child components, such as markers, info windows, etc. */}
       <>
