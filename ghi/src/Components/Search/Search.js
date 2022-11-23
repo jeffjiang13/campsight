@@ -25,8 +25,7 @@ function Search() {
     <div className="search">
       <DateRangePicker ranges={[selectionRange]} onChange={handleSelect} />
       <h2>
-        Number of Guests
-        <PeopleIcon />
+        Number of Guests <PeopleIcon />
       </h2>
       <input min={0} defaultValue={2} type="number" />
       <Button>Search CampSight</Button>

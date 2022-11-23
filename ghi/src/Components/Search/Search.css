@@ -5,7 +5,7 @@
   width: 500px;
 }
 
-.search > h2 {
+.search>h2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -16,20 +16,21 @@
   left: 0;
 }
 
-.search > input {
+.search>input {
   width: 539px;
   padding: 20px;
   position: absolute;
   left: 0;
-  height: 10px;
+  /* height: 10px; */
   top: 385px;
   border: None;
 }
-.search > input:focus {
+
+.search>input:focus {
   outline-width: 0;
 }
 
-.search > button {
+.search>button {
   position: absolute;
   left: 0;
   top: 435px;
@@ -41,7 +42,7 @@
   opacity: 0.95;
 }
 
-.search > button:hover {
+.search>button:hover {
   background-color: white;
   color: #d07737;
 }
