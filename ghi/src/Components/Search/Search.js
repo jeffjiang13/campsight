@@ -6,10 +6,10 @@ import "react-date-range/dist/theme/default.css";
 import { Button } from "@mui/material";
 import PeopleIcon from "@mui/icons-material/People";
 
-function Search() {
+export const states = ''
+export const parkCode = ''
 
-  const states = ''
-  const parkCode = ''
+function Search() {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
 

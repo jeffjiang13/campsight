@@ -27,10 +27,9 @@ function SearchResult({
           <p>
             <strong>{rating}</strong>
           </p>
-          </div>
         </div>
+      </div>
       <div className="searchResults_Other">
-        <h2>{other}</h2>
         <h3>{other}</h3>
       </div>
     </div>
