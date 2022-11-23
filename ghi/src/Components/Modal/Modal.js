@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import "./Modal.css";
 import { Button } from "@mui/material";
-// import HighlightOffIcon from "@mui/icons-material/HighlightOffIcon"
+import { HighlightOff } from "@mui/icons-material"
 
 const Modal = ({ isOpen = false, setIsOpen, children }) => {
 
@@ -9,7 +9,7 @@ const Modal = ({ isOpen = false, setIsOpen, children }) => {
     <Button onClick={() => setIsOpen(true)} variant='outlined'>Show Map</Button></div> : (
     <div className='overlay'>
       <div className='modalContainer'>
-        <span onClick={() => setIsOpen(!isOpen)}>x</span>
+        <span onClick={() => setIsOpen(!isOpen)}><HighlightOff fontSize="large" /></span>
         {children}
       </div>
     </div>
