@@ -8,4 +8,24 @@
 
 # Wednesday 11/16
 
+* Continued building advanced search page.
+
+# Thursday 11/17
+
+* Worked on creating routes in FastAPI for calling the Campground Search API to circumvent the CORS errors we were getting.
+
+# Friday 11/18
+
+* Figured out we can't use the ActiveNet API for campground searches so we did research for other APIs and decided on using a mixture of the NPS API, Google Places API, and Wikimedia API.
+
+# Monday 11/21
+
+* Worked on creating routes and endpoints for searching with the Places API.
+
+# Tuesday 11/22
+
+* Continued the work from Monday.
+
+# Wednesday 11/23
+
 *
