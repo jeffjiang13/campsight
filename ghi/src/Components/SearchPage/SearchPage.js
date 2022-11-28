@@ -17,7 +17,7 @@ class SearchPage extends React.Component {
   async componentDidMount() {
     const states = 'tx'
     const parkCode = 'bibe'
-    const detailResponse = await fetch(`http://localhost:8000/detailtest?states=${states}&parkCode=${parkCode}`)
+    const detailResponse = await fetch(`http://localhost:8000/details?parkCode=${parkCode}`)
     if (detailResponse.ok) {
       const data = await detailResponse.json();
       console.log(data)
