@@ -13,7 +13,7 @@ class DuplicateAccountError(ValueError):
 class AccountQueries(Queries):
     DB_NAME = (
         # Specifies which database we're querying or inserting data into
-        "deck_reactor"
+        "library"
     )
     COLLECTION = (
         # specifies which collection we're querying or inserting data into
@@ -62,7 +62,7 @@ class AccountQueries(Queries):
         return Account(**props, id=id)
 
     def create(
-        self, info: AccountIn, hashed_password: str, roles=["patron"]
+        self, info: AccountIn, hashed_password: str, roles=["camper"]
     ) -> Account:
         props = info.dict()
         props["password"] = hashed_password

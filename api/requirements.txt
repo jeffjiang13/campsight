@@ -3,3 +3,4 @@ uvicorn[standard]==0.17.6
 pymongo==4.2.0
 jwtdown-fastapi==0.3.0
 websockets
+psycopg[binary,pool]==3.0.14

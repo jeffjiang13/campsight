@@ -3,19 +3,17 @@ import Home from "../Home/Home";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import SearchPage from "../SearchPage/SearchPage";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import { AuthProvider } from "../Login/Authorization"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import UserProfile from '../Profile/ProfilePage'
 import LogIn from '../Login/Login'
-import LogOut from '../Login/Logout'
 import Signup from "../Login/SignUp"
 import { useState, useEffect } from "react"
-import { Context } from "../Login/Context"
 import EditProfile from "../Profile/EditProfile"
 import EventList from '../Event/Event'
 import CreateEvent from '../Event/CreateEvent'
 import Activities from '../Activities/Activities'
-import Modal from "../Modal/Modal";
+
+
 
 function App() {
 
@@ -26,7 +24,7 @@ function App() {
 
   useEffect(() => {
     const getUserdata = async () => {
-      const url = `${process.env.REACT_APP_USERS}/users/api/tokens/user/`;
+      const url = `${process.env.REACT_APP_USERS}/api/accounts/me/token/`;
       const response = await fetch(url, { credentials: "include" });
       if (response.ok) {
         const userData = await response.json()
@@ -40,6 +38,8 @@ function App() {
 
   return (
     <div className="App">
+
+
       <Context.Provider value={{
         userId, setUserId
       }}>
@@ -61,6 +61,7 @@ function App() {
               <Route path="events" element={<EventList />} />
               <Route path="create" element={<CreateEvent />} />
               <Route path="activities" element={<Activities />} />
+
             </Routes>
             <Footer />
           </Router>
