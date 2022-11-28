@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Home.css";
 import Banner from "../Banner/Banner";
 import Card from "../Card/Card";
+// import ModalButton from "../ModalButton/ModalButton";
+import Modal from "../Modal/Modal";
+import Map from '../Map/Map';
+
+
+const containerStyle = {
+  width: '65vw',
+  height: 750,
+  borderRadius: 16,
+  margin: 'auto',
+  top: '25%',
+  padding: 10,
+  border: '6px solid white',
+};
+
+
 
 function Home() {
+  const [isModalOpen, setModalOpen] = useState(false);
   return (
     <div className="home">
       <Banner />
-
       <div className="home_section">
         <Card
           src="https://hipcamp-res.cloudinary.com/image/upload/c_fill,f_auto,g_auto,h_480,q_60,w_720/v1496241913/campground-photos/s0bmk3ypv7xqpgbuh6m4.jpg"
@@ -77,6 +93,9 @@ function Home() {
           latlong="41.9940 N, -92.4514"
         />
       </div>
+      <Modal setIsOpen={setModalOpen} isOpen={isModalOpen}>
+        <Map style={containerStyle} />
+      </Modal>
     </div>
   );
 }

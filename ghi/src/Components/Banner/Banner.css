@@ -4,8 +4,9 @@
   height: 50vh;
   background-color: black;
   background-size: cover;
-  width: 100vw;
+  width: 100%;
   overflow: hidden;
+  z-index: -1;
 }
 
 .banner_info {

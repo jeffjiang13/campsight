@@ -83,7 +83,7 @@ function CreateEvent() {
         fetchItems()
 
         const getUserdata = async () => {
-            const url = `${process.env.REACT_APP_USERS}/users/api/tokens/user/`
+            const url = `${process.env.REACT_APP_USERS}/api/accounts/me/token/`
             const response = await fetch(url, { credentials: "include" })
             if (response.ok) {
                 const userData = await response.json()
