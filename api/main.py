@@ -1,5 +1,5 @@
 import os
-from fastapi import FastAPI
+from fastapi import FastAPI,APIRouter
 from fastapi.middleware.cors import CORSMiddleware
 from routers import auth
 from routers import accounts
@@ -7,6 +7,7 @@ from routers import accounts
 # from routers import sockets
 
 app = FastAPI()
+router = APIRouter()
 
 origins = [
     os.environ.get("CORS_HOST", "http://localhost"),
