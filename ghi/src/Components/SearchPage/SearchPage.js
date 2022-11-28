@@ -21,12 +21,13 @@ class SearchPage extends React.Component {
       this.setState({ details: data.data });
     }
   };
-  searchPage() {
-    const containerStyle = {
-      width: 1000,
-      height: 400,
-    };
-  }
+  // searchPage() {
+  //   const containerStyle = {
+  //     width: 1000,
+  //     height: 400,
+  //     style={ containerStyle }
+  //   };
+  // }
 
 
   render() {
@@ -44,12 +45,11 @@ class SearchPage extends React.Component {
                 other={details.weatherInfo}
               />)
           })}
-
-          <Map style={containerStyle} />
+          <Map />
         </div>
       </>
     );
   }
 }
 
-export default SearchPage
+export default SearchPage;
