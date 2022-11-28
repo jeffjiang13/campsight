@@ -16,6 +16,7 @@ import EditProfile from "../Profile/EditProfile"
 import EventList from '../Event/Event'
 import CreateEvent from '../Event/CreateEvent'
 import Activities from '../Activities/Activities'
+import AdvancedSearchForm from '../Search/AdvancedSearchForm'
 
 
 
@@ -64,7 +65,7 @@ function App() {
               <Route path="events" element={<EventList />} />
               <Route path="create" element={<CreateEvent />} />
               <Route path="activities" element={<Activities />} />
-
+              <Route path="advancedsearch" element={<AdvancedSearchForm />} />
             </Routes>
             <Footer />
           </Router>
