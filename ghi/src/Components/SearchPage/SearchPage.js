@@ -4,6 +4,11 @@ import { Button } from '@mui/material'
 import SearchResult from '../SearchResult/SearchResult';
 import Map from '../Map/Map';
 
+const containerStyle = {
+  width: 1000,
+  height: 400,
+};
+
 function SearchPage() {
   return (
     <div className="searchPage">
@@ -25,7 +30,7 @@ function SearchPage() {
         rating={4.95}
         other="Weather Data HERE"
       />
-      <Map />
+      <Map style={containerStyle} />
     </div>
   );
 }

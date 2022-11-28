@@ -5,7 +5,6 @@ import Footer from "../Footer/Footer";
 import SearchPage from "../SearchPage/SearchPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { AuthProvider } from "../Login/Authorization"
-import NavBar from '../Header/Header'
 import UserProfile from '../Profile/ProfilePage'
 import LogIn from '../Login/Login'
 import LogOut from '../Login/Logout'
@@ -16,10 +15,10 @@ import EditProfile from "../Profile/EditProfile"
 import EventList from '../Event/Event'
 import CreateEvent from '../Event/CreateEvent'
 import Activities from '../Activities/Activities'
-
-
+import Modal from "../Modal/Modal";
 
 function App() {
+
   const domain = /https:\/\/[^/]+/
   const basename = process.env.PUBLIC_URL.replace(domain, '')
 
@@ -41,8 +40,6 @@ function App() {
 
   return (
     <div className="App">
-
-
       <Context.Provider value={{
         userId, setUserId
       }}>
@@ -64,7 +61,6 @@ function App() {
               <Route path="events" element={<EventList />} />
               <Route path="create" element={<CreateEvent />} />
               <Route path="activities" element={<Activities />} />
-
             </Routes>
             <Footer />
           </Router>
