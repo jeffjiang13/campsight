@@ -13,7 +13,8 @@ import EventList from '../Event/Event'
 import CreateEvent from '../Event/CreateEvent'
 import Activities from '../Activities/Activities'
 import AdvancedSearchForm from '../Search/AdvancedSearchForm'
-import Modal from "../Modal/Modal";
+
+
 
 function App() {
 
