@@ -1,5 +1,6 @@
 import React from "react";
-import { GoogleMap, useJsApiLoader, Marker, StreetViewService } from "@react-google-maps/api";
+import { GoogleMap, useJsApiLoader, Marker, StreetViewService, InfoWindow } from "@react-google-maps/api";
+
 
 function Map(props) {
   //pass { location } here

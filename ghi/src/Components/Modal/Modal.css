@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 10;
   width: 100vw;
   height: 100vh;
@@ -14,7 +14,7 @@
   width: 100%;
 }
 
-span {
+.ModalOpen {
   position: absolute;
   top: 150px;
   right: 100px;
@@ -24,7 +24,7 @@ span {
   cursor: pointer;
 }
 
-span:hover {
+.ModalOpen:hover {
   opacity: .75;
   transition: all .5s ease;
 }
