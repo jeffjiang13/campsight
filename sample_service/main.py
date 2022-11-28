@@ -1,8 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import os
+from routers import parks
 
 app = FastAPI()
+app.include_router(parks.router)
 
 app.add_middleware(
     CORSMiddleware,
