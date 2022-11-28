@@ -29,14 +29,14 @@ class AdvancedSearchForm extends React.Component {
         waterfront: false,
     }
 
-    handleSubmit = async (event) => {
-        null
-    }
+    // handleSubmit = async (event) => {
+
+    // }
 
     handleChange = (event) => {
         const value = event.target.value;
         const name = event.target.name;
-        this.setState({[name]: value});
+        this.setState({ [name]: value });
         console.log(this.state);
     }
 
@@ -44,7 +44,7 @@ class AdvancedSearchForm extends React.Component {
         console.log(event.target.value);
         const value = event.target.checked;
         const name = event.target.name;
-        this.setState({[name]: value})
+        this.setState({ [name]: value })
         console.log(this.state);
     }
 
@@ -61,12 +61,12 @@ class AdvancedSearchForm extends React.Component {
                             </div>
                             <div className="mb-3">
                                 <select onChange={this.handleChange} required name="pstate" id="pstate" className="form-select">
-                                <option value="">Choose a state</option>
-                                {this.state.states.map(state => {
-                                    return (
-                                    <option key={state} value={state}>{state}</option>
-                                    )
-                                })}
+                                    <option value="">Choose a state</option>
+                                    {this.state.states.map(state => {
+                                        return (
+                                            <option key={state} value={state}>{state}</option>
+                                        )
+                                    })}
                                 </select>
                             </div>
                             <div className="form-check">
