@@ -8,7 +8,7 @@ router = APIRouter()
 
 @router.get("/list")
 async def submit():
-    return httpx.get(f'https://developer.nps.gov/api/v1/parks?api_key={CAMP_API}').json()
+    return httpx.get(f'https://developer.nps.gov/api/v1/parks?limit=9&api_key={CAMP_API}').json()
 
 @router.get("/details")
 async def submit(parkCode: str):

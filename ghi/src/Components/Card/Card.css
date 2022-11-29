@@ -16,9 +16,11 @@
 }
 
 .card>img {
-  object-fit: fill;
+  object-fit: cover;
   min-width: 300px;
   min-height: 200px;
+  max-width: 300px;
+  max-height: 200px;
   width: 100%;
   opacity: 1;
   transition: opacity 0.25 ease;
