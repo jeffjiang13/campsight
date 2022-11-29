@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Home.css";
 import Banner from "../Banner/Banner";
 import Card from "../Card/Card";
@@ -7,20 +7,33 @@ import Modal from "../Modal/Modal";
 import Map from '../Map/Map';
 
 
-const containerStyle = {
-  width: '65vw',
-  height: 750,
-  borderRadius: 16,
-  margin: 'auto',
-  top: '25%',
-  padding: 10,
-  border: '6px solid white',
-};
-
-
-
 function Home() {
+  const [list, setList] = useState({});
+
+  useEffect(() => {
+    async function getData() {
+      const apiResponse = await fetch(`http://localhost:8000/list`)
+      if (apiResponse.ok) {
+        const data = await apiResponse.json()
+        setList(data.data)
+      }
+    }
+    getData()
+  }, []);
+  console.log(list)
+
+  const containerStyle = {
+    width: '65vw',
+    height: 750,
+    borderRadius: 16,
+    margin: 'auto',
+    top: '25%',
+    padding: 10,
+    border: '6px solid white',
+  };
+
   const [isModalOpen, setModalOpen] = useState(false);
+
   return (
     <div className="home">
       <Banner />

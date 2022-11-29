@@ -6,6 +6,9 @@ from keys import CAMP_API
 
 router = APIRouter()
 
+@router.get("/list")
+async def submit():
+    return httpx.get(f'https://developer.nps.gov/api/v1/parks?api_key={CAMP_API}').json()
 
 @router.get("/details")
 async def submit(parkCode: str):
