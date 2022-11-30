@@ -57,16 +57,6 @@
   font-size: 30px;
 }
 
-.searchResult_star {
-  color: red;
-  font-size: 40px;
-}
-
-.searchResult_stars {
-  display: flex;
-  align-items: center;
-}
-
 .searchResults_Other {
   text-align: right;
 }

@@ -23,7 +23,6 @@ function SearchResult({
         </div>
         <div className="searchResult_infobottom">
           <div className="searchResult_stars" />
-          <StarIcon className="searchResult_star" />
           <p>
             <strong>{rating}</strong>
           </p>

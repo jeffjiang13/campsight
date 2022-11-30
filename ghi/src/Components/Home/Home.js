@@ -10,8 +10,9 @@ import { Button } from '@mui/material';
 function Home() {
   const [parkColumns, setparkColumns] = useState([])
   const [nextPage, setnextPage] = useState(0)
-
+  const [parks, setParks] = useState([])
   async function getData() {
+    const locationArray = []
     const apiResponse = await fetch(`http://localhost:8000/list?start=${nextPage}`)
     if (apiResponse.ok) {
       const data = await apiResponse.json()
@@ -19,7 +20,9 @@ function Home() {
       requests.push(data.data);
       let i = 0;
       const templist = ([[], [], []])
+
       for (let item of requests[0]) {
+        locationArray.push(item)
         templist[i].push(item);
         i = i + 1;
         if (i > 2) {
@@ -28,6 +31,7 @@ function Home() {
       }
       setparkColumns(templist)
     }
+    setParks(locationArray)
   }
 
   useEffect(() => {
@@ -55,7 +59,8 @@ function Home() {
                 src={park.images[0].url}
                 title={park.fullName}
                 description={park.description}
-                latlong={park.contacts.emailAddresses[0].emailAddress}
+                contact={park.contacts.emailAddresses[0].emailAddress}
+                latLong={park.latLong}
               />
             </div>
           );
@@ -75,14 +80,17 @@ function Home() {
           })}
           <ParkColumn />
         </div>
-        <div><Button onClick={() => setnextPage(nextPage + 9)} variant='outlined'>Next Page</Button>
-          <Button onClick={() => setnextPage(nextPage - 9)} variant='outlined'>Previous Page</Button></div>
+        <div><Button onClick={() => setnextPage(nextPage + 12)} variant='outlined'>Next Page</Button>
+          <Button onClick={() => setnextPage(nextPage - 12)} variant='outlined'>Previous Page</Button></div>
         <Modal setIsOpen={setModalOpen} isOpen={isModalOpen}>
-          <Map style={containerStyle} />
+          <Map pins={parks.map(park => ({
+            id: park.id,
+            lat: park.latitude,
+            lng: park.longitude
+          }))} style={containerStyle} />
         </Modal>
       </div>
     </div>
   );
 }
 export default Home;
-
