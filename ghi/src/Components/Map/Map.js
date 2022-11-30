@@ -17,11 +17,10 @@ function Map(props) {
 
   const [map, setMap] = React.useState(null);
   const [userLocation, setUserLocation] = useState(center);
+
   useEffect(() => {
 
     window.navigator.geolocation.getCurrentPosition(location => {
-      console.log(map)
-      console.log(location)
       setUserLocation({ lat: location.coords.latitude, lng: location.coords.longitude })
     })
 
@@ -42,19 +41,16 @@ function Map(props) {
       mapContainerStyle={props.style}
       center={userLocation}
       zoom={9.5}
-
       onUnmount={onUnmount}
     >
       {JSON.stringify(props.pins)}
       {(props.pins || []).map(pin => <Marker position={{ lat: Number(pin.lat), lng: Number(pin.lng) }}
         key={pin.id} visible={true} clickable={true} />)}
       <>
-
       </>
     </GoogleMap>
   ) : (
     <>
-
     </>
   );
 }

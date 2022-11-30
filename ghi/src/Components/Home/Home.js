@@ -11,8 +11,8 @@ function Home() {
   const [parkColumns, setparkColumns] = useState([])
   const [nextPage, setnextPage] = useState(0)
   const [parks, setParks] = useState([])
+
   async function getData() {
-    const locationArray = []
     const apiResponse = await fetch(`http://localhost:8000/list?start=${nextPage}`)
     if (apiResponse.ok) {
       const data = await apiResponse.json()
@@ -22,7 +22,6 @@ function Home() {
       const templist = ([[], [], []])
 
       for (let item of requests[0]) {
-        locationArray.push(item)
         templist[i].push(item);
         i = i + 1;
         if (i > 2) {
@@ -31,12 +30,29 @@ function Home() {
       }
       setparkColumns(templist)
     }
+  }
+
+  async function populateMap() {
+    const locationArray = []
+    const parklist = []
+    const mapapiResponse = await fetch(`http://localhost:8000/maplist`)
+    if (mapapiResponse.ok) {
+      const mapdata = await mapapiResponse.json()
+      parklist.push(mapdata.data)
+      for (let park of parklist[0]) {
+        locationArray.push(park)
+      }
+    }
     setParks(locationArray)
   }
 
   useEffect(() => {
     getData()
   }, [nextPage]);
+
+  useEffect(() => {
+    populateMap()
+  }, []);
 
   const containerStyle = {
     width: '65vw',
@@ -86,7 +102,9 @@ function Home() {
           <Map pins={parks.map(park => ({
             id: park.id,
             lat: park.latitude,
-            lng: park.longitude
+            lng: park.longitude,
+            title: park.fullName,
+            image: park.images[0].url,
           }))} style={containerStyle} />
         </Modal>
       </div>
