@@ -1,8 +1,8 @@
 import React from 'react'
 import './SearchPage.css'
-import { Button } from '@mui/material'
 import SearchResult from '../SearchResult/SearchResult';
 import Map from '../Map/Map';
+import { Rating } from '@mui/material';
 
 class SearchPage extends React.Component {
   constructor(props) {
@@ -17,6 +17,7 @@ class SearchPage extends React.Component {
     const detailResponse = await fetch(`http://localhost:8000/details?parkCode=${parkCode}`)
     if (detailResponse.ok) {
       const data = await detailResponse.json();
+      console.log(data)
       this.setState({ details: data.data });
     }
   };
@@ -37,11 +38,10 @@ class SearchPage extends React.Component {
                 location={details.states}
                 title={details.fullName}
                 description={details.description}
-                rating={4.95}
-                other={details.weatherInfo}
+                rating={<Rating name="size-large" defaultValue={2} size="large" />}
               />)
           })}
-          <Map style={containerStyle} />
+          <Map pins={[this.state.details && this.state.details.length && { lat: Number(this.state.details[0].latitude), lng: Number(this.state.details[0].longitude) }]} style={containerStyle} />
         </div>
       </>
     );

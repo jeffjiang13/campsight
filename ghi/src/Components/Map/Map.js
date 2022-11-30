@@ -1,5 +1,5 @@
-import React from "react";
-import { GoogleMap, useJsApiLoader, Marker, StreetViewService, InfoWindow } from "@react-google-maps/api";
+import React, { useEffect, useState } from "react";
+import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 
 
 function Map(props) {
@@ -16,9 +16,17 @@ function Map(props) {
   };
 
   const [map, setMap] = React.useState(null);
+  const [userLocation, setUserLocation] = useState(center);
+  useEffect(() => {
 
+    window.navigator.geolocation.getCurrentPosition(location => {
+      console.log(map)
+      console.log(location)
+      setUserLocation({ lat: location.coords.latitude, lng: location.coords.longitude })
+    })
+
+  }, [])
   const onLoad = React.useCallback(function callback(map) {
-    // This is just an example of getting and using the map instance!!! don't just blindly copy!
     const bounds = new window.google.maps.LatLngBounds(center);
     map.fitBounds(bounds);
 
@@ -32,14 +40,14 @@ function Map(props) {
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={props.style}
-      center={center}
+      center={userLocation}
       zoom={9.5}
-      // onLoad={onLoad}
+
       onUnmount={onUnmount}
     >
-      <StreetViewService position={center} draggable={true} />
-      <Marker position={center} draggable={true} />
-      {/* Child components, such as markers, info windows, etc. */}
+      {JSON.stringify(props.pins)}
+      {(props.pins || []).map(pin => <Marker position={{ lat: Number(pin.lat), lng: Number(pin.lng) }}
+        key={pin.id} visible={true} clickable={true} />)}
       <>
 
       </>
