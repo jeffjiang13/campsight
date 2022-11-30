@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import "./Modal.css";
 import { Button } from "@mui/material";
 import { HighlightOff } from "@mui/icons-material"
 
 const Modal = ({ isOpen = false, setIsOpen, children }) => {
+  useEffect(() => {
+    if (isOpen) {
+      document.getElementsByTagName('body')[0].style.overflow = 'hidden'
+    } else {
+      document.getElementsByTagName('body')[0].style.overflow = 'scroll'
+    }
+  }, [isOpen]);
+
 
   return !isOpen ? <div className='modal-popup'>
     <Button onClick={() => setIsOpen(true)} variant='outlined'>Show Map</Button></div> : (

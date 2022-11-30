@@ -77,3 +77,12 @@
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
 }
+.navbar {
+  background-color: #e8f1fe;
+  border-bottom: 1px solid #d1e4fc;
+  padding: 30px 0;
+}
+
+.button-primary {
+  background-color: pink;
+}

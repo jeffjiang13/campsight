@@ -1,6 +1,5 @@
 
 import Navbar from 'react-bootstrap/Navbar'
-import React, { useContext } from 'react'
 import "./Header.css";
 import SearchIcon from "@mui/icons-material/Search";
 import LanguageIcon from "@mui/icons-material/Language";
@@ -8,15 +7,17 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Avatar from "@mui/material/Avatar";
 import LogoPNG from "./campSight.png";
 import Dropdown from 'react-bootstrap/Dropdown';
-
-
-
-
+import { useLogOutMutation, useGetTokenQuery } from "../../app/api";
 
 
 
 
 function NavBar() {
+  const { data: token } = useGetTokenQuery();
+  const [logOut] = useLogOutMutation();
+
+
+
 
 
   return (
@@ -44,10 +45,8 @@ function NavBar() {
               <Dropdown.Item href='/profile/:id' > Profile </Dropdown.Item>
               <Dropdown.Item href="/activities" > Activities </Dropdown.Item>
               <Dropdown.Item href="/events" > Events </Dropdown.Item>
-              <Dropdown.Item href="/signup" > Sign Up </Dropdown.Item>
-              <Dropdown.Item href="/login" > Login </Dropdown.Item>
-
-
+              {token ? <Dropdown.Item onClick={logOut} > Log Out </Dropdown.Item> : <Dropdown.Item href="/login" > Login </Dropdown.Item>}
+              {token ? null : <Dropdown.Item href="/signup" > Sign Up </Dropdown.Item>}
             </div>
           </Dropdown.Menu>
         </Dropdown>

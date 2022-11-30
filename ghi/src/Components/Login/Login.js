@@ -36,7 +36,7 @@ function Login() {
 					onSubmit={(e) => {
 						e.preventDefault();
 						logIn(e.target);
-						navigate("/profile");
+						navigate("/profile/:id");
 					}}
 				>
 					<Form.Group className="mb-3" controlId="formBasicEmail">
