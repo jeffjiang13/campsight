@@ -13,6 +13,7 @@ import EventList from '../Event/Event'
 import CreateEvent from '../Event/CreateEvent'
 import Activities from '../Activities/Activities'
 import AdvancedSearchForm from '../Search/AdvancedSearchForm'
+import DetailPage from "../DetailPage/Details";
 
 
 
@@ -38,7 +39,7 @@ function App() {
           <Route path="create" element={<CreateEvent />} />
           <Route path="activities" element={<Activities />} />
           <Route path="advancedsearch" element={<AdvancedSearchForm />} />
-
+          <Route path="details" element={<DetailPage />} />
         </Routes>
       </BrowserRouter>
       <Footer />

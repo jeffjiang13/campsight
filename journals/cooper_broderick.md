@@ -32,3 +32,14 @@ Implemented NPS API. Began and finished FastAPI integration with NPS. Began moda
 ## 11/23/22
 
 Modal data display finished
+
+## 11/24-11/27
+
+Thanksgiving
+
+## 11/28/22
+
+Completed data display/iterating through data for Mainpage
+
+## 11/29/22
+

@@ -17,20 +17,16 @@ class SearchPage extends React.Component {
     const detailResponse = await fetch(`http://localhost:8000/details?parkCode=${parkCode}`)
     if (detailResponse.ok) {
       const data = await detailResponse.json();
-      console.log(data)
       this.setState({ details: data.data });
     }
   };
-  // searchPage() {
-  //   const containerStyle = {
-  //     width: 1000,
-  //     height: 400,
-  //     style={ containerStyle }
-  //   };
-  // }
 
 
   render() {
+    const containerStyle = {
+      width: 1000,
+      height: 400,
+    };
     return (
       <>
         <div className="searchPage">
@@ -45,7 +41,7 @@ class SearchPage extends React.Component {
                 other={details.weatherInfo}
               />)
           })}
-          <Map />
+          <Map style={containerStyle} />
         </div>
       </>
     );
