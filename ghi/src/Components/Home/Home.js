@@ -104,7 +104,7 @@ function Home() {
             lat: park.latitude,
             lng: park.longitude,
             title: park.fullName,
-            image: park.images[0].url,,
+            image: park.images[0].url,
             name: park.fullName,
             description: park.description,
             src: park.images[0].url,
