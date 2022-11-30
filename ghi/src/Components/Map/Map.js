@@ -17,6 +17,7 @@ function Map(props) {
   const [SelectedMarker, setSelectedMarker] = useState("")
   const [map, setMap] = React.useState(null);
   const [userLocation, setUserLocation] = useState(center);
+
   useEffect(() => {
 
     window.navigator.geolocation.getCurrentPosition(location => {
