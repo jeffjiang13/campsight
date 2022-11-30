@@ -105,6 +105,11 @@ function Home() {
             lng: park.longitude,
             title: park.fullName,
             image: park.images[0].url,
+            name: park.fullName,
+            description: park.description,
+            src: park.images[0].url,
+            contact: park.contacts.emailAddresses[0].emailAddress,
+            latLong: park.latLong
           }))} style={containerStyle} />
         </Modal>
       </div>
