@@ -4,13 +4,15 @@ import { useParams } from "react-router-dom"
 import Reviews from "../Activities/Reviews"
 import { settingLinks } from "../Header/Header"
 import { remove_activity } from "../Activities/RemoveActivity"
+import { useLogOutMutation } from "../../app/api";
 
 export default function UserProfile() {
     const navigate = useNavigate();
+    const [logOut] = useLogOutMutation();
 
 
     const signOut = () => {
-
+        logOut()
         navigate("/");
     };
 
@@ -20,7 +22,7 @@ export default function UserProfile() {
                 <h1>Profile page</h1>
                 <p>Hello there, welcome to your profile page</p>
 
-                <button onClick={signOut}>sign out</button>
+                <button onClick={signOut}>Log Out</button>
             </div>
         </>
     );

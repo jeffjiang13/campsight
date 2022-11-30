@@ -6,7 +6,7 @@ import SearchPage from "../SearchPage/SearchPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import UserProfile from '../Profile/ProfilePage'
 import LogIn from '../Login/Login'
-import Signup from "../Login/SignUp"
+import SignUp from "../Login/SignUp"
 // import LogOut from "../Login/LogOut"
 import EditProfile from "../Profile/EditProfile"
 import EventList from '../Event/Event'
@@ -18,23 +18,27 @@ import AdvancedSearchForm from '../Search/AdvancedSearchForm'
 
 function App() {
 
+  const domain = /https:\/\/[^/]+/;
+  const basename = process.env.PUBLIC_URL.replace(domain, "");
+
+
 
   return (
     <div className="App">
-      <Header />
-      <BrowserRouter>
+      <BrowserRouter basename={basename}>
+        <Header />
         <Routes>
           <Route path="/search" element={<SearchPage />} />
           <Route path="/" element={<Home />} />
           <Route path="profile/:id" element={<UserProfile />} />
           <Route path="login" element={<LogIn />} />
-          {/* <Route path="logout" element={<LogOut />} /> */}
-          <Route path="signup" element={<Signup />} />
+          <Route path="signup" element={<SignUp />} />
           <Route path="profile/edit/:id" element={<EditProfile />} />
           <Route path="events" element={<EventList />} />
           <Route path="create" element={<CreateEvent />} />
           <Route path="activities" element={<Activities />} />
           <Route path="advancedsearch" element={<AdvancedSearchForm />} />
+
         </Routes>
       </BrowserRouter>
       <Footer />

@@ -37,7 +37,7 @@ class HttpError(BaseModel):
 router = APIRouter(tags=["accounts"])
 
 
-# This endpoint takes care of getting tokens. We have not learned this yet
+# This endpoint takes care of getting tokens.
 @router.get("/token", response_model=AccountToken | None)
 async def get_token(
     request: Request,
