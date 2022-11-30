@@ -10,8 +10,8 @@ function Map(props) {
   });
 
   const center = {
-    lat: 25.7459, //location.lat
-    lng: -80.555, // location.long
+    lat: 44.4280, //location.lat
+    lng: -110.5885, // location.long
   };
 
   const [SelectedMarker, setSelectedMarker] = useState("")
@@ -39,7 +39,7 @@ function Map(props) {
     <GoogleMap
       mapContainerStyle={props.style}
       center={userLocation}
-      zoom={3}
+      zoom={9.5}
       onUnmount={onUnmount}
     >
       {JSON.stringify(props.pins)}
@@ -48,14 +48,14 @@ function Map(props) {
           setSelectedMarker(pin)} />)}
       {SelectedMarker &&
         <InfoWindow position={{ lat: Number(SelectedMarker.lat), lng: Number(SelectedMarker.lng) }}
-        onCloseClick={() => { console.log(SelectedMarker); setSelectedMarker()}} >
+          onCloseClick={() => { console.log(SelectedMarker); setSelectedMarker() }} >
           <Card
             src={SelectedMarker.src}
             title={SelectedMarker.name}
             description={SelectedMarker.description}
             contact={SelectedMarker.contact}
             latLong={SelectedMarker.latLong}
-        />
+          />
         </InfoWindow>}
     </GoogleMap>
   ) : (
