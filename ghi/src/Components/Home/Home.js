@@ -6,7 +6,6 @@ import Modal from "../Modal/Modal";
 import Map from '../Map/Map';
 import { Button } from '@mui/material';
 
-
 function Home() {
   const [parkColumns, setparkColumns] = useState([])
   const [nextPage, setnextPage] = useState(0)
@@ -77,6 +76,7 @@ function Home() {
                 description={park.description}
                 contact={park.contacts.emailAddresses[0].emailAddress}
                 latLong={park.latLong}
+                parkCode={park.parkCode}
               />
             </div>
           );
@@ -96,8 +96,8 @@ function Home() {
           })}
           <ParkColumn />
         </div>
-        <div><Button onClick={() => setnextPage(nextPage + 12)} variant='outlined'>Next Page</Button>
-          <Button onClick={() => setnextPage(nextPage - 12)} variant='outlined'>Previous Page</Button></div>
+        <div><Button onClick={() => setnextPage(nextPage + 9)} variant='outlined'>Next Page</Button>
+          <Button onClick={() => setnextPage(nextPage - 9)} variant='outlined'>Previous Page</Button></div>
         <Modal setIsOpen={setModalOpen} isOpen={isModalOpen}>
           <Map pins={parks.map(park => ({
             id: park.id,
@@ -109,7 +109,8 @@ function Home() {
             description: park.description,
             src: park.images[0].url,
             contact: park.contacts.emailAddresses[0].emailAddress,
-            latLong: park.latLong
+            latLong: park.latLong,
+            parkCode: park.parkCode
           }))} style={containerStyle} />
         </Modal>
       </div>

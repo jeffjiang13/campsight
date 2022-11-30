@@ -51,3 +51,4 @@ Troubleshooted Docker.
 
 Fixed homepage map marker display to display all parks
 Worked on map display for onClick
+Linked data from cards on mainpage/map to /search

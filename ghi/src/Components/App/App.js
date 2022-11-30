@@ -2,7 +2,7 @@ import "./App.css";
 import Home from "../Home/Home";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import SearchPage from "../SearchPage/SearchPage";
+import Details from "../SearchPage/SearchPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import UserProfile from '../Profile/ProfilePage'
 import LogIn from '../Login/Login'
@@ -13,7 +13,6 @@ import EventList from '../Event/Event'
 import CreateEvent from '../Event/CreateEvent'
 import Activities from '../Activities/Activities'
 import AdvancedSearchForm from '../Search/AdvancedSearchForm'
-import DetailPage from "../DetailPage/Details";
 
 
 
@@ -29,7 +28,7 @@ function App() {
       <BrowserRouter basename={basename}>
         <Header />
         <Routes>
-          <Route path="/search" element={<SearchPage />} />
+          <Route path="/search/:parkCode" element={<Details />} />
           <Route path="/" element={<Home />} />
           <Route path="profile/:id" element={<UserProfile />} />
           <Route path="login" element={<LogIn />} />
@@ -39,7 +38,6 @@ function App() {
           <Route path="create" element={<CreateEvent />} />
           <Route path="activities" element={<Activities />} />
           <Route path="advancedsearch" element={<AdvancedSearchForm />} />
-          <Route path="details" element={<DetailPage />} />
         </Routes>
       </BrowserRouter>
       <Footer />
