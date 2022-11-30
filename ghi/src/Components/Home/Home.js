@@ -86,7 +86,12 @@ function Home() {
           <Map pins={parks.map(park => ({
             id: park.id,
             lat: park.latitude,
-            lng: park.longitude
+            lng: park.longitude,
+            name: park.fullName,
+            description: park.description,
+            src: park.images[0].url,
+            contact: park.contacts.emailAddresses[0].emailAddress,
+            latLong: park.latLong
           }))} style={containerStyle} />
         </Modal>
       </div>
