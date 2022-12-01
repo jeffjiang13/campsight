@@ -79,7 +79,7 @@ function Home() {
                 title={park.fullName}
                 description={park.description}
                 contact={park.contacts.emailAddresses[0].emailAddress}
-                latLong={park.latLong}
+                latLong={park.addresses[0].city + ", " + park.addresses[0].stateCode}
                 parkCode={park.parkCode}
               />
             </div>
