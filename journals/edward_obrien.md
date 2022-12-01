@@ -28,4 +28,16 @@
 
 # Wednesday 11/23
 
-*
+* Created routes and endpoints for getting data from the NPS api.
+
+# Monday 11/28
+
+* Helped Jeff fix a merge and worked on diagnosing my react issues after a larger merge.
+
+# Tuesday 11/29
+
+* Mostly diagnosed why my react app was taking an hour to render or not at all. Ended up updating my integrated GPU, starting React just locally and not in Docker, and using yarn over npm.
+
+# Wednesday 11/30
+
+* Worked on converting the search page from a class component to a function component using hooks. Diagnosed the slow speed of our NPS api and found a solution. Got the parks returned to pass into the Home component.
