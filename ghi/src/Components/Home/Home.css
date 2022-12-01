@@ -4,4 +4,23 @@
   overflow: hidden;
 }
 
+.flex-parent {
+  display: flex;
+}
 
+.right:hover {
+  color: #d07737;
+}
+
+.left:hover {
+  color: #d07737;
+}
+
+.jc-center {
+  justify-content: space-evenly;
+  cursor: pointer;
+}
+
+button.margin-right {
+  margin-right: 20px;
+}

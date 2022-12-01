@@ -6,6 +6,14 @@ from keys import CAMP_API
 
 router = APIRouter()
 
+@router.get("/allparks")
+async def submit():
+    return httpx.get(f'https://developer.nps.gov/api/v1/parks?limit=500&api_key={CAMP_API}').json()
+
+@router.get("/maplist")
+async def submit():
+    return httpx.get(f'https://developer.nps.gov/api/v1/parks?limit=500&api_key={CAMP_API}').json()
+
 @router.get("/list")
 async def submit(start: int):
     return httpx.get(f'https://developer.nps.gov/api/v1/parks?limit=9&start={start}&api_key={CAMP_API}').json()
@@ -18,7 +26,6 @@ async def submit(parkCode: str):
 async def get_park(parkCode: str):
     response = httpx.get(f"https://developer.nps.gov/api/v1/parks?parkCode={parkCode}&api_key={CAMP_API}")
     return response.json()["data"]
-
 
 @router.get("/getactivities")
 async def get_activities():
