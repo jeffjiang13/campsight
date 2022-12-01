@@ -32,7 +32,9 @@ function NavBar() {
       </div>
 
       <div className="header_right">
-        <p>Advanced Search</p>
+        <Navbar.Brand href="/advancedsearch">
+          <p>Advanced Search</p>
+        </Navbar.Brand>
         <LanguageIcon />
         <ExpandMoreIcon />
         <Dropdown>
