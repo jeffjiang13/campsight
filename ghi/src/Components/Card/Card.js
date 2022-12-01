@@ -3,6 +3,8 @@ import './Card.css'
 
 function Card({ src, title, description, latLong, contact, parkCode }) {
   const loc = `/Search/${parkCode}`
+function Card({ src, title, description, latLong, contact, parkCode }) {
+  const loc = `/Search/${parkCode}`
   return (
     <a href={loc}>
         <div className='card'>
