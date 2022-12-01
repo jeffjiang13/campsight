@@ -96,8 +96,8 @@ function Home() {
           })}
           <ParkColumn />
         </div>
-        <div className="flex-parent jc-center"><ArrowBackIosNewIcon onClick={() => setnextPage(nextPage - 9)} variant='outlined'></ArrowBackIosNewIcon>
-          <ArrowForwardIosIcon onClick={() => setnextPage(nextPage + 9)} variant='outlined'></ArrowForwardIosIcon></div>
+        <div className="flex-parent jc-center"><ArrowBackIosNewIcon className="right" onClick={() => setnextPage(nextPage - 9)} variant='outlined'></ArrowBackIosNewIcon>
+          <ArrowForwardIosIcon className="left" onClick={() => setnextPage(nextPage + 9)} variant='outlined'></ArrowForwardIosIcon></div>
         <Modal setIsOpen={setModalOpen} isOpen={isModalOpen}>
           <Map pins={parks.map(park => ({
             id: park.id,

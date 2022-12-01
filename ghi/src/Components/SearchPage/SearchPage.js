@@ -31,12 +31,30 @@ function Details() {
     <>
       <div className="searchPage">
         {details.map((details, index) => {
+          console.log(details)
+          const hours = details.operatingHours[0].standardHours
+          const hoursString =
+          `Monday: ${hours.monday}
+          Tuesday: ${hours.tuesday}
+          Wednesday: ${ hours.wednesday }
+          Thursday: ${ hours.thursday }
+          Friday: ${ hours.friday }
+          Saturday: ${ hours.saturday }
+          Sunday: ${ hours.sunday }`
+
           return (
             < SearchResult key={index}
               img={details.images[0].url}
               location={details.states}
               title={details.fullName}
               description={details.description}
+              hoursMonday = {hours.monday}
+              hoursTuesday = {hours.tuesday}
+              hoursWednesday = {hours.wednesday}
+              hoursThursday = {hours.thursday}
+              hoursFriday = {hours.friday}
+              hoursSaturday = {hours.saturday}
+              hoursSunday ={hours.sunday}
               rating={<Rating name="size-large" defaultValue={2} size="large" />}
             />)
         })}

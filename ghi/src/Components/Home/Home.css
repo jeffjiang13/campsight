@@ -8,6 +8,14 @@
   display: flex;
 }
 
+.right:hover {
+  color: #d07737;
+}
+
+.left:hover {
+  color: #d07737;
+}
+
 .jc-center {
   justify-content: space-evenly;
   cursor: pointer;
