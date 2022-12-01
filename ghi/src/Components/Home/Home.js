@@ -6,41 +6,57 @@ import Modal from "../Modal/Modal";
 import Map from '../Map/Map';
 import { Button } from '@mui/material';
 
-function Home() {
+function Home(props) {
+  console.log(props)
   const [parkColumns, setparkColumns] = useState([])
   const [nextPage, setnextPage] = useState(0)
   const [parks, setParks] = useState([])
 
   async function getData() {
-    const apiResponse = await fetch(`http://localhost:8000/list?start=${nextPage}`)
-    if (apiResponse.ok) {
-      const data = await apiResponse.json()
-      const requests = [];
-      requests.push(data.data);
-      let i = 0;
-      const templist = ([[], [], []])
-
-      for (let item of requests[0]) {
-        templist[i].push(item);
-        i = i + 1;
-        if (i > 2) {
-          i = 0;
-        }
+    var data;
+    if (props.parks) {
+      data = props.parks;
+      console.log(data)
+    } else {
+      const apiResponse = await fetch(`http://localhost:8000/list?start=${nextPage}`)
+      if (apiResponse.ok) {
+        const temp = await apiResponse.json()
+        data = temp.data
+        console.log(data)
       }
-      setparkColumns(templist)
     }
+    const requests = [];
+    requests.push(data);
+    console.log(requests)
+    let i = 0;
+    const templist = ([[], [], []])
+
+    for (let item of requests[0]) {
+      templist[i].push(item);
+      i = i + 1;
+      if (i > 2) {
+        i = 0;
+      }
+    }
+    setparkColumns(templist)
   }
 
   async function populateMap() {
+    var mapdata;
     const locationArray = []
     const parklist = []
-    const mapapiResponse = await fetch(`http://localhost:8000/maplist`)
-    if (mapapiResponse.ok) {
-      const mapdata = await mapapiResponse.json()
-      parklist.push(mapdata.data)
-      for (let park of parklist[0]) {
-        locationArray.push(park)
+    if (props.parks) {
+      mapdata = props.parks;
+    } else {
+      const mapapiResponse = await fetch(`http://localhost:8000/maplist`)
+      if (mapapiResponse.ok) {
+        const temp = await mapapiResponse.json();
+        mapdata = temp.data;
       }
+    }
+    parklist.push(mapdata)
+    for (let park of parklist[0]) {
+      locationArray.push(park)
     }
     setParks(locationArray)
   }
@@ -65,6 +81,7 @@ function Home() {
 
   const [isModalOpen, setModalOpen] = useState(false);
   function ParkColumn(parkColumns) {
+    console.log(parkColumns)
     return (
       <div className="col">
         {parkColumns.list?.map(park => {
