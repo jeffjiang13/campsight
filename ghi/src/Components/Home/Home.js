@@ -8,7 +8,6 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 function Home(props) {
-  console.log(props)
   const [parkColumns, setparkColumns] = useState([])
   const [nextPage, setnextPage] = useState(0)
   const [parks, setParks] = useState([])
@@ -20,18 +19,15 @@ function Home(props) {
     var data;
     if (props.parks) {
       data = props.parks;
-      console.log(data)
     } else {
       const apiResponse = await fetch(`http://localhost:8000/list?start=${nextPage}`)
       if (apiResponse.ok) {
         const temp = await apiResponse.json()
         data = temp.data
-        console.log(data)
       }
     }
     const requests = [];
     requests.push(data);
-    console.log(requests)
     let i = 0;
     const templist = ([[], [], []])
 
@@ -85,7 +81,6 @@ function Home(props) {
 
   const [isModalOpen, setModalOpen] = useState(false);
   function ParkColumn(parkColumns) {
-    console.log(parkColumns)
     return (
       <div className="col">
         {parkColumns.list?.map(park => {

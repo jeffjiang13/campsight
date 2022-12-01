@@ -31,11 +31,9 @@ function AdvancedSearchForm() {
             console.log(parkResponse)
             if (parkResponse.ok) {
                 const data = await parkResponse.json()
-                console.log(data)
                 let tempParks = [];
                 tempParks.push(data.data)
                 setAllParks(tempParks);
-                console.log(allParks);
                 console.log("Parks loaded successfully")
             } else {
                 console.log("Failed to load parks")
@@ -43,16 +41,12 @@ function AdvancedSearchForm() {
         }
         async function getActivities() {
             const activityResponse = await fetch('http://localhost:8000/getactivities')
-            console.log(activityResponse)
             if (activityResponse.ok) {
                 const data = await activityResponse.json()
-                console.log(data[0].name)
-                console.log(data.length)
                 let tempActivities = [];
                 for (let i = 0; i < data.length; i++) {
                     tempActivities.push(data[i].name)
                 }
-                console.log(tempActivities)
                 setActivities(tempActivities);
                 console.log("Activities loaded successfully")
             } else {
@@ -84,14 +78,10 @@ function AdvancedSearchForm() {
 
     const handleStateTerritoryChange = (event) => {
         setStateTerritory(event.target.value);
-        console.log(stateTerritory)
-        console.log(activities)
     }
 
     const handleActivityChange = (event) => {
         setActivity(event.target.value);
-        console.log(activity);
-        console.log(activities)
     }
 
     // handleCheckbox = (event) => {
@@ -106,7 +96,6 @@ function AdvancedSearchForm() {
         event.preventDefault();
         filterParks()
         setIsSubmitted(true);
-        console.log(filteredParks);
     }
 
     if (!isSubmitted) {
