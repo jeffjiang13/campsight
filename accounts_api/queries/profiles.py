@@ -20,7 +20,7 @@ class ProfileQueries(Queries):
     )
 
     def get_one(self, profile_id : str) -> ProfileOut:
-        props = self.collection.find_one("_id": profile_id)
+        props = self.collection.find_one({"_id": profile_id})
         if props is None:
             return None
         props["id"] = str(props["_id"])
