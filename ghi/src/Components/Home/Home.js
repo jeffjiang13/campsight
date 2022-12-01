@@ -6,12 +6,16 @@ import Modal from "../Modal/Modal";
 import Map from '../Map/Map';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+
 function Home() {
   const [parkColumns, setparkColumns] = useState([])
   const [nextPage, setnextPage] = useState(0)
   const [parks, setParks] = useState([])
 
   async function getData() {
+    if (nextPage < 9) {
+      setnextPage(0)
+    }
     const apiResponse = await fetch(`http://localhost:8000/list?start=${nextPage}`)
     if (apiResponse.ok) {
       const data = await apiResponse.json()
@@ -75,7 +79,7 @@ function Home() {
                 title={park.fullName}
                 description={park.description}
                 contact={park.contacts.emailAddresses[0].emailAddress}
-                latLong={park.latLong}
+                latLong={park.addresses[0].city + ", " + park.addresses[0].stateCode}
                 parkCode={park.parkCode}
               />
             </div>

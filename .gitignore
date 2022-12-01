@@ -153,7 +153,7 @@ dmypy.json
 cython_debug/
 
 #api keys
-sample_service/keys.py
+parks_api/keys.py
 
 
 # PyCharm

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import './SearchPage.css'
-import SearchResult from '../SearchResult/SearchResult';
+import './DetailPage.css'
+import DetailDisplay from '../DetailDisplay/DetailDisplay';
 import Map from '../Map/Map';
 import { Rating } from '@mui/material';
 import { useParams } from 'react-router-dom'
@@ -43,7 +43,7 @@ function Details() {
           Sunday: ${ hours.sunday }`
 
           return (
-            < SearchResult key={index}
+            < DetailDisplay key={index}
               img={details.images[0].url}
               location={details.states}
               title={details.fullName}
