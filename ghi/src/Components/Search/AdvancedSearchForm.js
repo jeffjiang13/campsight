@@ -10,7 +10,7 @@ function AdvancedSearchForm() {
     const [activity, setActivity] = useState('');
     const [activities, setActivities] = useState([]);
     const [stateTerritory, setStateTerritory] = useState('');
-    const [states, setStates] = useState([
+    const [states] = useState([
         "AL", "AK", "AZ", "AR", "AS",
         "CA", "CO", "CT", "DE", "DC",
         "FL", "GA", "GU", "HI", "ID",
@@ -83,14 +83,6 @@ function AdvancedSearchForm() {
     const handleActivityChange = (event) => {
         setActivity(event.target.value);
     }
-
-    // handleCheckbox = (event) => {
-    //     console.log(event.target.value);
-    //     const value = event.target.checked;
-    //     const name = event.target.name;
-    //     this.setState({ [name]: value })
-    //     console.log(this.state);
-    // }
 
     const handleSubmit = (event) => {
         event.preventDefault();
