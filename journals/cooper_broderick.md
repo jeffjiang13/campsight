@@ -43,3 +43,12 @@ Completed data display/iterating through data for Mainpage
 
 ## 11/29/22
 
+Made data display prettier, returned data in home page cards. 
+Worked on gitlab issue board. 
+Troubleshooted Docker.
+
+## 11/30/22
+
+Fixed homepage map marker display to display all parks
+Worked on map display for onClick
+Linked data from cards on mainpage/map to /search

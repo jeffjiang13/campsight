@@ -7,7 +7,6 @@ import Map from '../Map/Map';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
-
 function Home() {
   const [parkColumns, setparkColumns] = useState([])
   const [nextPage, setnextPage] = useState(0)
@@ -78,6 +77,7 @@ function Home() {
                 description={park.description}
                 contact={park.contacts.emailAddresses[0].emailAddress}
                 latLong={park.latLong}
+                parkCode={park.parkCode}
               />
             </div>
           );
@@ -97,8 +97,8 @@ function Home() {
           })}
           <ParkColumn />
         </div>
-        <div className="flex-parent jc-center"><ArrowBackIosNewIcon onClick={() => setnextPage(nextPage + 12)} variant='outlined'></ArrowBackIosNewIcon>
-          <ArrowForwardIosIcon onClick={() => setnextPage(nextPage - 12)} variant='outlined'></ArrowForwardIosIcon></div>
+        <div className="flex-parent jc-center"><ArrowBackIosNewIcon onClick={() => setnextPage(nextPage - 9)} variant='outlined'></ArrowBackIosNewIcon>
+          <ArrowForwardIosIcon onClick={() => setnextPage(nextPage + 9)} variant='outlined'></ArrowForwardIosIcon></div>
         <Modal setIsOpen={setModalOpen} isOpen={isModalOpen}>
           <Map pins={parks.map(park => ({
             id: park.id,
@@ -110,7 +110,8 @@ function Home() {
             description: park.description,
             src: park.images[0].url,
             contact: park.contacts.emailAddresses[0].emailAddress,
-            latLong: park.latLong
+            latLong: park.latLong,
+            parkCode: park.parkCode
           }))} style={containerStyle} />
         </Modal>
       </div>
