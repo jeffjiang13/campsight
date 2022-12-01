@@ -9,6 +9,13 @@ function DetailDisplay({
   description,
   rating,
   other,
+  hoursMonday,
+  hoursTuesday,
+  hoursWednesday,
+  hoursThursday,
+  hoursFriday,
+  hoursSaturday,
+  hoursSunday,
 }) {
   return (
     <div className="searchResult">
@@ -19,10 +26,18 @@ function DetailDisplay({
           <p>{location}</p>
           <h3>{title}</h3>
           <h4>{description}</h4>
+          <h4>Monday: {hoursMonday}</h4>
+          <h4>Tuesday: {hoursTuesday}</h4>
+          <h4>Wednesday: {hoursWednesday}</h4>
+          <h4>Thursday: {hoursThursday}</h4>
+          <h4>Friday: {hoursFriday}</h4>
+          <h4>Saturday: {hoursSaturday}</h4>
+          <h4>Sunday: {hoursSunday}</h4>
         </div>
         <div className="searchResult_infobottom">
           <div className="searchResult_stars" />
           <p>
+            <h5>Rating</h5>
             <strong>{rating}</strong>
           </p>
         </div>

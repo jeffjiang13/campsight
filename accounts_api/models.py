@@ -41,3 +41,45 @@ class AccountOut(BaseModel):
     email: str
     full_name: str
     roles: List[str]
+
+class EventIn(BaseModel):
+    name: str
+    date: str
+    location: str
+    rating: Optional[str]
+    address: Optional[str]
+    e_id: str
+
+class Event(EventIn):
+    id: PydanticObjectId
+
+
+class EventOut(EventIn):
+    id: str
+
+class EventList(BaseModel):
+    events: List[EventOut]
+
+
+class ProfileIn(BaseModel):
+    city: str
+    state: str
+    description: Optional[str]
+    social_media: Optional[str]
+
+
+class Profile(ProfileIn):
+    id: str
+
+
+
+class ProfileOut(BaseModel):
+    id: str
+    city: str
+    state: str
+    description: Optional[str]
+    account_id: Optional[str]
+    social_media: Optional[str]
+
+class Error(BaseModel):
+    message: str
