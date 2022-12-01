@@ -1,9 +1,8 @@
 import React from 'react'
-import './SearchResult.css'
+import './DetailDisplay.css'
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import StarIcon from "@mui/icons-material/Star";
 
-function SearchResult({
+function DetailDisplay({
   img,
   location,
   title,
@@ -35,4 +34,4 @@ function SearchResult({
   );
 }
 
-export default SearchResult
+export default DetailDisplay
