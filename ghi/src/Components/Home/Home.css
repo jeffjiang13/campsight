@@ -4,4 +4,15 @@
   overflow: hidden;
 }
 
+.flex-parent {
+  display: flex;
+}
 
+.jc-center {
+  justify-content: space-evenly;
+  cursor: pointer;
+}
+
+button.margin-right {
+  margin-right: 20px;
+}

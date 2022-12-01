@@ -10,8 +10,8 @@ function Map(props) {
   });
 
   const center = {
-    lat: 44.4280, //location.lat
-    lng: -110.5885, // location.long
+    lat: 44.4280,
+    lng: -110.5885,
   };
 
   const [SelectedMarker, setSelectedMarker] = useState("")
@@ -25,11 +25,6 @@ function Map(props) {
     })
 
   }, [])
-  // const onLoad = React.useCallback(function callback(map) {
-  //   const bounds = new window.google.maps.LatLngBounds(center);
-  //   map.fitBounds(bounds);
-  //   setMap(map);
-  // }, []);
 
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null);
@@ -44,7 +39,7 @@ function Map(props) {
     >
       {JSON.stringify(props.pins)}
       {(props.pins || []).map(pin => <Marker position={{ lat: Number(pin.lat), lng: Number(pin.lng) }}
-        key={pin.id} visible={true} anchor={Marker} clickable={true} onClick={() =>
+        key={pin.id} visible={true} icon="https://i.ibb.co/f92RGJ9/tent.png" anchor={Marker} clickable={true} onClick={() =>
           setSelectedMarker(pin)} />)}
       {SelectedMarker &&
         <InfoWindow position={{ lat: Number(SelectedMarker.lat), lng: Number(SelectedMarker.lng) }}
@@ -59,7 +54,8 @@ function Map(props) {
         </InfoWindow>}
     </GoogleMap>
   ) : (
-    console.log(SelectedMarker)
+    <>
+    </>
   );
 }
 

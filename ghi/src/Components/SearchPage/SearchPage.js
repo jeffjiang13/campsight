@@ -17,7 +17,7 @@ class SearchPage extends React.Component {
     const detailResponse = await fetch(`http://localhost:8000/details?parkCode=${parkCode}`)
     if (detailResponse.ok) {
       const data = await detailResponse.json();
-      console.log(data)
+
       this.setState({ details: data.data });
     }
   };

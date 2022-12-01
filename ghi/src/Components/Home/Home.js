@@ -4,7 +4,8 @@ import Banner from "../Banner/Banner";
 import Card from "../Card/Card";
 import Modal from "../Modal/Modal";
 import Map from '../Map/Map';
-import { Button } from '@mui/material';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 
 function Home() {
@@ -96,8 +97,8 @@ function Home() {
           })}
           <ParkColumn />
         </div>
-        <div><Button onClick={() => setnextPage(nextPage + 12)} variant='outlined'>Next Page</Button>
-          <Button onClick={() => setnextPage(nextPage - 12)} variant='outlined'>Previous Page</Button></div>
+        <div className="flex-parent jc-center"><ArrowBackIosNewIcon onClick={() => setnextPage(nextPage + 12)} variant='outlined'></ArrowBackIosNewIcon>
+          <ArrowForwardIosIcon onClick={() => setnextPage(nextPage - 12)} variant='outlined'></ArrowForwardIosIcon></div>
         <Modal setIsOpen={setModalOpen} isOpen={isModalOpen}>
           <Map pins={parks.map(park => ({
             id: park.id,
