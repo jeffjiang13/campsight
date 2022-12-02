@@ -5,38 +5,8 @@ from .client import Queries
 from bson.objectid import ObjectId
 from pymongo import ReturnDocument
 from pymongo.errors import DuplicateKeyError
+from models import ProfileOut, ProfileIn, Profile, Error
 
-class Error(BaseModel):
-    message: str
-
-
-class ProfileIn(BaseModel):
-    name: str
-    city: str
-    state: str
-    description: Optional[str]
-    social_media: Optional[str]
-
-
-class CompleteProfile(BaseModel):
-    profile_id: int
-    name: str
-    city: str
-    state: str
-    img: str | None
-    DOB: date | None
-    gender: str | None
-    bio: str | None
-
-
-class ProfileOut(BaseModel):
-    id: int
-    name: str
-    city: str
-    state: str
-    description: Optional[str]
-    account_id: int
-    social_media: Optional[str]
 
 
 class ProfileQueries(Queries):
@@ -49,23 +19,24 @@ class ProfileQueries(Queries):
         "profiles"
     )
 
-    def get(self, email : str) -> Optional[ProfileOut]:
-        props = self.collection.find_one({"email": email})
+    def get_one(self, profile_id : str) -> ProfileOut:
+        props = self.collection.find_one({"_id": profile_id})
         if props is None:
             return None
         props["id"] = str(props["_id"])
-        return ProfileOut(**props)
+        props["account_id"] = str(props["account_id"])
+        return props
 
-    def get_all(self) -> Optional[ProfileOut]:
+    def get_all(self) -> list[ProfileOut]:
         db = self.collection.find()
-        account_emails = []
+        accounts = []
         for account in db:
             account["id"] =  str(account["_id"])
-            account_emails.append(account["email"])
-        return account_emails
+            accounts.append(ProfileOut(**account))
+        return accounts
 
-    def delete(self, email : str) -> bool:
-        return self.collection.delete_one({"_email": ObjectId(email)})
+    def delete(self, id : str) -> bool:
+        return self.collection.delete_one({"_id": ObjectId(id)})
 
     def update(
         self,
@@ -82,10 +53,7 @@ class ProfileQueries(Queries):
     def create(
         self, info: ProfileIn) -> ProfileOut:
         props = info.dict()
-        props["name"] = info.name
-        props["city"] = info.city
-        props["state"] = info.state
-        props["description"] = info.description
-        props["social_media"] = info.social_media
         self.collection.insert_one(props)
+        props["id"] = str(props["id"])
+
         return ProfileOut(**props)

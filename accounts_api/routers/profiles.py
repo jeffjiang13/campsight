@@ -1,15 +1,18 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from typing import List, Union, Optional
-from queries.profiles import (
+from models import (
     ProfileIn,
     ProfileOut,
-    ProfileQueries,
-    CompleteProfile,
+    Profile,
     Error,
 )
 from .auth import authenticator
+from models import AccountOut, Account
+from routers.sockets import socket_manager
+from queries.profiles import ProfileQueries
 
 router = APIRouter()
+
 not_authorized = HTTPException(
     status_code=status.HTTP_401_UNAUTHORIZED,
     detail="Invalid authentication credentials",
@@ -19,11 +22,11 @@ not_authorized = HTTPException(
 
 @router.get("/api/profiles/{username}", response_model=Optional[ProfileOut])
 def get_one_profile(
-    email: str,
+    username: str,
     account_data: dict = Depends(authenticator.get_current_account_data),
     repo: ProfileQueries = Depends(),
 ) -> ProfileOut:
-    profile = repo.get_one(email)
+    profile = repo.get_one(username)
 
     if profile is None:
         return {"message: profile not found"}
@@ -31,37 +34,40 @@ def get_one_profile(
     return profile
 
 
-@router.get("/api/profiles", response_model=Union[List[CompleteProfile], Error])
-def get_all_profiles(
+@router.get("/api/profiles", response_model=Union[List[Profile], Error])
+async def get_all_profiles(
     account_data: dict = Depends(authenticator.get_current_account_data),
     repo: ProfileQueries = Depends(),
 ):
     return repo.get_all()
 
 
-@router.post("/api/profiles", response_model=ProfileOut)
+@router.post("api/profiles", response_model=ProfileOut)
 async def create_profile(
     profile: ProfileIn,
     account_data: dict = Depends(authenticator.get_current_account_data),
     repo: ProfileQueries = Depends(),
 ):
-    return repo.create(profile, account_data)
+    account = AccountOut(**account_data)
+    profile = repo.create(profile)
+    await socket_manager.broadcast_refetch()
+    return profile
 
 
 @router.put("/api/profiles/{username}", response_model=Union[Error, ProfileOut])
 async def update_profile(
     profile: ProfileIn,
-    email: str,
+    username: str,
     account_data: dict = Depends(authenticator.get_current_account_data),
     repo: ProfileQueries = Depends(),
 ) -> Union[Error, ProfileOut]:
-    return repo.update(profile, email)
+    return repo.update(profile, username)
 
 
 @router.delete("/api/profiles/{username}", response_model=bool)
 async def delete_profile(
-    email: str,
+    username: str,
     account_data: dict = Depends(authenticator.get_current_account_data),
     repo: ProfileQueries = Depends(),
 ) -> bool:
-    return repo.delete(email)
+    return repo.delete(username)
