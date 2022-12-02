@@ -46,3 +46,30 @@
   background-color: white;
   color: #d07737;
 }
+
+.advanceSearch {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ccc;
+  padding: 20px;
+  width: 300px;
+  margin: 10px auto;
+}
+
+.advancedSearchButton {
+  border-radius: 30px;
+  border-color: lightgray;
+  margin: 30px;
+  padding: 6px 24px;
+  border-style: solid;
+}
+
+.advancedSearchButton:hover {
+  border-color: #d07737;
+}

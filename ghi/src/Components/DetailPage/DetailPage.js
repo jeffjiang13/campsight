@@ -4,6 +4,7 @@ import DetailDisplay from '../DetailDisplay/DetailDisplay';
 import Map from '../Map/Map';
 import { Rating } from '@mui/material';
 import { useParams } from 'react-router-dom'
+import Review from '../Review/Review';
 
 
 function Details() {
@@ -47,6 +48,7 @@ function Details() {
               img={details.images[0].url}
               location={details.states}
               title={details.fullName}
+              // phone={details.phoneNumbers.phoneNumber}
               description={details.description}
               hoursMonday = {hours.monday}
               hoursTuesday = {hours.tuesday}
@@ -70,6 +72,9 @@ function Details() {
           latLong: details[0].latLong,
           parkCode: details[0].parkCode
         })]} style={containerStyle} />
+      </div>
+      <div>
+        <Review />
       </div>
     </>
   );

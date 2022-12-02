@@ -6,9 +6,9 @@ import { HighlightOff } from "@mui/icons-material"
 const Modal = ({ isOpen = false, setIsOpen, children }) => {
   useEffect(() => {
     if (isOpen) {
-      document.getElementsByTagName('body')[0].style.overflow = 'hidden'
+      document.getElementsByTagName('body')[0].style.overflowY = 'hidden'
     } else {
-      document.getElementsByTagName('body')[0].style.overflow = 'scroll'
+      document.getElementsByTagName('body')[0].style.overflowY = 'scroll'
     }
   }, [isOpen]);
 

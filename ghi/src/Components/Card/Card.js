@@ -11,7 +11,6 @@ function Card({ src, title, description, latLong, contact, parkCode }) {
           <h2>{title}</h2>
           <h4>{latLong}</h4>
           <h3>{description}</h3>
-          <h4>{contact}</h4>
         </div>
       </div>
     </a>

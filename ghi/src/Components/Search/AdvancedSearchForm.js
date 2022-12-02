@@ -138,7 +138,7 @@ function AdvancedSearchForm() {
 
     if (!isSubmitted) {
         return (
-            <div className="container">
+            <div className="advanceSearch">
                 <div className="row">
                     <div className="">
                         <h1>Filter Search</h1>
@@ -153,7 +153,7 @@ function AdvancedSearchForm() {
                                     })}
                                 </select>
                             </div>
-                            <div className="mb-3">
+                            <div>
                                 <select onChange={handleActivityChange} name="activity" id="activity" className="form-select">
                                     <option value="">Choose an activity</option>
                                     {activities.map(activity => {
