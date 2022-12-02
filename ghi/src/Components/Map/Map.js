@@ -15,7 +15,6 @@ function Map(props) {
   };
 
   const [SelectedMarker, setSelectedMarker] = useState("")
-  const [map, setMap] = React.useState(null);
   const [userLocation, setUserLocation] = useState(center);
 
   useEffect(() => {
@@ -26,16 +25,11 @@ function Map(props) {
 
   }, [])
 
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null);
-  }, []);
-
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={props.style}
       center={userLocation}
       zoom={3.5}
-      onUnmount={onUnmount}
     >
       {JSON.stringify(props.pins)}
       {(props.pins || []).map(pin => <Marker position={{ lat: Number(pin.lat), lng: Number(pin.lng) }}

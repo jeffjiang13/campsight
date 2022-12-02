@@ -10,15 +10,17 @@
 
 .right:hover {
   color: #d07737;
+  cursor: pointer;
 }
 
 .left:hover {
   color: #d07737;
+  cursor: pointer;
 }
 
 .jc-center {
+  margin-bottom: 30px;
   justify-content: space-evenly;
-  cursor: pointer;
 }
 
 button.margin-right {

@@ -24,24 +24,22 @@ function App() {
 
 
   return (
-    <div className="App">
-      <BrowserRouter basename={basename}>
-        <Header />
-        <Routes>
-          <Route path="/search/:parkCode" element={<Details />} />
-          <Route path="/" element={<Home />} />
-          <Route path="profile/:id" element={<UserProfile />} />
-          <Route path="login" element={<LogIn />} />
-          <Route path="signup" element={<SignUp />} />
-          <Route path="profile/edit/:id" element={<EditProfile />} />
-          <Route path="events" element={<EventList />} />
-          <Route path="create" element={<CreateEvent />} />
-          <Route path="activities" element={<Activities />} />
-          <Route path="advancedsearch" element={<AdvancedSearchForm />} />
-        </Routes>
-      </BrowserRouter>
+    <BrowserRouter basename={basename}>
+      <Header />
+      <Routes>
+        <Route path="/search/:parkCode" element={<Details />} />
+        <Route path="/" element={<Home />} />
+        <Route path="profile/:id" element={<UserProfile />} />
+        <Route path="login" element={<LogIn />} />
+        <Route path="signup" element={<SignUp />} />
+        <Route path="profile/edit/:id" element={<EditProfile />} />
+        <Route path="events" element={<EventList />} />
+        <Route path="create" element={<CreateEvent />} />
+        <Route path="activities" element={<Activities />} />
+        <Route path="advancedsearch" element={<AdvancedSearchForm />} />
+      </Routes>
       <Footer />
-    </div>
+    </BrowserRouter>
   );
 }
 

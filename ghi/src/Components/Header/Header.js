@@ -21,27 +21,24 @@ function NavBar() {
 
 
   return (
-    <div className="header">
+    <header>
       <Navbar.Brand href="/">
         <img className="header_icon" src={LogoPNG} alt="" />
       </Navbar.Brand>
-
       <div className="header_center">
         <input type="text" />
         <SearchIcon />
       </div>
-
       <div className="header_right">
         <p>Advanced Search</p>
         <LanguageIcon />
         <ExpandMoreIcon />
         <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown" className="dropdown">
+          <Dropdown.Toggle id="dropdown">
             <Avatar />
           </Dropdown.Toggle>
           <Dropdown.Menu>
             <div className="dropdown-content">
-
               <Dropdown.Item href='/profile/:id' > Profile </Dropdown.Item>
               <Dropdown.Item href="/activities" > Activities </Dropdown.Item>
               <Dropdown.Item href="/events" > Events </Dropdown.Item>
@@ -50,9 +47,8 @@ function NavBar() {
             </div>
           </Dropdown.Menu>
         </Dropdown>
-
       </div>
-    </div>
+    </header>
   )
 }
 
