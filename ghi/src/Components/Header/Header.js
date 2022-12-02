@@ -9,16 +9,9 @@ import LogoPNG from "./campSight.png";
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useLogOutMutation, useGetTokenQuery } from "../../app/api";
 
-
-
-
 function NavBar() {
   const { data: token } = useGetTokenQuery();
   const [logOut] = useLogOutMutation();
-
-
-
-
 
   return (
     <header>
@@ -31,13 +24,13 @@ function NavBar() {
       </div>
       <div className="header_right">
         <Navbar.Brand href="/advancedsearch">
-          <p>Advanced Search</p>
+          <p className='advancedSearchBtn'>Advanced Search</p>
         </Navbar.Brand>
         <LanguageIcon />
         <ExpandMoreIcon />
         <Dropdown>
           <Dropdown.Toggle id="dropdown">
-            <Avatar />
+            <Avatar className='avatar' />
           </Dropdown.Toggle>
           <Dropdown.Menu>
             <div className="dropdown-content">

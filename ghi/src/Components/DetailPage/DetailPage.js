@@ -48,6 +48,7 @@ function Details() {
               img={details.images[0].url}
               location={details.states}
               title={details.fullName}
+              // phone={details.phoneNumbers.phoneNumber}
               description={details.description}
               hoursMonday = {hours.monday}
               hoursTuesday = {hours.tuesday}

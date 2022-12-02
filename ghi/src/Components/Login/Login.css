@@ -54,3 +54,34 @@ body {
 .link {
   text-decoration: underline;
 }
+
+.signInButton {
+  border-radius: 30px;
+  border-color: lightgray;
+  margin: 30px;
+  margin-left: 50px;
+  padding: 6px 24px;
+  border-style: solid;
+  cursor: pointer;
+}
+
+.signInButton:hover {
+  border-color: #d07737;
+}
+
+.loginText {
+  text-transform: uppercase;
+}
+
+.createAccountBtn {
+  border-radius: 30px;
+  border-color: lightgray;
+  margin: 30px;
+  padding: 6px 24px;
+  border-style: solid;
+  cursor: pointer;
+}
+
+.createAccountBtn:hover {
+  border-color: #d07737;
+}

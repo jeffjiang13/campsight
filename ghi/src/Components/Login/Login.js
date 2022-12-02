@@ -7,8 +7,6 @@ import { useLogInMutation } from "../../app/api";
 import { useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { updateField } from "../../app/accountSlice";
-import { Button } from "@mui/material";
-import { btnStyle, titleStyle } from './LoginStyle';
 
 function Login() {
 	const dispatch = useDispatch();
@@ -26,14 +24,10 @@ function Login() {
 		<main>
 			<div className="login" >
 				<Container>
-					<div className="d-flex justify-content-center mt-2">
-						{/* <Image src={ } style={{ width: "6rem" }} /> */}
-					</div>
-					<div className="text-center mt-3">
-						<h2 style={titleStyle}>Login</h2>
+					<div className="loginText">
+						<h2>Login</h2>
 					</div>
 					<Form
-						className="mt-3 mb-3 w-100 justify-content-center"
 						method="POST"
 						onSubmit={(e) => {
 							e.preventDefault();
@@ -41,7 +35,7 @@ function Login() {
 							navigate("/profile/:id");
 						}}
 					>
-						<Form.Group className="mb-3" controlId="formBasicEmail">
+						<Form.Group>
 							<Form.Control
 								required
 								onChange={field}
@@ -51,7 +45,7 @@ function Login() {
 								placeholder="Enter email"
 							/>
 						</Form.Group>
-						<Form.Group className="mb-3" controlId="formBasicPassword">
+						<Form.Group>
 							<Form.Control
 								required
 								onChange={field}
@@ -61,13 +55,13 @@ function Login() {
 								placeholder="Enter Password"
 							/>
 						</Form.Group>
-						<div className="d-grid gap-2">
-							<Button variant='outlined' style={btnStyle} type="submit">
+						<div>
+							<button className="signInButton" type="submit">
 								Sign in
-							</Button>
+							</button>
 						</div>
 					</Form>
-					<div style={titleStyle} className="text-center">
+					<div className="loginText">
 						<p>Don't have an account?</p>
 						<p>
 							Sign up{" "}

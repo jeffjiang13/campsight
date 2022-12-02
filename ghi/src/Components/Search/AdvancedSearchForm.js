@@ -92,7 +92,7 @@ function AdvancedSearchForm() {
 
     if (!isSubmitted) {
         return (
-            <div className="container">
+            <div className="advanceSearch">
                 <div className="row">
                     <div className="">
                         <h1>Filter Search</h1>
@@ -107,7 +107,7 @@ function AdvancedSearchForm() {
                                     })}
                                 </select>
                             </div>
-                            <div className="mb-3">
+                            <div>
                                 <select onChange={handleActivityChange} name="activity" id="activity" className="form-select">
                                     <option value="">Choose an activity</option>
                                     {activities.map(activity => {
@@ -121,7 +121,7 @@ function AdvancedSearchForm() {
                                 <input onChange={this.handleCheckbox} className="form-check-input" type="checkbox" value={this.state.waterfront} checked={this.state.waterfront} name="waterfront" id="waterfront" />
                                 <label className="form-check-label" for="waterfront">Waterfront</label>
                             </div> */}
-                            <button className="btn btn-primary">Search</button>
+                            <button className="advancedSearchButton">Search</button>
                         </form>
                     </div>
                 </div>

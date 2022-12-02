@@ -56,11 +56,10 @@ header {
 
 .dropdown-content {
   display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  padding: 0px 16px;
+  position: fixed;
+  top: -3px;
+  right: -76px;
+  background-color: #ffffff;
   z-index: 1;
 }
 
@@ -74,7 +73,7 @@ header {
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-  background-color: #f1f1f1
+  background-color: #d07737;
 }
 
 /* Show the dropdown menu on hover */
@@ -95,4 +94,17 @@ header {
 
 .button-primary {
   background-color: pink;
+}
+
+.advancedSearchBtn {
+  font-weight: bold;
+}
+
+
+.advancedSearchBtn:hover {
+  color: #d07737;
+}
+
+.avatar:hover {
+  color: #636363;
 }
