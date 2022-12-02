@@ -27,7 +27,7 @@ function DetailDisplay({
           <p>{location}</p>
           <h3>{title}</h3>
           <h4>{description}</h4>
-          <h4>Contact: 307-344-7381 COOPER PLEASE PASS API DATA LOL</h4>
+          <h4>Contact: {phone}</h4>
           <h4>Monday: {hoursMonday}</h4>
           <h4>Tuesday: {hoursTuesday}</h4>
           <h4>Wednesday: {hoursWednesday}</h4>
