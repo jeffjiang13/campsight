@@ -29,7 +29,7 @@ function Map(props) {
     <GoogleMap
       mapContainerStyle={props.style}
       center={userLocation}
-      zoom={3.5}
+      zoom={9.5}
     >
       {JSON.stringify(props.pins)}
       {(props.pins || []).map(pin => <Marker position={{ lat: Number(pin.lat), lng: Number(pin.lng) }}

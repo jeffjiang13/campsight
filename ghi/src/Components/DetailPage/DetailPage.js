@@ -24,8 +24,8 @@ function Details() {
   }, []);
 
   const containerStyle = {
-    width: 1000,
-    height: 400,
+    width: 1500,
+    height: 500,
   };
 
   return (
@@ -50,6 +50,7 @@ function Details() {
               title={details.fullName}
               // phone={details.phoneNumbers.phoneNumber}
               description={details.description}
+              weather={details.weatherInfo}
               hoursMonday = {hours.monday}
               hoursTuesday = {hours.tuesday}
               hoursWednesday = {hours.wednesday}
@@ -60,6 +61,7 @@ function Details() {
               rating={<Rating name="size-large" defaultValue={2} size="large" />}
             />)
         })}
+        <div className='mapDetailsPage'>
         <Map pins={[details && details.length && ({
           lat: Number(details[0].latitude),
           lng: Number(details[0].longitude),
@@ -72,8 +74,9 @@ function Details() {
           latLong: details[0].latLong,
           parkCode: details[0].parkCode
         })]} style={containerStyle} />
+        </div>
       </div>
-      <div>
+      <div className='mapDetailsPage'>
         <Review />
       </div>
     </>
