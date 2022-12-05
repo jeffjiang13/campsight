@@ -1,7 +1,7 @@
 import { SettingsBackupRestoreTwoTone } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
-import { Link, Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import Home from "../Home/Home";
+import { isPointWithinRadius } from "geolib";
 
 function AdvancedSearchForm() {
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -10,7 +10,32 @@ function AdvancedSearchForm() {
     const [activity, setActivity] = useState('');
     const [activities, setActivities] = useState([]);
     const [stateTerritory, setStateTerritory] = useState('');
-    const [states, setStates] = useState([
+    const [userLocation, setUserLocation] = useState({ lat: 37.0902, lng: -95.7129 });
+    const [radius, setRadius] = useState(0);
+    const [designation, setDesignation] = useState('');
+    const [designations] = useState([
+        "National Park",
+        "National Monument",
+        "National Monument & Preserve",
+        "National Historical Park",
+        "National Historic Trail",
+        "National Historic Area",
+        "National Historic Site",
+        "National Battlefield",
+        "National Military Park",
+        "National Recreation Area",
+        "National River",
+        "National River & Recreation Area",
+        "National Reserve",
+        "National Preserve",
+        "National Lakeshore",
+        "National Seashore",
+        "National Scenic Trail",
+        "National Scenic River",
+        "Park",
+        "Wild River",
+    ]);
+    const [states] = useState([
         "AL", "AK", "AZ", "AR", "AS",
         "CA", "CO", "CT", "DE", "DC",
         "FL", "GA", "GU", "HI", "ID",
@@ -32,7 +57,8 @@ function AdvancedSearchForm() {
             if (parkResponse.ok) {
                 const data = await parkResponse.json()
                 let tempParks = [];
-                tempParks.push(data.data)
+                tempParks.push(data.data);
+                console.log(tempParks);
                 setAllParks(tempParks);
                 console.log("Parks loaded successfully")
             } else {
@@ -53,6 +79,9 @@ function AdvancedSearchForm() {
                 console.log("Failed to load activities")
             }
         }
+        window.navigator.geolocation.getCurrentPosition(location => {
+            setUserLocation({ lat: location.coords.latitude, lng: location.coords.longitude })
+        })
         getAllParks()
         getActivities()
     }, [])
@@ -72,6 +101,15 @@ function AdvancedSearchForm() {
             parks = parks.filter(park => park.states === stateTerritory);
         } if (activity !== '') {
             parks = parks.filter(park => checkActivities(park.activities, activity))
+        } if (designation !== '') {
+            parks = parks.filter(park => park.designation === designation)
+        } if (radius !== 0) {
+            const latLongRadius = radius * 1609.34;
+            parks = parks.filter(park => isPointWithinRadius(
+                { lat: park.latitude, lng: park.longitude },
+                userLocation,
+                latLongRadius,
+            ))
         }
         setFilteredParks(parks);
     }
@@ -84,13 +122,13 @@ function AdvancedSearchForm() {
         setActivity(event.target.value);
     }
 
-    // handleCheckbox = (event) => {
-    //     console.log(event.target.value);
-    //     const value = event.target.checked;
-    //     const name = event.target.name;
-    //     this.setState({ [name]: value })
-    //     console.log(this.state);
-    // }
+    const handleDesignationChange = (event) => {
+        setDesignation(event.target.value);
+    }
+
+    const handleRadiusChange = (event) => {
+        setRadius(event.target.value);
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -100,7 +138,7 @@ function AdvancedSearchForm() {
 
     if (!isSubmitted) {
         return (
-            <div className="container">
+            <div className="advanceSearch">
                 <div className="row">
                     <div className="">
                         <h1>Filter Search</h1>
@@ -115,7 +153,7 @@ function AdvancedSearchForm() {
                                     })}
                                 </select>
                             </div>
-                            <div className="mb-3">
+                            <div>
                                 <select onChange={handleActivityChange} name="activity" id="activity" className="form-select">
                                     <option value="">Choose an activity</option>
                                     {activities.map(activity => {
@@ -125,10 +163,20 @@ function AdvancedSearchForm() {
                                     })}
                                 </select>
                             </div>
-                            {/* <div className="form-check">
-                                <input onChange={this.handleCheckbox} className="form-check-input" type="checkbox" value={this.state.waterfront} checked={this.state.waterfront} name="waterfront" id="waterfront" />
-                                <label className="form-check-label" for="waterfront">Waterfront</label>
-                            </div> */}
+                            <div className="mb-3">
+                                <select onChange={handleDesignationChange} name="designation" id="designation" className="form-select">
+                                    <option value="">Choose an NPS location type</option>
+                                    {designations.map(designation => {
+                                        return (
+                                            <option key={designation} value={designation}>{designation}</option>
+                                        )
+                                    })}
+                                </select>
+                            </div>
+                            <div className="form-floating mb-3">
+                                <input value={radius} onChange={handleRadiusChange} placeholder="Distance is in miles" type="" name="radius" id="radius" className="form-control" />
+                                <label htmlFor="last_name">Search Radius (In Miles)</label>
+                            </div>
                             <button className="btn btn-primary">Search</button>
                         </form>
                     </div>

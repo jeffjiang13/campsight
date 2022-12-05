@@ -3,10 +3,10 @@ import './Footer.css'
 
 function Footer() {
   return (
-    <div className="footer">
+    <footer>
       <p>2022 Camp Sight</p>
       <p>Privacy • Terms • Sitemap • Company Details</p>
-    </div>
+    </footer>
   );
 }
 

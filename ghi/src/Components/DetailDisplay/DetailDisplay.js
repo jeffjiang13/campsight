@@ -16,6 +16,7 @@ function DetailDisplay({
   hoursFriday,
   hoursSaturday,
   hoursSunday,
+  phone,
 }) {
   return (
     <div className="searchResult">
@@ -26,6 +27,7 @@ function DetailDisplay({
           <p>{location}</p>
           <h3>{title}</h3>
           <h4>{description}</h4>
+          <h4>Contact: {phone}</h4>
           <h4>Monday: {hoursMonday}</h4>
           <h4>Tuesday: {hoursTuesday}</h4>
           <h4>Wednesday: {hoursWednesday}</h4>

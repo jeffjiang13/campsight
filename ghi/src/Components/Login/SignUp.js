@@ -1,4 +1,3 @@
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/esm/Container";
 import { Link, useNavigate } from "react-router-dom";
@@ -20,13 +19,9 @@ function SignUp() {
 
     return (
         <div className="login" >
-            <Container className="shadow p-4 mt-5 d-grid">
-                <div className="d-flex justify-content-center mt-2">
-                    {/* <Image src={ } style={{ width: "6rem" }} /> */}
-                </div>
-                <div className="text-center mt-3 mb-3">
+            <Container>
+                <div className="loginText">
                     <h2>Sign up</h2>
-
                 </div>
                 <Form
                     method="POST"
@@ -40,7 +35,7 @@ function SignUp() {
                         navigate("/profile");
                     }}
                 >
-                    <Form.Group className="mb-3">
+                    <Form.Group>
                         <Form.Control
                             type="mail"
                             placeholder="Enter Email"
@@ -49,8 +44,7 @@ function SignUp() {
                             value={email}
                         />
                     </Form.Group>
-
-                    <Form.Group className="mb-3">
+                    <Form.Group>
                         <Form.Control
                             type="password"
                             placeholder="Enter Password"
@@ -59,8 +53,7 @@ function SignUp() {
                             value={password}
                         />
                     </Form.Group>
-
-                    <Form.Group className="mb-3">
+                    <Form.Group>
                         <Form.Control
                             type="text"
                             placeholder="Enter Name"
@@ -69,14 +62,13 @@ function SignUp() {
                             value={full_name}
                         />
                     </Form.Group>
-
-                    <div className="d-grid gap-2">
-                        <Button size="md" variant="primary" type="submit">
+                    <div>
+                        <button className="createAccountBtn" type="submit">
                             Create Account
-                        </Button>
+                        </button>
                     </div>
                 </Form>
-                <div className="text-center mt-3">
+                <div className="loginText">
                     <p>Already have an account?</p>
                     <p>
                         Sign in{" "}
