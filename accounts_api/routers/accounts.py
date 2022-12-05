@@ -19,6 +19,10 @@ from models import (
     AccountUpdateIn,
     AccountOut,
 )
+from queries.profiles import ProfileQueries
+from models import Profile, ProfileIn, ProfileOut
+
+
 
 
 class AccountForm(BaseModel):
@@ -69,11 +73,7 @@ async def update_account(
         hashed_password = None
 
     try:
-        # if info.email in [document.email for document in repo.get_all()]:
-        #   raise HTTPException(
-        #   status_code=status.HTTP_400_BAD_REQUEST,
-        #   detail="Account with that email already exists"
-        #   )
+
         account = repo.update(account_id, info, hashed_password)
     except DuplicateAccountError:
         raise HTTPException(
@@ -89,9 +89,11 @@ async def update_account(
 @router.post("/api/account/", response_model=AccountToken | HttpError)
 async def create_account(
     info: AccountIn,
+    profile: ProfileIn,
     request: Request,
     response: Response,
     repo: AccountQueries = Depends(),
+    profile_repo: ProfileQueries = Depends(),
 ):
 
     hashed_password = authenticator.hash_password(
@@ -99,6 +101,9 @@ async def create_account(
     )
     try:
         account = repo.create(info, hashed_password)
+        profile = profile_repo.create(profile)
+        profile.account_id = account.id
+        profile_repo.update_account_id(id=profile.id, account_id=profile.account_id)
     except DuplicateAccountError:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,

@@ -41,3 +41,11 @@
 # Wednesday 11/30
 
 * Worked on converting the search page from a class component to a function component using hooks. Diagnosed the slow speed of our NPS api and found a solution. Got the parks returned to pass into the Home component.
+
+# Thursday 12/1
+
+* Added State/Territory and Activity parameters to the search page.
+
+# Friday 12/2
+
+* Added Search Radius and Park Designation parameters to the search page.

@@ -11,10 +11,8 @@ class EventQueries(Queries):
 
     def create(self, event: EventIn) -> EventOut:
         props = event.dict()
-        props["e_id"] = ObjectId(props["e_id"])
         self.collection.insert_one(props)
         props["id"] = str(props["_id"])
-        props["e_id"] = str(props["e_id"])
         return EventOut(**props)
 
     def delete(self, id: str):
@@ -27,17 +25,15 @@ class EventQueries(Queries):
     def get_all(self) -> List[EventOut]:
         result = self.collection.find()
         event_props_list = list(result)
-        print(event_props_list)
         for event_props in event_props_list:
             event_props["id"] = str(event_props["_id"])
-            event_props["e_id"] = str(event_props["e_id"])
         return [EventOut(**event) for event in event_props_list]
 
-    def update(self, id, body):
+    def update(self, id:str, info:EventIn):
         filter = {
                 "_id": ObjectId(id),
             }
         event = self.collection.find_one(filter)
-        updated_event = self.collection.find_one_and_update(event, {"$set":body}, return_document=ReturnDocument.AFTER)
+        updated_event = self.collection.find_one_and_update(event, {"$set":info.dict()}, return_document=ReturnDocument.AFTER)
         updated_event["id"] = str(updated_event["_id"])
         return EventOut(**updated_event)

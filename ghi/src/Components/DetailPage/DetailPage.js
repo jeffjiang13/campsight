@@ -19,6 +19,17 @@ function Details() {
     }
   }
 
+  function getPhoneNumber(phoneNumbers) {
+    for (let i = 0; i < phoneNumbers.length; i++) {
+      if (phoneNumbers[i].type === "Voice") {
+        let num = phoneNumbers[i].phoneNumber;
+        return `${num.slice(0, 3)}-${num.slice(3, 6)}-${num.slice(6)}`;
+      } else {
+        return "No listed phone number"
+      }
+    }
+  }
+
   useEffect(() => {
     getDetails()
   }, []);
@@ -35,21 +46,22 @@ function Details() {
           console.log(details)
           const hours = details.operatingHours[0].standardHours
           const hoursString =
-          `Monday: ${hours.monday}
+            `Monday: ${hours.monday}
           Tuesday: ${hours.tuesday}
-          Wednesday: ${ hours.wednesday }
-          Thursday: ${ hours.thursday }
-          Friday: ${ hours.friday }
-          Saturday: ${ hours.saturday }
-          Sunday: ${ hours.sunday }`
+          Wednesday: ${hours.wednesday}
+          Thursday: ${hours.thursday}
+          Friday: ${hours.friday}
+          Saturday: ${hours.saturday}
+          Sunday: ${hours.sunday}`
 
           return (
             < DetailDisplay key={index}
               img={details.images[0].url}
               location={details.states}
               title={details.fullName}
-              // phone={details.phoneNumbers.phoneNumber}
+              phone={getPhoneNumber(details.contacts.phoneNumbers)}
               description={details.description}
+<<<<<<< HEAD
               weather={details.weatherInfo}
               hoursMonday = {hours.monday}
               hoursTuesday = {hours.tuesday}
@@ -58,6 +70,15 @@ function Details() {
               hoursFriday = {hours.friday}
               hoursSaturday = {hours.saturday}
               hoursSunday ={hours.sunday}
+=======
+              hoursMonday={hours.monday}
+              hoursTuesday={hours.tuesday}
+              hoursWednesday={hours.wednesday}
+              hoursThursday={hours.thursday}
+              hoursFriday={hours.friday}
+              hoursSaturday={hours.saturday}
+              hoursSunday={hours.sunday}
+>>>>>>> b2cefdd50f181c97624b6185bdd7bfbd0c190401
               rating={<Rating name="size-large" defaultValue={2} size="large" />}
             />)
         })}
