@@ -20,13 +20,13 @@ not_authorized = HTTPException(
 )
 
 
-@router.get("/api/profiles/{username}", response_model=Optional[ProfileOut])
+@router.get("/api/profiles/{profile_id}", response_model=Optional[ProfileOut])
 def get_one_profile(
-    username: str,
+    profile_id: str,
     account_data: dict = Depends(authenticator.get_current_account_data),
     repo: ProfileQueries = Depends(),
 ) -> ProfileOut:
-    profile = repo.get_one(username)
+    profile = repo.get_one(profile_id)
 
     if profile is None:
         return {"message: profile not found"}
@@ -42,7 +42,7 @@ async def get_all_profiles(
     return repo.get_all()
 
 
-@router.post("api/profiles", response_model=ProfileOut)
+@router.post("/api/profiles", response_model=ProfileOut)
 async def create_profile(
     profile: ProfileIn,
     account_data: dict = Depends(authenticator.get_current_account_data),
@@ -54,20 +54,21 @@ async def create_profile(
     return profile
 
 
-@router.put("/api/profiles/{username}", response_model=Union[Error, ProfileOut])
+@router.put("/api/profiles/{profile_id}", response_model=Union[Error, ProfileOut])
 async def update_profile(
-    profile: ProfileIn,
-    username: str,
+    info: ProfileIn,
+    profile_id: str,
     account_data: dict = Depends(authenticator.get_current_account_data),
     repo: ProfileQueries = Depends(),
 ) -> Union[Error, ProfileOut]:
-    return repo.update(profile, username)
+    return repo.update(profile_id, info)
 
 
-@router.delete("/api/profiles/{username}", response_model=bool)
+@router.delete("/api/profiles/{profile_id}", response_model=bool)
 async def delete_profile(
-    username: str,
+    profile_id: str,
     account_data: dict = Depends(authenticator.get_current_account_data),
     repo: ProfileQueries = Depends(),
 ) -> bool:
-    return repo.delete(username)
+     repo.delete(profile_id)
+     return True

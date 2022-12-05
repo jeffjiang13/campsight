@@ -5,62 +5,52 @@ from .client import Queries
 from bson.objectid import ObjectId
 from pymongo import ReturnDocument
 from pymongo.errors import DuplicateKeyError
-from models import ProfileOut, ProfileIn, Profile, Error
+from models import Review, ReviewIn, ReviewOut, Error
 
 
 
-class ProfileQueries(Queries):
+class ReviewQueries(Queries):
     DB_NAME = (
         # Specifies which database we're querying or inserting data into
         "library"
     )
     COLLECTION = (
         # specifies which collection we're querying or inserting data into
-        "profiles"
+        "reviews"
     )
 
-    def get_one(self, id : str) -> ProfileOut:
+    def get_one(self, id : str) -> ReviewOut:
         props = self.collection.find_one({"_id": ObjectId(id)})
         if props is None:
             return None
         props["id"] = str(props["_id"])
-        return ProfileOut(**props)
+        return ReviewOut(**props)
 
-    def get_all(self) -> list[ProfileOut]:
+    def get_all(self) -> list[ReviewOut]:
         db = self.collection.find()
         accounts = []
         for account in db:
             account["id"] =  str(account["_id"])
-            accounts.append(ProfileOut(**account))
+            accounts.append(ReviewOut(**account))
         return accounts
 
     def delete(self, id : str) -> bool:
         return self.collection.delete_one({"_id": ObjectId(id)})
 
-    def update(self, id:str, info:ProfileIn):
+    def update(self, id:str, info:ReviewIn):
         filter = {
                 "_id": ObjectId(id),
             }
-        profile = self.collection.find_one(filter)
-        updated_profile = self.collection.find_one_and_update(profile, {"$set":info.dict()}, return_document=ReturnDocument.AFTER)
-        updated_profile["id"] = str(updated_profile["_id"])
-        return ProfileOut(**updated_profile)
+        review = self.collection.find_one(filter)
+        updated_review = self.collection.find_one_and_update(review, {"$set":info.dict()}, return_document=ReturnDocument.AFTER)
+        updated_review["id"] = str(updated_review["_id"])
+        return ReviewOut(**updated_review)
 
 
     def create(
-        self, info: ProfileIn) -> Profile:
+        self, info: ReviewIn) -> Review:
         props = info.dict()
         self.collection.insert_one(props)
         props["id"] = str(props["_id"])
 
-        return Profile(**props)
-
-    def update_account_id(self, id: str, account_id: str):
-        self.collection.update_one(
-            {"_id": ObjectId(id)},
-            {"$set" : {
-                "account_id" : account_id,
-                }
-            }
-        )
-        return Profile(id=id, account_id=account_id)
+        return Review(**props)

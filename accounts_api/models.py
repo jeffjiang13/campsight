@@ -48,7 +48,6 @@ class EventIn(BaseModel):
     location: str
     rating: Optional[str]
     address: Optional[str]
-    e_id: str
 
 class Event(EventIn):
     id: PydanticObjectId
@@ -62,24 +61,39 @@ class EventList(BaseModel):
 
 
 class ProfileIn(BaseModel):
-    city: str
-    state: str
+    city: Optional[str]
+    state: Optional[str]
     description: Optional[str]
     social_media: Optional[str]
 
 
 class Profile(ProfileIn):
     id: str
+    account_id: str | None = None
 
 
 
 class ProfileOut(BaseModel):
     id: str
-    city: str
-    state: str
+    city: Optional[str]
+    state: Optional[str]
     description: Optional[str]
     account_id: Optional[str]
     social_media: Optional[str]
 
 class Error(BaseModel):
     message: str
+
+
+class ReviewIn(BaseModel):
+    rating: Optional[str]
+    review: Optional[str]
+
+class Review(ReviewIn):
+    id: str
+
+
+class ReviewOut(BaseModel):
+    id: str
+    rating: Optional[str]
+    review: Optional[str]

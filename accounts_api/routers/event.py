@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, status
-from models import  EventIn, EventOut, EventList
+from models import  EventIn, EventOut, EventList, AccountOut
 from queries.event import EventQueries
 from routers.sockets import socket_manager
 from .auth import authenticator
@@ -38,11 +38,12 @@ async def delete_event(
     return True
 
 
+
 @router.put("/events/{event_id}", response_model=EventOut)
 def update_event(
-    body: dict,
+    info: EventIn,
     event_id: str,
     repo: EventQueries = Depends(),
 ):
-    event = repo.update(event_id, body)
+    event = repo.update(event_id, info)
     return event
