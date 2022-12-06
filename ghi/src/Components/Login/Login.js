@@ -32,7 +32,7 @@ function Login() {
 						onSubmit={(e) => {
 							e.preventDefault();
 							logIn(e.target);
-							navigate("/profile/:id");
+							navigate("/");
 						}}
 					>
 						<Form.Group>

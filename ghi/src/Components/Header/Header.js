@@ -34,11 +34,11 @@ function NavBar() {
           </Dropdown.Toggle>
           <Dropdown.Menu>
             <div className="dropdown-content">
-              <Dropdown.Item href='/profile/:id' > Profile </Dropdown.Item>
-              <Dropdown.Item href="/activities" > Activities </Dropdown.Item>
-              <Dropdown.Item href="/events" > Events </Dropdown.Item>
+              {token ? <Dropdown.Item href='/profile/:id' > Profile </Dropdown.Item> : null}
+              {token ? <Dropdown.Item href="/events" > Events </Dropdown.Item> : null}
+              {token ? null : <Dropdown.Item href="/signup" > Sign-Up </Dropdown.Item>}
               {token ? <Dropdown.Item onClick={logOut} > Log Out </Dropdown.Item> : <Dropdown.Item href="/login" > Login </Dropdown.Item>}
-              {token ? null : <Dropdown.Item href="/signup" > Sign Up </Dropdown.Item>}
+
             </div>
           </Dropdown.Menu>
         </Dropdown>

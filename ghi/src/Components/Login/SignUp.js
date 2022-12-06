@@ -32,7 +32,7 @@ function SignUp() {
                             password,
                             full_name,
                         });
-                        navigate("/profile");
+                        navigate("/");
                     }}
                 >
                     <Form.Group>

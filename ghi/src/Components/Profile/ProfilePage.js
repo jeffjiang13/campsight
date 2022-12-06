@@ -1,29 +1,46 @@
-import { useEffect, useState, useContext } from "react"
-import { useNavigate } from 'react-router-dom'
-import { useParams } from "react-router-dom"
-import Reviews from "../Activities/Reviews"
-import { settingLinks } from "../Header/Header"
-import { remove_activity } from "../Activities/RemoveActivity"
-import { useLogOutMutation } from "../../app/api";
+import { createAction, createReducer, createSelector } from '@reduxjs/toolkit';
+import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
 
-export default function UserProfile() {
-    const navigate = useNavigate();
-    const [logOut] = useLogOutMutation();
+const fetchProfile = createAction('fetchProfile', (name, city, state, description, socialMedia) => ({
+    payload: { name, city, state, description, socialMedia }
+}));
+
+const profileReducer = createReducer({}, {
+    [fetchProfile]: (state, action) => {
+        state.name = action.payload.name;
+        state.city = action.payload.city;
+        state.state = action.payload.state;
+        state.description = action.payload.description;
+        state.socialMedia = action.payload.socialMedia;
+    }
+});
+
+const selectProfile = createSelector(
+    state => state.name,
+    state => state.city,
+    state => state.state,
+    state => state.description,
+    state => state.socialMedia,
+    (name, city, state, description, socialMedia) => ({ name, city, state, description, socialMedia })
+);
 
 
-    const signOut = () => {
-        logOut()
-        navigate("/");
-    };
+const Profile = () => {
+    const profile = useSelector(selectProfile);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchProfile(profile.name, profile.city, profile.state, profile.description, profile.socialMedia));
+    }, []);
 
     return (
-        <>
-            <div style={{ marginTop: 20, minHeight: 700 }}>
-                <h1>Profile page</h1>
-                <p>Hello there, welcome to your profile page</p>
-
-                <button onClick={signOut}>Log Out</button>
-            </div>
-        </>
+        <div>
+            <h1>{profile.name}</h1>
+            <h2>{profile.city}, {profile.state}</h2>
+            <p>{profile.description}</p>
+            <p>{profile.socialMedia}</p>
+        </div>
     );
-}
+};
+export default Profile
