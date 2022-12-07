@@ -9,7 +9,7 @@ import { updateField } from "../../app/accountSlice";
 function SignUp() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { email, password, full_name } = useSelector((state) => state.account);
+    const { email, password, full_name, city, state, description, social_media } = useSelector((state) => state.account);
     const [signUp] = useSignUpMutation();
     const field = useCallback(
         (e) =>
@@ -28,11 +28,19 @@ function SignUp() {
                     onSubmit={(e) => {
                         e.preventDefault();
                         signUp({
-                            email,
-                            password,
-                            full_name,
+                            info: {
+                                email,
+                                password,
+                                full_name,
+                            },
+                            profile: {
+                                city,
+                                state,
+                                description,
+                                social_media
+                            }
                         });
-                        navigate("/");
+                        navigate("/profile/:id");
                     }}
                 >
                     <Form.Group>
@@ -60,6 +68,42 @@ function SignUp() {
                             name="full_name"
                             onChange={field}
                             value={full_name}
+                        />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Control
+                            type="text"
+                            placeholder="City"
+                            name="city"
+                            onChange={field}
+                            value={city}
+                        />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Control
+                            type="text"
+                            placeholder="State"
+                            name="state"
+                            onChange={field}
+                            value={state}
+                        />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Control
+                            type="text"
+                            placeholder="Describe yourself"
+                            name="description"
+                            onChange={field}
+                            value={description}
+                        />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Control
+                            type="text"
+                            placeholder="Share a social media link"
+                            name="social_media"
+                            onChange={field}
+                            value={social_media}
                         />
                     </Form.Group>
                     <div>

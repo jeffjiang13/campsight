@@ -34,6 +34,20 @@ class ReviewQueries(Queries):
             accounts.append(ReviewOut(**account))
         return accounts
 
+    def get_parks(self, parkCode: str) -> list[ReviewOut]:
+        print("Queries",type(parkCode))
+        props = self.collection.find({"parkCode": parkCode})
+        if props is None:
+            return None
+        accounts = []
+        for account in props:
+            account["id"] =  str(account["_id"])
+            # del account["_id"]
+            print("*************************",account)
+            accounts.append(ReviewOut(**account))
+        # props["id"] =  str(props["_id"])
+        return accounts
+
     def delete(self, id : str) -> bool:
         return self.collection.delete_one({"_id": ObjectId(id)})
 
@@ -52,5 +66,5 @@ class ReviewQueries(Queries):
         props = info.dict()
         self.collection.insert_one(props)
         props["id"] = str(props["_id"])
-
+        print(props["id"])
         return Review(**props)

@@ -72,8 +72,6 @@ class Profile(ProfileIn):
     id: str
     account_id: str | None = None
 
-
-
 class ProfileOut(BaseModel):
     id: str
     city: Optional[str]
@@ -89,12 +87,14 @@ class Error(BaseModel):
 class ReviewIn(BaseModel):
     rating: Optional[str]
     review: Optional[str]
+    parkCode: str
 
 class Review(ReviewIn):
     id: str
-
 
 class ReviewOut(BaseModel):
     id: str
     rating: Optional[str]
     review: Optional[str]
+    parkCode: str
+

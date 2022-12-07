@@ -45,14 +45,6 @@ function Details() {
         {details.map((details, index) => {
           console.log(details)
           const hours = details.operatingHours[0].standardHours
-          const hoursString =
-            `Monday: ${hours.monday}
-          Tuesday: ${hours.tuesday}
-          Wednesday: ${hours.wednesday}
-          Thursday: ${hours.thursday}
-          Friday: ${hours.friday}
-          Saturday: ${hours.saturday}
-          Sunday: ${hours.sunday}`
 
           return (
             < DetailDisplay key={index}
@@ -61,6 +53,7 @@ function Details() {
               title={details.fullName}
               phone={getPhoneNumber(details.contacts.phoneNumbers)}
               description={details.description}
+              weather={details.weatherInfo}
               hoursMonday={hours.monday}
               hoursTuesday={hours.tuesday}
               hoursWednesday={hours.wednesday}
