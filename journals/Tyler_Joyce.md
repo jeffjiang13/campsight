@@ -57,3 +57,8 @@ feat: adding infowindow cards to google maps api.
 feat: Added review component for review section on details page.
 fix: Fixed styling on login, logout, advanced search.
 bug: fixed bug on dropdown menu of home page where spacing on hover made the dropdown hard to access.
+
+## 12/5/2022
+
+fix: minor styling on advanced search page
+fix: merge conflicts.

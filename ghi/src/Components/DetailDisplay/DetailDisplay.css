@@ -1,7 +1,6 @@
 .searchResult {
   display: flex;
   position: relative;
-  margin: 20px;
   padding: 20px;
   border-bottom: 1px solid lightgray;
   opacity: 1;
@@ -17,6 +16,8 @@
   border-radius: 30px;
   max-width: 1200px;
   max-height: 900px;
+  min-width: 500px;
+  min-height: fit-content;
   overflow: hidden
 }
 

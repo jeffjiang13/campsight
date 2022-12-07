@@ -35,7 +35,7 @@ function Details() {
   }, []);
 
   const containerStyle = {
-    width: 1500,
+    width: 1000,
     height: 500,
   };
 
@@ -53,7 +53,6 @@ function Details() {
               title={details.fullName}
               phone={getPhoneNumber(details.contacts.phoneNumbers)}
               description={details.description}
-              weather={details.weatherInfo}
               hoursMonday={hours.monday}
               hoursTuesday={hours.tuesday}
               hoursWednesday={hours.wednesday}
@@ -61,26 +60,27 @@ function Details() {
               hoursFriday={hours.friday}
               hoursSaturday={hours.saturday}
               hoursSunday={hours.sunday}
-              rating={<Rating name="size-large" defaultValue={2} size="large" />}
             />)
         })}
         <div className='mapDetailsPage'>
-          <Map pins={[details && details.length && ({
-            lat: Number(details[0].latitude),
-            lng: Number(details[0].longitude),
-            title: details[0].fullName,
-            image: details[0].images[0].url,
-            name: details[0].fullName,
-            description: details[0].description,
-            src: details[0].images[0].url,
-            contact: details[0].contacts.emailAddresses[0].emailAddress,
-            latLong: details[0].latLong,
-            parkCode: details[0].parkCode
-          })]} style={containerStyle} />
+          <Review />
+          <Rating name="size-large" defaultValue={2} size="large" />
         </div>
-      </div>
-      <div className='mapDetailsPage'>
-        <Review />
+        <div/>
+        <div className='mapDetailsPage'>
+        <Map pins={[details && details.length && ({
+          lat: Number(details[0].latitude),
+          lng: Number(details[0].longitude),
+          title: details[0].fullName,
+          image: details[0].images[0].url,
+          name: details[0].fullName,
+          description: details[0].description,
+          src: details[0].images[0].url,
+          contact: details[0].contacts.emailAddresses[0].emailAddress,
+          latLong: details[0].latLong,
+          parkCode: details[0].parkCode
+        })]} style={containerStyle} />
+        </div>
       </div>
     </>
   );
