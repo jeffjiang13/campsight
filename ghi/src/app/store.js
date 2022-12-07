@@ -4,13 +4,14 @@ import { apiSlice } from './api';
 import { accountSlice } from './accountSlice';
 import { searchSlice } from "./searchSlice";
 import { eventApi } from "./eventApi"
-
+import { profileApi } from "./profileApi"
 export const store = configureStore({
     reducer: {
         [apiSlice.reducerPath]: apiSlice.reducer,
         [accountSlice.name]: accountSlice.reducer,
         [searchSlice.name]: searchSlice.reducer,
         [eventApi.reducerPath]: eventApi.reducer,
+        [profileApi.reducerPath]: profileApi.reducer
 
 
 
@@ -19,6 +20,7 @@ export const store = configureStore({
         return getDefaultMiddleware()
             .concat(apiSlice.middleware)
             .concat(eventApi.middleware)
+            .concat(profileApi.middleware)
 
 
     },

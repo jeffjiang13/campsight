@@ -55,7 +55,7 @@ class ProfileQueries(Queries):
 
         return Profile(**props)
 
-    def update_account_id(self, id: str, account_id: str):
+    def update_id(self, id: str, account_id: str):
         self.collection.update_one(
             {"_id": ObjectId(id)},
             {"$set" : {

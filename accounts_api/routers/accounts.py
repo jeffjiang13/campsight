@@ -21,6 +21,15 @@ from models import (
 )
 from queries.profiles import ProfileQueries
 from models import Profile, ProfileIn, ProfileOut
+from queries.sessions import SessionQueries
+
+
+not_authorized = HTTPException(
+    status_code=status.HTTP_401_UNAUTHORIZED,
+    detail="Invalid authentication credentials",
+    headers={"WWW-Authenticate": "Bearer"},
+)
+
 
 
 
@@ -94,6 +103,9 @@ async def create_account(
     response: Response,
     repo: AccountQueries = Depends(),
     profile_repo: ProfileQueries = Depends(),
+    session: SessionQueries = Depends(),
+
+
 ):
 
     hashed_password = authenticator.hash_password(
@@ -103,7 +115,7 @@ async def create_account(
         account = repo.create(info, hashed_password)
         profile = profile_repo.create(profile)
         profile.account_id = account.id
-        profile_repo.update_account_id(id=profile.id, account_id=profile.account_id)
+        profile_repo.update_id(id=profile.id, account_id=profile.account_id)
     except DuplicateAccountError:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -111,9 +123,8 @@ async def create_account(
         )
 
     form = AccountForm(username=info.email, password=info.password)
-
     token = await authenticator.login(
-        response, request, form, repo
+        response, request, form, repo, session
         )
     return AccountToken(account=account, **token.dict())
 
@@ -129,4 +140,13 @@ async def delete_account(
     repo: AccountQueries = Depends(),
 ):
     repo.delete(account_id)
+    return True
+
+@router.delete("/api/sessions/{account_id}", response_model=bool)
+async def delete_session(
+    account_id: str,
+    repo: SessionQueries = Depends(),
+) -> bool:
+
+    repo.delete_sessions(account_id)
     return True

@@ -17,12 +17,15 @@ class PydanticObjectId(ObjectId):
                 raise ValueError(f"Not a valid object id: {value}")
         return value
 
+class SessionOut(BaseModel):
+    jti: str
+    account_id: str
+
 
 class AccountUpdateIn(BaseModel):
     email: Optional[str]
     password: Optional[str]
     full_name: Optional[str]
-    roles: Optional[List[str]]
 
 
 class AccountIn(BaseModel):
@@ -33,20 +36,20 @@ class AccountIn(BaseModel):
 
 class Account(AccountIn):
     id: PydanticObjectId
-    roles: List[str]
 
 
 class AccountOut(BaseModel):
     id: str
     email: str
     full_name: str
-    roles: List[str]
 
 class EventIn(BaseModel):
     name: str
     date: str
     location: str
-    description: Optional[str]
+    rating: Optional[str]
+    address: Optional[str]
+
 class Event(EventIn):
     id: PydanticObjectId
 
@@ -59,7 +62,6 @@ class EventList(BaseModel):
 
 
 class ProfileIn(BaseModel):
-    name: Optional[str]
     city: Optional[str]
     state: Optional[str]
     description: Optional[str]
@@ -72,7 +74,6 @@ class Profile(ProfileIn):
 
 class ProfileOut(BaseModel):
     id: str
-    name: Optional[str]
     city: Optional[str]
     state: Optional[str]
     description: Optional[str]
