@@ -39,14 +39,11 @@ class ReviewQueries(Queries):
         props = self.collection.find({"parkCode": parkCode})
         if props is None:
             return None
-        accounts = []
-        for account in props:
-            account["id"] =  str(account["_id"])
-            # del account["_id"]
-            print("*************************",account)
-            accounts.append(ReviewOut(**account))
-        # props["id"] =  str(props["_id"])
-        return accounts
+        reviews = []
+        for prop in props:
+            prop["id"] =  str(prop["_id"])
+            reviews.append(ReviewOut(**prop))
+        return reviews
 
     def delete(self, id : str) -> bool:
         return self.collection.delete_one({"_id": ObjectId(id)})

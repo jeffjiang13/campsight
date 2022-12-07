@@ -10,6 +10,7 @@ import Review from '../Review/Review';
 function Details() {
   const [details, setDetails] = useState([])
   const parkCode = useParams().parkCode
+  const [rating, setRating] = useState()
 
   async function getDetails() {
     const detailResponse = await fetch(`http://localhost:8000/details?parkCode=${parkCode}`)
@@ -17,12 +18,25 @@ function Details() {
       const data = await detailResponse.json();
       setDetails(data.data)
     }
+    const reviewResponse = await fetch(`http://localhost:8001/api/by-parkcode/${parkCode}`)
+    if (reviewResponse.ok) {
+      const reviewData = await reviewResponse.json()
+      const ratingList = []
+      var ratingAverage = 0
+      for (let reviewRating of reviewData) {
+        ratingList.push(Number(reviewRating.rating))
+        ratingAverage = ratingAverage + Number(reviewRating.rating)
+      }
+      setRating(ratingAverage / ratingList.length)
+    }
   }
-
   function getPhoneNumber(phoneNumbers) {
     for (let i = 0; i < phoneNumbers.length; i++) {
       if (phoneNumbers[i].type === "Voice") {
         let num = phoneNumbers[i].phoneNumber;
+        if (num.length > 10) {
+          return num;
+        }
         return `${num.slice(0, 3)}-${num.slice(3, 6)}-${num.slice(6)}`;
       } else {
         return "No listed phone number"
@@ -43,7 +57,6 @@ function Details() {
     <>
       <div className="searchPage">
         {details.map((details, index) => {
-          console.log(details)
           const hours = details.operatingHours[0].standardHours
 
           return (
@@ -61,7 +74,7 @@ function Details() {
               hoursFriday={hours.friday}
               hoursSaturday={hours.saturday}
               hoursSunday={hours.sunday}
-              rating={<Rating name="size-large" defaultValue={2} size="large" />}
+              rating={<Rating name="size-large" defaultValue={5} value={Number(rating)} size="large" />}
             />)
         })}
         <div className='mapDetailsPage'>

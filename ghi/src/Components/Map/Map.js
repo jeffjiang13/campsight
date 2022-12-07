@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from "@react-google-maps/api";
 import Card from "../Card/Card";
 
@@ -32,7 +32,7 @@ function Map(props) {
       zoom={9.5}
     >
       {JSON.stringify(props.pins)}
-      {(props.pins || []).map(pin => <Marker position={{ lat: Number(pin.lat), lng: Number(pin.lng) }}
+      {(props.pins || []).map((pin, index) => <Marker position={{ lat: Number(pin.lat), lng: Number(pin.lng) }}
         key={pin.id} visible={true} icon="https://i.ibb.co/f92RGJ9/tent.png" anchor={Marker} clickable={true} onClick={() =>
           setSelectedMarker(pin)} />)}
       {SelectedMarker &&
