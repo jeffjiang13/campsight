@@ -41,8 +41,12 @@ async def get_all_reviews(
 ):
     return repo.get_all()
 
+@router.get("/api/by-parkcode/{parkCode}", response_model = ReviewOut) #, response_model=Union[List[Review], Error]
+async def get_park_reviews(parkCode: str, repo: ReviewQueries = Depends()):
+    return repo.get_parks(parkCode)
 
-@router.post("/api/review", response_model=ReviewOut)
+
+@router.post("/api/review", response_model=Optional[ReviewOut])
 async def create_review(
     review: ReviewIn,
     account_data: dict = Depends(authenticator.get_current_account_data),

@@ -45,14 +45,6 @@ function Details() {
         {details.map((details, index) => {
           console.log(details)
           const hours = details.operatingHours[0].standardHours
-          const hoursString =
-            `Monday: ${hours.monday}
-          Tuesday: ${hours.tuesday}
-          Wednesday: ${hours.wednesday}
-          Thursday: ${hours.thursday}
-          Friday: ${hours.friday}
-          Saturday: ${hours.saturday}
-          Sunday: ${hours.sunday}`
 
           return (
             < DetailDisplay key={index}
@@ -61,16 +53,7 @@ function Details() {
               title={details.fullName}
               phone={getPhoneNumber(details.contacts.phoneNumbers)}
               description={details.description}
-<<<<<<< HEAD
               weather={details.weatherInfo}
-              hoursMonday = {hours.monday}
-              hoursTuesday = {hours.tuesday}
-              hoursWednesday = {hours.wednesday}
-              hoursThursday = {hours.thursday}
-              hoursFriday = {hours.friday}
-              hoursSaturday = {hours.saturday}
-              hoursSunday ={hours.sunday}
-=======
               hoursMonday={hours.monday}
               hoursTuesday={hours.tuesday}
               hoursWednesday={hours.wednesday}
@@ -78,23 +61,22 @@ function Details() {
               hoursFriday={hours.friday}
               hoursSaturday={hours.saturday}
               hoursSunday={hours.sunday}
->>>>>>> b2cefdd50f181c97624b6185bdd7bfbd0c190401
               rating={<Rating name="size-large" defaultValue={2} size="large" />}
             />)
         })}
         <div className='mapDetailsPage'>
-        <Map pins={[details && details.length && ({
-          lat: Number(details[0].latitude),
-          lng: Number(details[0].longitude),
-          title: details[0].fullName,
-          image: details[0].images[0].url,
-          name: details[0].fullName,
-          description: details[0].description,
-          src: details[0].images[0].url,
-          contact: details[0].contacts.emailAddresses[0].emailAddress,
-          latLong: details[0].latLong,
-          parkCode: details[0].parkCode
-        })]} style={containerStyle} />
+          <Map pins={[details && details.length && ({
+            lat: Number(details[0].latitude),
+            lng: Number(details[0].longitude),
+            title: details[0].fullName,
+            image: details[0].images[0].url,
+            name: details[0].fullName,
+            description: details[0].description,
+            src: details[0].images[0].url,
+            contact: details[0].contacts.emailAddresses[0].emailAddress,
+            latLong: details[0].latLong,
+            parkCode: details[0].parkCode
+          })]} style={containerStyle} />
         </div>
       </div>
       <div className='mapDetailsPage'>
