@@ -1,46 +1,48 @@
-import { createAction, createReducer, createSelector } from '@reduxjs/toolkit';
-import { useSelector, useDispatch } from 'react-redux';
-import React, { useEffect } from 'react';
+import { useGetProfilesQuery, useUpdateProfileMutation } from "../../app/profileApi";
 
-const fetchProfile = createAction('fetchProfile', (name, city, state, description, socialMedia) => ({
-    payload: { name, city, state, description, socialMedia }
-}));
+function Profile() {
+    const [update] = useUpdateProfileMutation();
 
-const profileReducer = createReducer({}, {
-    [fetchProfile]: (state, action) => {
-        state.name = action.payload.name;
-        state.city = action.payload.city;
-        state.state = action.payload.state;
-        state.description = action.payload.description;
-        state.socialMedia = action.payload.socialMedia;
+    const { data, isLoading } = useGetProfilesQuery();
+    if (isLoading) {
+        return <progress className="progress is-primary" max="100"></progress>;
     }
-});
-
-const selectProfile = createSelector(
-    state => state.name,
-    state => state.city,
-    state => state.state,
-    state => state.description,
-    state => state.socialMedia,
-    (name, city, state, description, socialMedia) => ({ name, city, state, description, socialMedia })
-);
-
-
-const Profile = () => {
-    const profile = useSelector(selectProfile);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(fetchProfile(profile.name, profile.city, profile.state, profile.description, profile.socialMedia));
-    }, []);
 
     return (
-        <div>
-            <h1>{profile.name}</h1>
-            <h2>{profile.city}, {profile.state}</h2>
-            <p>{profile.description}</p>
-            <p>{profile.socialMedia}</p>
+        <div className="login2">
+            <div className="">
+                <form>
+                    <table className="">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>city</th>
+                                <th>state</th>
+                                <th>Description</th>
+                                <th>social media</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {data.profile.map((p) => (
+                                <tr key={p.id}>
+                                    <td>{p.name}</td>
+                                    <td>{p.city}</td>
+                                    <td>{p.state}</td>
+                                    <td>{p.description}</td>
+                                    <td>{p.social_media}</td>
+                                    <td>
+                                        <button onClick={() => update(p.id)}>
+                                            update
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </form>
+            </div>
         </div>
     );
-};
-export default Profile
+}
+
+export default Profile;

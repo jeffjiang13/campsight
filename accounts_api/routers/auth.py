@@ -3,6 +3,8 @@ from fastapi import Depends
 from jwtdown_fastapi.authentication import Authenticator
 from models import AccountOut, Account
 from queries.accounts import AccountQueries
+from queries.sessions import SessionQueries
+
 
 
 class Auth(Authenticator):
@@ -22,5 +24,17 @@ class Auth(Authenticator):
     def get_account_data_for_cookie(self, account: Account) -> AccountOut:
         return account.email, AccountOut(**account.dict())
 
+    def get_session_getter(self, session_repo: SessionQueries = Depends()):
+
+        return session_repo
+
+    async def jti_created(self, jti, account, session_repo):
+        session_repo.create(jti, account)
+
+    async def jti_destroyed(self, jti, session_repo):
+        session_repo.delete(jti)
+
+    async def validate_jti(self, jti, session_repo):
+        return session_repo.get(jti) is not None
 
 authenticator = Auth(os.environ["SIGNING_KEY"])

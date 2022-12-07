@@ -1,5 +1,5 @@
 import { useGetEventsQuery, useDeleteEventMutation } from "../../app/eventApi";
-
+import "./Event.css"
 function Events() {
     const [deleteEvent] = useDeleteEventMutation();
     const { data, isLoading } = useGetEventsQuery();
@@ -11,7 +11,7 @@ function Events() {
         <div className="login2">
             <div className="">
                 <form>
-                    <table className="">
+                    <table className="events">
                         <thead>
                             <tr>
                                 <th>Name of event</th>
