@@ -96,4 +96,3 @@ class ReviewOut(BaseModel):
     rating: Optional[str]
     review: Optional[str]
     parkCode: str
-

@@ -41,7 +41,7 @@ async def get_all_reviews(
 ):
     return repo.get_all()
 
-@router.get("/api/by-parkcode/{parkCode}", response_model = ReviewOut) #, response_model=Union[List[Review], Error]
+@router.get("/api/by-parkcode/{parkCode}", response_model=Union[List[ReviewOut], Error])
 async def get_park_reviews(parkCode: str, repo: ReviewQueries = Depends()):
     return repo.get_parks(parkCode)
 
