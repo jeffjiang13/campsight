@@ -61,16 +61,6 @@ function Details() {
               title={details.fullName}
               phone={getPhoneNumber(details.contacts.phoneNumbers)}
               description={details.description}
-<<<<<<< HEAD
-              weather={details.weatherInfo}
-              hoursMonday = {hours.monday}
-              hoursTuesday = {hours.tuesday}
-              hoursWednesday = {hours.wednesday}
-              hoursThursday = {hours.thursday}
-              hoursFriday = {hours.friday}
-              hoursSaturday = {hours.saturday}
-              hoursSunday ={hours.sunday}
-=======
               hoursMonday={hours.monday}
               hoursTuesday={hours.tuesday}
               hoursWednesday={hours.wednesday}
@@ -78,7 +68,6 @@ function Details() {
               hoursFriday={hours.friday}
               hoursSaturday={hours.saturday}
               hoursSunday={hours.sunday}
->>>>>>> b2cefdd50f181c97624b6185bdd7bfbd0c190401
               rating={<Rating name="size-large" defaultValue={2} size="large" />}
             />)
         })}

@@ -175,7 +175,7 @@ function AdvancedSearchForm() {
                             </div>
                             <div className="form-floating mb-3">
                                 <input value={radius} onChange={handleRadiusChange} placeholder="Distance is in miles" type="" name="radius" id="radius" className="form-control" />
-                                <label htmlFor="last_name">Search Radius (In Miles)</label>
+                                <label htmlFor="last_name"><p>Search Radius (In Miles)</p></label>
                             </div>
                             <button className="btn btn-primary">Search</button>
                         </form>

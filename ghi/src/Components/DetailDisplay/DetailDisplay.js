@@ -27,18 +27,6 @@ function DetailDisplay({
           <p>{location}</p>
           <h3>{title}</h3>
           <h4>{description}</h4>
-<<<<<<< HEAD
-          <h4>{weather}</h4>
-          <br></br>
-          <h5>Contact: 307-344-7381 COOPER PLEASE PASS API DATA LOL</h5>
-          <h5>Monday: {hoursMonday}</h5>
-          <h5>Tuesday: {hoursTuesday}</h5>
-          <h5>Wednesday: {hoursWednesday}</h5>
-          <h5>Thursday: {hoursThursday}</h5>
-          <h5>Friday: {hoursFriday}</h5>
-          <h5>Saturday: {hoursSaturday}</h5>
-          <h5>Sunday: {hoursSunday}</h5>
-=======
           <h4>Contact: {phone}</h4>
           <h4>Monday: {hoursMonday}</h4>
           <h4>Tuesday: {hoursTuesday}</h4>
@@ -47,7 +35,6 @@ function DetailDisplay({
           <h4>Friday: {hoursFriday}</h4>
           <h4>Saturday: {hoursSaturday}</h4>
           <h4>Sunday: {hoursSunday}</h4>
->>>>>>> b2cefdd50f181c97624b6185bdd7bfbd0c190401
         </div>
         <div className="searchResult_infobottom">
           <div className="searchResult_stars" />
