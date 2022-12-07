@@ -8,7 +8,6 @@ function DetailDisplay({
   title,
   description,
   rating,
-  weather,
   hoursMonday,
   hoursTuesday,
   hoursWednesday,

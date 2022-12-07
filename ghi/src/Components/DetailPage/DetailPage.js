@@ -35,7 +35,7 @@ function Details() {
   }, []);
 
   const containerStyle = {
-    width: 1500,
+    width: 1000,
     height: 500,
   };
 
@@ -45,14 +45,6 @@ function Details() {
         {details.map((details, index) => {
           console.log(details)
           const hours = details.operatingHours[0].standardHours
-          const hoursString =
-            `Monday: ${hours.monday}
-          Tuesday: ${hours.tuesday}
-          Wednesday: ${hours.wednesday}
-          Thursday: ${hours.thursday}
-          Friday: ${hours.friday}
-          Saturday: ${hours.saturday}
-          Sunday: ${hours.sunday}`
 
           return (
             < DetailDisplay key={index}
@@ -68,9 +60,13 @@ function Details() {
               hoursFriday={hours.friday}
               hoursSaturday={hours.saturday}
               hoursSunday={hours.sunday}
-              rating={<Rating name="size-large" defaultValue={2} size="large" />}
             />)
         })}
+        <div className='mapDetailsPage'>
+          <Review />
+          <Rating name="size-large" defaultValue={2} size="large" />
+        </div>
+        <div/>
         <div className='mapDetailsPage'>
         <Map pins={[details && details.length && ({
           lat: Number(details[0].latitude),
@@ -85,9 +81,6 @@ function Details() {
           parkCode: details[0].parkCode
         })]} style={containerStyle} />
         </div>
-      </div>
-      <div className='mapDetailsPage'>
-        <Review />
       </div>
     </>
   );

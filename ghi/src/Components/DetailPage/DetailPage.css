@@ -1,28 +1,9 @@
-.SearchPage_info {
-  padding: 1000px;
-}
-
-.SearchPage_info>p {
-  margin-bottom: 10px;
-  font-size: 14px;
-}
-
-.SearchPage_info>h1 {
-  margin: 30px;
-}
-
-.SearchPage_info>button {
-  border-radius: 30px;
-  text-transform: inherit;
-  margin: 5px;
-  border-color: lightgray;
-  color: black;
-}
-
-.SearchPage_info>button:hover {
-  color: black;
-  border-color: #d07737;
-}
+.searchPage {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-left: 200px;
+  margin-right: 200px;
+  }
 
 .mapDetailsPage {
     margin: auto;
