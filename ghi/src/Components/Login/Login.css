@@ -27,6 +27,7 @@ body {
   margin: 10px auto;
 }
 
+
 .login2 {
   background-color: #fff;
   border: 1px solid #ccc;
@@ -37,6 +38,7 @@ body {
   margin: 10px auto;
 }
 
+
 .profile_circle {
   border-radius: 100ch;
   height: 4rem;
@@ -45,7 +47,15 @@ body {
   justify-content: right;
   align-items: right;
   border: 3px solid #ffc507e0;
+
 }
+/* table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+} */
 
 .m-1 {
   margin: 0.25rem !important;
