@@ -32,11 +32,13 @@ finished event page database
 team merge. making sure everyone is up-to-date
 
 ## December 1, 2022
-
+worked on profile page frontend
 ## Decemeber 2, 2022
-
+worked on event page frontend
 ## Decemeber 5, 2022
+team merge. making sure everyone is up-to-date
 
 ## Decemeber 6, 2022
-
+started research on test cases and worked on writing test cases for account api
 ## Decemeber 7, 2022
+finished with test cases for accountapi

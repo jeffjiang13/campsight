@@ -57,12 +57,11 @@ async def get_token(
     account: Account = Depends(authenticator.try_get_current_account_data),
 ) -> AccountToken | None:
     if authenticator.cookie_name in request.cookies:
-        token_data = {
+        return {
             "access_token": request.cookies[authenticator.cookie_name],
             "type": "Bearer",
             "account": account,
         }
-        return AccountToken(**token_data)
 
 
 @router.put(

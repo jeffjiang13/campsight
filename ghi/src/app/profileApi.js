@@ -1,9 +1,23 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { apiSlice } from "./api";
+
 
 export const profileApi = createApi({
-    reducerPath: "profile",
+    reducerPath: "profiles",
     baseQuery: fetchBaseQuery({
         baseUrl: process.env.REACT_APP_API_HOST,
+        prepareHeaders: (headers, { getState }) => {
+            const selector = apiSlice.endpoints.getToken.select();
+            const { data: tokenData } = selector(getState());
+            if (tokenData && tokenData.access_token) {
+                headers.set(
+                    "Authorization",
+                    `${tokenData.token_type} ${tokenData.access_token}`
+                );
+            }
+            return headers;
+        },
+
     }),
     tagTypes: ["Profiles"],
     endpoints: (builder) => ({

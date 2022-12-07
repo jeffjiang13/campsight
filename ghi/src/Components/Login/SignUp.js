@@ -40,7 +40,7 @@ function SignUp() {
                                 social_media
                             }
                         });
-                        navigate("/profile/:id");
+                        navigate("/");
                     }}
                 >
                     <Form.Group>
