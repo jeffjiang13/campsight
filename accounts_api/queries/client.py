@@ -2,7 +2,6 @@ import os
 import pymongo
 
 client = pymongo.MongoClient(os.environ["DATABASE_URL"])
-# dbname = os.environ['MONGODATABASE']
 
 
 class Queries:

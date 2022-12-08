@@ -1,5 +1,4 @@
-from fastapi import APIRouter, Depends, Response
-from typing import Union, List, Optional
+from fastapi import APIRouter
 import httpx
 from keys import CAMP_API
 

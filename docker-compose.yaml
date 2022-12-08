@@ -58,8 +58,7 @@ services:
       HOST_OS: ${OS}
       NODE_ENV: development
       HOST: "0.0.0.0"
-      # PUBLIC_URL: http://localhost:3000
       REACT_APP_SAMPLE_SERVICE_API_HOST: http://localhost:8000
-      WATCHPACK_POLLING: true # create-ui-app >= 5.x
+      WATCHPACK_POLLING: true
       REACT_APP_API_HOST: http://localhost:8001
       REACT_APP_WS_HOST: ws://localhost:8001

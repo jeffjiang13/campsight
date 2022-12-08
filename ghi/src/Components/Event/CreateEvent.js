@@ -63,7 +63,7 @@ function CreateEvent() {
     const [description, setDescription] = useState('')
     const [activity, setActivity] = useState('')
     const [picture_url, setPicture_url] = useState('')
-    const [map, setMap] = useState(/** @type google.maps.Map */(null))
+    const [map, setMap] = useState((null))
     const [selected, setSelected] = useState({ lat: 37.7749295, lng: -122.4194155 })
     const [userData, setUserId] = useState("")
     const [startTime, setStartTime] = useState("")
@@ -91,12 +91,10 @@ function CreateEvent() {
             }
         }
         getUserdata()
-        //eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    /** @type React.MutableRefObject<HTMLInputElement> */
     const markerRef = useRef()
-
 
     if (!isLoaded) {
         return <div>Loading...</div>
