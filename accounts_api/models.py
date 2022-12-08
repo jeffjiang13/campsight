@@ -97,3 +97,37 @@ class ReviewOut(BaseModel):
     id: str
     rating: Optional[str]
     review: Optional[str]
+
+
+class FavoriteIn(BaseModel):
+    favorited: bool
+    park_code: str
+    account_id: str
+
+
+class Favorite(FavoriteIn):
+    id: str
+
+
+class FavoriteOut(BaseModel):
+    id: str
+    favorited: bool
+    park_code: str
+    account_id: str
+
+
+class VisitedIn(BaseModel):
+    visited: bool
+    park_code: str
+    account_id: str
+
+
+class Visited(VisitedIn):
+    id: str
+
+
+class VisitedOut(BaseModel):
+    id: str
+    visited: bool
+    park_code: str
+    account_id: str

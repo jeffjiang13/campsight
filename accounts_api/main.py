@@ -2,7 +2,7 @@ import os
 from fastapi import FastAPI,APIRouter
 from fastapi.middleware.cors import CORSMiddleware
 from routers import auth
-from routers import accounts, profiles, sockets, event, review
+from routers import accounts, profiles, sockets, event, review, favorites
 
 # from routers import sockets
 
@@ -29,3 +29,4 @@ app.include_router(profiles.router)
 # app.include_router(profile_pic.router)
 app.include_router(event.router, prefix="/api")
 app.include_router(review.router)
+app.include_router(favorites.router)

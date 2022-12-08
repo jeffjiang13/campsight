@@ -49,3 +49,15 @@
 # Friday 12/2
 
 * Added Search Radius and Park Designation parameters to the search page.
+
+# Monday 12/5
+
+* Assessment and began work on integrating favorites into the database and React.
+
+# Tuesday 12/6
+
+* Continued working on favorites and visited markers for accounts.
+
+# Wednesday 12/7
+
+* Worked on making unit tests and continued working on favorites.
