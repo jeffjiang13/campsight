@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './DetailPage.css'
 import DetailDisplay from '../DetailDisplay/DetailDisplay';
-import Map from '../Map/Map';
+import DetailMap from '../Map/DetailMap';
 import { Rating } from '@mui/material';
 import { useParams } from 'react-router-dom'
 import Review from '../Review/Review';
@@ -84,7 +84,7 @@ function Details() {
         })}
         <div className='right-container'>
           <div className='map-section'>
-            <Map pins={[details && details.length && ({
+            <DetailMap pins={[details && details.length && ({
               lat: Number(details[0].latitude),
               lng: Number(details[0].longitude),
               title: details[0].fullName,
