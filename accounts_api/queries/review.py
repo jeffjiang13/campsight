@@ -11,11 +11,9 @@ from models import Review, ReviewIn, ReviewOut, Error
 
 class ReviewQueries(Queries):
     DB_NAME = (
-        # Specifies which database we're querying or inserting data into
         "library"
     )
     COLLECTION = (
-        # specifies which collection we're querying or inserting data into
         "reviews"
     )
 
