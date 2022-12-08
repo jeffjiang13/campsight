@@ -117,16 +117,16 @@ function Home(props) {
         <div className="flex-parent jc-center"><ArrowBackIosNewIcon className="right" onClick={() => setnextPage(nextPage - 9)} variant='outlined'></ArrowBackIosNewIcon>
           <ArrowForwardIosIcon className="left" onClick={() => setnextPage(nextPage + 9)} variant='outlined'></ArrowForwardIosIcon></div>
         <Modal setIsOpen={setModalOpen} isOpen={isModalOpen}>
-          <Map pins={parks.map(park => ({
+          <Map pins={parks.map(park => (console.log(park), {
             id: park.id,
             lat: park.latitude,
             lng: park.longitude,
             title: park.fullName,
-            image: park.images[0].url,
+            image: park.images[0].url, //[0]
             name: park.fullName,
             description: park.description,
-            src: park.images[0].url,
-            contact: park.contacts.emailAddresses[0].emailAddress,
+            src: park.images[0].url,  //[0]
+            contact: park.contacts.emailAddresses[0].emailAddress, //[0]
             latLong: park.latLong,
             parkCode: park.parkCode
           }))} style={containerStyle} />
