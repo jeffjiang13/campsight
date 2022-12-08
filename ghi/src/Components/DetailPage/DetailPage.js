@@ -12,24 +12,30 @@ function Details() {
   const parkCode = useParams().parkCode
   const [rating, setRating] = useState()
 
-  async function getDetails() {
-    const detailResponse = await fetch(`${process.env.PARKS_API_HOST}/details?parkCode=${parkCode}`)
-    if (detailResponse.ok) {
-      const data = await detailResponse.json();
-      setDetails(data.data)
-    }
-    const reviewResponse = await fetch(`${process.env.ACCOUNTS_API_HOST}/api/by-parkcode/${parkCode}`)
-    if (reviewResponse.ok) {
-      const reviewData = await reviewResponse.json()
-      const ratingList = []
-      var ratingAverage = 0
-      for (let reviewRating of reviewData) {
-        ratingList.push(Number(reviewRating.rating))
-        ratingAverage = ratingAverage + Number(reviewRating.rating)
+  useEffect(() => {
+    // eslint-disable-next-line
+    async function getDetails() {
+      const detailResponse = await fetch(`${process.env.REACT_APP_PARKS_API_HOST}/details?parkCode=${parkCode}`)
+      if (detailResponse.ok) {
+        const data = await detailResponse.json();
+        setDetails(data.data)
       }
-      setRating(ratingAverage / ratingList.length)
+      const reviewResponse = await fetch(`${process.env.REACT_APP_ACCOUNTS_API_HOST}/api/by-parkcode/${parkCode}`)
+      if (reviewResponse.ok) {
+        const reviewData = await reviewResponse.json()
+        const ratingList = []
+        var ratingAverage = 0
+        for (let reviewRating of reviewData) {
+          ratingList.push(Number(reviewRating.rating))
+          ratingAverage = ratingAverage + Number(reviewRating.rating)
+        }
+        setRating(ratingAverage / ratingList.length)
+      }
     }
-  }
+    getDetails()
+    // eslint-disable-next-line
+  }, []);
+
   function getPhoneNumber(phoneNumbers) {
     for (let i = 0; i < phoneNumbers.length; i++) {
       if (phoneNumbers[i].type === "Voice") {
@@ -43,10 +49,6 @@ function Details() {
       }
     }
   }
-
-  useEffect(() => {
-    getDetails()
-  }, []);
 
   const containerStyle = {
     bottom: '.35vw',
