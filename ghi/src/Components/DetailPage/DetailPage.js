@@ -79,7 +79,7 @@ function Details() {
         })}
         <div className='mapDetailsPage'>
           <Review />
-          <Rating name="size-large" defaultValue={2} size="large" />
+          <Rating name="size-large" defaultValue={5} size="large" />
         </div>
         <div/>
         <div className='mapDetailsPage'>
