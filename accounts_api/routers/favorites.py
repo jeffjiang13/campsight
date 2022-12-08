@@ -19,10 +19,10 @@ router = APIRouter()
 async def create_favorite(
     favorite: FavoriteIn,
     response: Response,
-    # account_data: dict = Depends(authenticator.get_current_account_data),
+    account_data: dict = Depends(authenticator.get_current_account_data),
     repo: ParkBooleanQueries = Depends(),
 ):
-    # favorite["account_id"] = account_data["id"]
-    new_favorite = repo.create_favorite(favorite)
+    print(account_data)
+    new_favorite = repo.create_favorite(account_data["id"], favorite)
     await socket_manager.broadcast_refetch()
     return new_favorite

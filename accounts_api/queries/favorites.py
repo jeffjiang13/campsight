@@ -10,6 +10,7 @@ from models import (
     VisitedOut
 )
 
+
 class ParkBooleanQueries(Queries):
     DB_NAME = (
         "library"
@@ -18,8 +19,9 @@ class ParkBooleanQueries(Queries):
         "park_booleans"
     )
 
-    def create_favorite(self, info: FavoriteIn) -> Favorite:
+    def create_favorite(self, account_id, info: FavoriteIn) -> Favorite:
         props = info.dict()
         self.collection.insert_one(props)
         props["id"] = str(props["_id"])
+        props["account_id"] = account_id
         return Favorite(**props)
