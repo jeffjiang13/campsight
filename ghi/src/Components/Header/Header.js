@@ -1,48 +1,56 @@
-
-import Navbar from 'react-bootstrap/Navbar'
+import { useState } from 'react';
 import "./Header.css";
 import SearchIcon from "@mui/icons-material/Search";
 import LanguageIcon from "@mui/icons-material/Language";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Avatar from "@mui/material/Avatar";
 import LogoPNG from "./campSight.png";
-import Dropdown from 'react-bootstrap/Dropdown';
 import { useLogOutMutation, useGetTokenQuery } from "../../app/api";
 
-function NavBar() {
+const NavBar = () => {
   const { data: token } = useGetTokenQuery();
   const [logOut] = useLogOutMutation();
 
+  const [dropdown, setDropdown] = useState(false);
+
+  const handleClick = () => {
+    setDropdown(boolean => !boolean);
+  }
+
   return (
     <header>
-      <Navbar.Brand href="/">
-        <img className="header_icon" src={LogoPNG} alt="" />
-      </Navbar.Brand>
-      <div className="header_center">
-        <input type="text" />
-        <SearchIcon />
-      </div>
-      <div className="header_right">
-        <Navbar.Brand href="/advancedsearch">
-          <p className='advancedSearchBtn'>Advanced Search</p>
-        </Navbar.Brand>
-        <LanguageIcon />
-        <ExpandMoreIcon />
-        <Dropdown>
-          <Dropdown.Toggle id="dropdown">
-            <Avatar className='avatar' />
-          </Dropdown.Toggle>
-          <Dropdown.Menu>
-            <div className="dropdown-content">
-              {token ? <Dropdown.Item href='/profile/:id' > Profile </Dropdown.Item> : null}
-              {token ? <Dropdown.Item href="/events" > Events </Dropdown.Item> : null}
-              {token ? null : <Dropdown.Item href="/signup" > Sign-Up </Dropdown.Item>}
-              {token ? <Dropdown.Item onClick={logOut} > Log Out </Dropdown.Item> : <Dropdown.Item href="/login" > Login </Dropdown.Item>}
-
-            </div>
-          </Dropdown.Menu>
-        </Dropdown>
-      </div>
+      <nav>
+        <div className="logo-container">
+          <a href="/">
+            <img src={LogoPNG} alt="Camp Sight Logo" title="Camp Sight" />
+          </a>
+        </div>
+        <div className="header_center">
+          <input type="text" />
+          <SearchIcon />
+        </div>
+        <div className="header_right">
+          <div className="advanced-src-wrapper">
+            <a href="/advancedsearch">
+              <p className='advancedSearchBtn'>Advanced Search</p>
+            </a>
+          </div>
+          <div className="language-select">
+            <LanguageIcon />
+            <ExpandMoreIcon />
+          </div>
+          <div className="dropdown-wrapper">
+            <Avatar className="avatar" onClick={handleClick} />
+            {dropdown &&
+              <div className="dropdown-options">
+                {token ? <a href='/profile/:id' > Profile </a> : null}
+                {token ? <a href="/events" > Events </a> : null}
+                {token ? null : <a href="/signup" > Sign Up </a>}
+                {token ? <a onClick={logOut} > Log Out </a> : <a href="/login" > Login </a>}
+              </div>}
+          </div>
+        </div>
+      </nav>
     </header>
   )
 }

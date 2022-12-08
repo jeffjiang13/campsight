@@ -1,12 +1,12 @@
-.searchPage {
-  margin-top: 100px;
-  margin-bottom: 100px;
-  margin-left: 200px;
-  margin-right: 200px;
-  }
+.search-wrapper {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+}
 
 .mapDetailsPage {
-    margin: auto;
-    width: 50%;
-    padding: 10px;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
 }

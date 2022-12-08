@@ -57,6 +57,11 @@ th, td {
   padding: 20px;
 }
 
+th,
+td {
+  padding: 20px;
+}
+
 .m-1 {
   margin: 0.25rem !important;
 }
