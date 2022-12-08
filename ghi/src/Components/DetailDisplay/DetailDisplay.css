@@ -8,17 +8,19 @@
   align-content: center;
 }
 
-.searchResult>img:hover {
-  opacity: 0.85;
+.searchResult>img {
+  flex: 1 1 auto;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  width: 560px;
+  min-width: 0px;
+  max-width: 560px;
+  height: 100%;
+  overflow: hidden;
 }
 
-.searchResult>img {
-  border-radius: 30px;
-  max-width: 1200px;
-  max-height: 900px;
-  min-width: 500px;
-  min-height: fit-content;
-  overflow: hidden
+img:hover {
+  opacity: 0.85;
 }
 
 .searchResult_info {
@@ -53,6 +55,7 @@
 .searchResult_infotop>h4 {
   font-size: 13px;
   margin-top: 10px;
+  font-weight: 400;
 }
 
 .searchResult_infotop>h5 {
@@ -74,4 +77,10 @@
   position: absolute;
   bottom: 20px;
   right: 30px;
+}
+
+.details {
+  font-weight: 500;
+  font-size: 14px;
+  color: rgb(30, 30, 30);
 }

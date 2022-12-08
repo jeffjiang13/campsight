@@ -40,34 +40,32 @@ function Details() {
   };
 
   return (
-    <>
-      <div className="searchPage">
-        {details.map((details, index) => {
-          console.log(details)
-          const hours = details.operatingHours[0].standardHours
+    <div className="search-wrapper">
+      {details.map((details, index) => {
+        const hours = details.operatingHours[0].standardHours
 
-          return (
-            < DetailDisplay key={index}
-              img={details.images[0].url}
-              location={details.states}
-              title={details.fullName}
-              phone={getPhoneNumber(details.contacts.phoneNumbers)}
-              description={details.description}
-              hoursMonday={hours.monday}
-              hoursTuesday={hours.tuesday}
-              hoursWednesday={hours.wednesday}
-              hoursThursday={hours.thursday}
-              hoursFriday={hours.friday}
-              hoursSaturday={hours.saturday}
-              hoursSunday={hours.sunday}
-            />)
-        })}
-        <div className='mapDetailsPage'>
-          <Review />
-          <Rating name="size-large" defaultValue={2} size="large" />
-        </div>
-        <div/>
-        <div className='mapDetailsPage'>
+        return (
+          < DetailDisplay key={index}
+            img={details.images[0].url}
+            location={details.states}
+            title={details.fullName}
+            phone={getPhoneNumber(details.contacts.phoneNumbers)}
+            description={details.description}
+            hoursMonday={hours.monday}
+            hoursTuesday={hours.tuesday}
+            hoursWednesday={hours.wednesday}
+            hoursThursday={hours.thursday}
+            hoursFriday={hours.friday}
+            hoursSaturday={hours.saturday}
+            hoursSunday={hours.sunday}
+          />)
+      })}
+      <div className='mapDetailsPage'>
+        <Review />
+        <Rating name="size-large" defaultValue={2} size="large" />
+      </div>
+      <div />
+      {/* <div className='mapDetailsPage'>
         <Map pins={[details && details.length && ({
           lat: Number(details[0].latitude),
           lng: Number(details[0].longitude),
@@ -80,9 +78,8 @@ function Details() {
           latLong: details[0].latLong,
           parkCode: details[0].parkCode
         })]} style={containerStyle} />
-        </div>
-      </div>
-    </>
+      </div> */}
+    </div>
   );
 }
 
