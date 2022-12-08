@@ -37,10 +37,10 @@ function DetailDisplay({
         </div>
         <div className="searchResult_infobottom">
           <div className="searchResult_stars" />
-          <p>
+          <div>
             <h5>Rating</h5>
             <strong>{rating}</strong>
-          </p>
+          </div>
         </div>
       </div>
       <div className="searchResults_Other">

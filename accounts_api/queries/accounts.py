@@ -12,18 +12,14 @@ class DuplicateAccountError(ValueError):
 
 class AccountQueries(Queries):
     DB_NAME = (
-        # Specifies which database we're querying or inserting data into
         "library"
     )
     COLLECTION = (
-        # specifies which collection we're querying or inserting data into
         "accounts"
     )
 
     def get(self, email: str) -> Account:
         props = self.collection.find_one({"email": email})
-        # Query the collection in the database
-        # and look for an email that matches the email passed into the function
         if not props:
             return None
         props["id"] = str(props["_id"])

@@ -1,8 +1,6 @@
-from fastapi import APIRouter, Depends, Response
-from typing import Union, List, Optional
+from fastapi import APIRouter
 import httpx
 from keys import CAMP_API
-
 
 router = APIRouter()
 
@@ -32,24 +30,20 @@ async def get_activities():
     response = httpx.get(f"https://developer.nps.gov/api/v1/activities?api_key={CAMP_API}")
     return response.json()["data"]
 
-
 @router.get("/searchbyactivities")
 async def get_parks_by_activities(activity_key: str):
     response = httpx.get(f"https://developer.nps.gov/api/v1/activities/parks?id={activity_key}&api_key={CAMP_API}")
     return response.json()["data"][0]["parks"]
-
 
 @router.get("/getalerts")
 async def get_alerts_by_park(parkCode: str):
     response = httpx.get(f"https://developer.nps.gov/api/v1/alerts?parkCode={parkCode}&api_key={CAMP_API}")
     return response.json()["data"][0]
 
-
 @router.get("/getcampgrounds")
 async def get_campgrounds(parkCode: str):
     response = httpx.get(f"https://developer.nps.gov/api/v1/campgrounds?parkCode={parkCode}&api_key={CAMP_API}")
     return response.json()["data"]
-
 
 @router.get("/getwebcams")
 async def get_webcams(parkCode: str):

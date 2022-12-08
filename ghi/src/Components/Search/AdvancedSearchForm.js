@@ -1,4 +1,3 @@
-import { SettingsBackupRestoreTwoTone } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 import Home from "../Home/Home";
 import { isPointWithinRadius } from "geolib";
@@ -53,16 +52,11 @@ function AdvancedSearchForm() {
     useEffect(() => {
         async function getAllParks() {
             const parkResponse = await fetch('http://localhost:8000/allparks');
-            console.log(parkResponse)
             if (parkResponse.ok) {
                 const data = await parkResponse.json()
                 let tempParks = [];
                 tempParks.push(data.data);
-                console.log(tempParks);
                 setAllParks(tempParks);
-                console.log("Parks loaded successfully")
-            } else {
-                console.log("Failed to load parks")
             }
         }
         async function getActivities() {
@@ -74,9 +68,6 @@ function AdvancedSearchForm() {
                     tempActivities.push(data[i].name)
                 }
                 setActivities(tempActivities);
-                console.log("Activities loaded successfully")
-            } else {
-                console.log("Failed to load activities")
             }
         }
         window.navigator.geolocation.getCurrentPosition(location => {
