@@ -79,7 +79,7 @@ function Details() {
               hoursFriday={hours.friday}
               hoursSaturday={hours.saturday}
               hoursSunday={hours.sunday}
-              rating={<Rating name="size-large" defaultValue={2} size="large" />}
+              rating={rating}
             />)
         })}
         <div className='mapDetailsPage'>
