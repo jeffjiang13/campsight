@@ -22,7 +22,7 @@ function Home(props) {
       if (props.parks) {
         data = props.parks;
       } else {
-        const apiResponse = await fetch(`http://localhost:8000/list?start=${nextPage}`)
+        const apiResponse = await fetch(`${process.env.PARKS_API_HOST}/list?start=${nextPage}`)
         if (apiResponse.ok) {
           const temp = await apiResponse.json()
           data = temp.data
@@ -55,7 +55,7 @@ function Home(props) {
       if (props.parks) {
         mapdata = props.parks;
       } else {
-        const mapapiResponse = await fetch(`http://localhost:8000/maplist`)
+        const mapapiResponse = await fetch(`${process.env.PARKS_API_HOST}/maplist`)
         if (mapapiResponse.ok) {
           const temp = await mapapiResponse.json();
           mapdata = temp.data;

@@ -13,12 +13,12 @@ function Details() {
   const [rating, setRating] = useState()
 
   async function getDetails() {
-    const detailResponse = await fetch(`http://localhost:8000/details?parkCode=${parkCode}`)
+    const detailResponse = await fetch(`${process.env.PARKS_API_HOST}/details?parkCode=${parkCode}`)
     if (detailResponse.ok) {
       const data = await detailResponse.json();
       setDetails(data.data)
     }
-    const reviewResponse = await fetch(`http://localhost:8001/api/by-parkcode/${parkCode}`)
+    const reviewResponse = await fetch(`${process.env.ACCOUNTS_API_HOST}/api/by-parkcode/${parkCode}`)
     if (reviewResponse.ok) {
       const reviewData = await reviewResponse.json()
       const ratingList = []
@@ -99,7 +99,7 @@ function Details() {
         </div>
       </div>
       <div className='review-section'>
-        <Review className="reviewStars"/>
+        <Review className="reviewStars" />
         <Rating name="size-large" defaultValue={5} size="large" />
       </div>
     </>
