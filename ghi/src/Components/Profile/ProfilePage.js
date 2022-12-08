@@ -1,7 +1,9 @@
 import { useGetProfilesQuery, useUpdateProfileMutation } from "../../app/profileApi";
-
+import { useGetTokenQuery } from "../../app/api"
 function Profile() {
     const [update] = useUpdateProfileMutation();
+    const { data: token } = useGetTokenQuery();
+
 
     const { data, isLoading } = useGetProfilesQuery();
     if (isLoading) {
@@ -12,7 +14,7 @@ function Profile() {
         <div className="login2">
             <div className="">
                 <form>
-                    <table className="">
+                    {token ? <table className="">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -38,7 +40,7 @@ function Profile() {
                                 </tr>
                             ))}
                         </tbody>
-                    </table>
+                    </table> : null}
                 </form>
             </div>
         </div>
