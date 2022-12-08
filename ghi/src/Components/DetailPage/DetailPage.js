@@ -17,6 +17,7 @@ function Details() {
     if (detailResponse.ok) {
       const data = await detailResponse.json();
       setDetails(data.data)
+      console.log(data.data)
     }
     const reviewResponse = await fetch(`http://localhost:8001/api/by-parkcode/${parkCode}`)
     if (reviewResponse.ok) {
@@ -67,6 +68,7 @@ function Details() {
           const hours = details.operatingHours[0].standardHours
           return (
             < DetailDisplay key={index}
+              parkCode={details.parkCode}
               img={details.images[0].url}
               location={details.states}
               title={details.fullName}
