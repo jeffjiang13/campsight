@@ -1,6 +1,9 @@
 from fastapi import APIRouter
 import httpx
-from keys import CAMP_API
+try:
+    from keys import CAMP_API
+except:
+    pass
 
 router = APIRouter()
 
