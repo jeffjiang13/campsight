@@ -51,15 +51,6 @@
   justify-content: center;
 }
 
-/* .banner_searchButton {
-  background-color: white !important;
-  font-weight: 900 !important;
-  text-transform: inherit !important;
-  color: #d07737 !important;
-  border-color: lightgray !important;
-  border-radius: 0 !important;
-} */
-
 .banner_searchButton {
   z-index: 0 !important;
   background-color: white !important;

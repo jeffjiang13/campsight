@@ -1,3 +1,10 @@
+@media screen and (max-width: 1000px) {
+  .searchResult_infotop>label {
+    display: None;
+  }
+}
+
+
 .searchResult {
   display: flex;
   flex: 2 1 auto;
@@ -75,12 +82,12 @@ img:hover {
 .searchResult_infotop>h3 {
   font-weight: 1000;
   font-size: 25px;
-  margin-top: 15%;
+  margin-top: 10%;
 }
 
 #description {
-  margin-top: 10%;
-  margin-bottom: 10%;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 .searchResult_infotop>p {
@@ -104,16 +111,6 @@ img:hover {
 .searchResult_infobottom {
   display: flex;
   font-size: 30px;
-}
-
-.searchResults_Other {
-  text-align: right;
-}
-
-.searchResults_Other {
-  position: absolute;
-  bottom: 20px;
-  right: 30px;
 }
 
 .details {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './DetailPage.css'
 import DetailDisplay from '../DetailDisplay/DetailDisplay';
-import Map from '../Map/Map';
+import DetailMap from '../Map/DetailMap';
 import { Rating } from '@mui/material';
 import { useParams } from 'react-router-dom'
 import Review from '../Review/Review';
@@ -13,12 +13,12 @@ function Details() {
   const [rating, setRating] = useState()
 
   async function getDetails() {
-    const detailResponse = await fetch(`http://localhost:8000/details?parkCode=${parkCode}`)
+    const detailResponse = await fetch(`${process.env.PARKS_API_HOST}/details?parkCode=${parkCode}`)
     if (detailResponse.ok) {
       const data = await detailResponse.json();
       setDetails(data.data)
     }
-    const reviewResponse = await fetch(`http://localhost:8001/api/by-parkcode/${parkCode}`)
+    const reviewResponse = await fetch(`${process.env.ACCOUNTS_API_HOST}/api/by-parkcode/${parkCode}`)
     if (reviewResponse.ok) {
       const reviewData = await reviewResponse.json()
       const ratingList = []
@@ -46,7 +46,6 @@ function Details() {
 
   useEffect(() => {
     getDetails()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const containerStyle = {
@@ -82,23 +81,25 @@ function Details() {
               rating={rating}
             />)
         })}
-        <div className='mapDetailsPage'>
-          <Map pins={[details && details.length && ({
-            lat: Number(details[0].latitude),
-            lng: Number(details[0].longitude),
-            title: details[0].fullName,
-            image: details[0].images[0].url,
-            name: details[0].fullName,
-            description: details[0].description,
-            src: details[0].images[0].url,
-            contact: details[0].contacts.emailAddresses[0].emailAddress,
-            latLong: details[0].latLong,
-            parkCode: details[0].parkCode
-          })]} style={containerStyle} />
+        <div className='right-container'>
+          <div className='map-section'>
+            <DetailMap pins={[details && details.length && ({
+              lat: Number(details[0].latitude),
+              lng: Number(details[0].longitude),
+              title: details[0].fullName,
+              image: details[0].images[0].url,
+              name: details[0].fullName,
+              description: details[0].description,
+              src: details[0].images[0].url,
+              contact: details[0].contacts.emailAddresses[0].emailAddress,
+              latLong: details[0].latLong,
+              parkCode: details[0].parkCode
+            })]} style={containerStyle} />
+          </div>
         </div>
       </div>
       <div className='review-section'>
-        <Review />
+        <Review className="reviewStars" />
         <Rating name="size-large" defaultValue={5} size="large" />
       </div>
     </>

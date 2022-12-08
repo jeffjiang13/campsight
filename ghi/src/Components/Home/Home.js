@@ -22,7 +22,7 @@ function Home(props) {
       if (props.parks) {
         data = props.parks;
       } else {
-        const apiResponse = await fetch(`http://localhost:8000/list?start=${nextPage}`)
+        const apiResponse = await fetch(`${process.env.PARKS_API_HOST}/list?start=${nextPage}`)
         if (apiResponse.ok) {
           const temp = await apiResponse.json()
           data = temp.data
@@ -55,7 +55,7 @@ function Home(props) {
       if (props.parks) {
         mapdata = props.parks;
       } else {
-        const mapapiResponse = await fetch(`http://localhost:8000/maplist`)
+        const mapapiResponse = await fetch(`${process.env.PARKS_API_HOST}/maplist`)
         if (mapapiResponse.ok) {
           const temp = await mapapiResponse.json();
           mapdata = temp.data;
@@ -117,16 +117,16 @@ function Home(props) {
         <div className="flex-parent jc-center"><ArrowBackIosNewIcon className="right" onClick={() => setnextPage(nextPage - 9)} variant='outlined'></ArrowBackIosNewIcon>
           <ArrowForwardIosIcon className="left" onClick={() => setnextPage(nextPage + 9)} variant='outlined'></ArrowForwardIosIcon></div>
         <Modal setIsOpen={setModalOpen} isOpen={isModalOpen}>
-          <Map pins={parks.map(park => ({
+          <Map pins={parks.map(park => (console.log(park), {
             id: park.id,
             lat: park.latitude,
             lng: park.longitude,
             title: park.fullName,
-            image: park.images[0].url,
+            image: park.images[0].url, //[0]
             name: park.fullName,
             description: park.description,
-            src: park.images[0].url,
-            contact: park.contacts.emailAddresses[0].emailAddress,
+            src: park.images[0].url,  //[0]
+            contact: park.contacts.emailAddresses[0].emailAddress, //[0]
             latLong: park.latLong,
             parkCode: park.parkCode
           }))} style={containerStyle} />

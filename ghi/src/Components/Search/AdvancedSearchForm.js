@@ -51,7 +51,7 @@ function AdvancedSearchForm() {
 
     useEffect(() => {
         async function getAllParks() {
-            const parkResponse = await fetch('http://localhost:8000/allparks');
+            const parkResponse = await fetch(`${process.env.PARKS_API_HOST}/allparks`);
             if (parkResponse.ok) {
                 const data = await parkResponse.json()
                 let tempParks = [];
@@ -60,7 +60,7 @@ function AdvancedSearchForm() {
             }
         }
         async function getActivities() {
-            const activityResponse = await fetch('http://localhost:8000/getactivities')
+            const activityResponse = await fetch(`${process.env.PARKS_API_HOST}/getactivities`)
             if (activityResponse.ok) {
                 const data = await activityResponse.json()
                 let tempActivities = [];
@@ -131,10 +131,10 @@ function AdvancedSearchForm() {
         return (
             <div className="advanceSearch">
                 <div className="row">
-                    <div className="">
+                    <div className="filterSearchTitle">
                         <h1>Filter Search</h1>
                         <form onSubmit={handleSubmit} id="advanced-search-form">
-                            <div className="">
+                            <div>
                                 <select onChange={handleStateTerritoryChange} name="state" id="state" className="form-select">
                                     <option value="">Choose a state</option>
                                     {states.map(state => {
@@ -154,7 +154,7 @@ function AdvancedSearchForm() {
                                     })}
                                 </select>
                             </div>
-                            <div className="">
+                            <div>
                                 <select onChange={handleDesignationChange} name="designation" id="designation" className="form-select">
                                     <option value="">Choose an NPS location type</option>
                                     {designations.map(designation => {
@@ -164,11 +164,11 @@ function AdvancedSearchForm() {
                                     })}
                                 </select>
                             </div>
-                            <div className="">
+                            <div className="searchRadius">
                                 <input value={radius} onChange={handleRadiusChange} placeholder="Distance is in miles" type="" name="radius" id="radius" className="form-control" />
                                 <label htmlFor="last_name"><p>Search Radius (In Miles)</p></label>
                             </div>
-                            <button className="">Search</button>
+                            <button className="filterBtn">Search</button>
                         </form>
                     </div>
                 </div>
