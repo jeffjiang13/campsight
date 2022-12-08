@@ -62,3 +62,8 @@ bug: fixed bug on dropdown menu of home page where spacing on hover made the dro
 
 fix: minor styling on advanced search page
 fix: merge conflicts.
+
+## 12/7/2022
+
+fix: redesigned details page
+fix: Switched nav bootstrap components for dropdown to use react hooks. My css was not happy with bootstrap.

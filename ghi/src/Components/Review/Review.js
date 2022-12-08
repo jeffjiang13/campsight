@@ -1,11 +1,12 @@
 import React from 'react'
+import "./Review.css"
 
 function Review() {
   return (
     <div className='review'>
       <form>
         <textarea type="text" placeholder='Submit a Review...' />
-        <p>Submit a review</p>
+        <button className='submitButton'>Submit a review</button>
       </form>
     </div>
   )
