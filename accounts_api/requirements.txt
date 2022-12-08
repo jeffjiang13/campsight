@@ -4,5 +4,8 @@ pymongo==4.2.0
 jwtdown-fastapi==0.3.0
 websockets
 psycopg[binary,pool]==3.0.14
+<<<<<<< HEAD
 httpx==0.23.0
+=======
+>>>>>>> 2d3ed9da2bd42890df66bb8caaffd39a59164e01
 pytest

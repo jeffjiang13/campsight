@@ -50,50 +50,59 @@ function Details() {
   }, []);
 
   const containerStyle = {
-    width: 1000,
-    height: 500,
+    bottom: '.35vw',
+    display: 'flex',
+    alignItem: 'start',
+    justifyContent: 'start',
+    width: '30vw',
+    height: '55.5vh',
+    borderRadius: 16,
+    marginRight: 50,
   };
 
   return (
-    <div className="search-wrapper">
-      {details.map((details, index) => {
-        const hours = details.operatingHours[0].standardHours
-        return (
-          < DetailDisplay key={index}
-            img={details.images[0].url}
-            location={details.states}
-            title={details.fullName}
-            phone={getPhoneNumber(details.contacts.phoneNumbers)}
-            description={details.description}
-            hoursMonday={hours.monday}
-            hoursTuesday={hours.tuesday}
-            hoursWednesday={hours.wednesday}
-            hoursThursday={hours.thursday}
-            hoursFriday={hours.friday}
-            hoursSaturday={hours.saturday}
-            hoursSunday={hours.sunday}
-          />)
-      })}
-      <div className='mapDetailsPage'>
+    <>
+      <div className="search-wrapper">
+        {details.map((details, index) => {
+          const hours = details.operatingHours[0].standardHours
+          return (
+            < DetailDisplay key={index}
+              img={details.images[0].url}
+              location={details.states}
+              title={details.fullName}
+              phone={getPhoneNumber(details.contacts.phoneNumbers)}
+              description={details.description}
+              hoursMonday={hours.monday}
+              hoursTuesday={hours.tuesday}
+              hoursWednesday={hours.wednesday}
+              hoursThursday={hours.thursday}
+              hoursFriday={hours.friday}
+              hoursSaturday={hours.saturday}
+              hoursSunday={hours.sunday}
+            />)
+        })}
+        <div className='right-container'>
+          <div className='map-section'>
+            <Map pins={[details && details.length && ({
+              lat: Number(details[0].latitude),
+              lng: Number(details[0].longitude),
+              title: details[0].fullName,
+              image: details[0].images[0].url,
+              name: details[0].fullName,
+              description: details[0].description,
+              src: details[0].images[0].url,
+              contact: details[0].contacts.emailAddresses[0].emailAddress,
+              latLong: details[0].latLong,
+              parkCode: details[0].parkCode
+            })]} style={containerStyle} />
+          </div>
+        </div>
+      </div>
+      <div className='review-section'>
         <Review />
         <Rating name="size-large" defaultValue={5} size="large" />
       </div>
-      <div />
-      <div className='mapDetailsPage'>
-        <Map pins={[details && details.length && ({
-          lat: Number(details[0].latitude),
-          lng: Number(details[0].longitude),
-          title: details[0].fullName,
-          image: details[0].images[0].url,
-          name: details[0].fullName,
-          description: details[0].description,
-          src: details[0].images[0].url,
-          contact: details[0].contacts.emailAddresses[0].emailAddress,
-          latLong: details[0].latLong,
-          parkCode: details[0].parkCode
-        })]} style={containerStyle} />
-      </div>
-    </div>
+    </>
   );
 }
 

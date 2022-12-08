@@ -8,11 +8,11 @@ Define our approach to the website
 
 ## Deliverables
 
-* [ ] Wire-frame diagram
-* [ ] API documentation
-* [ ] Project is deployed to Render.com/GitLab-pages
-* [ ] GitLab issue board is setup and in use
-* [ ] Journals
+- [ ] Wire-frame diagram
+- [ ] API documentation
+- [ ] Project is deployed to Render.com/GitLab-pages
+- [ ] GitLab issue board is setup and in use
+- [ ] Journals
 
 ### Directories / layour
 

@@ -1,26 +1,55 @@
 .searchResult {
   display: flex;
+  flex: 2 1 auto;
   position: relative;
-  padding: 20px;
-  border-bottom: 1px solid lightgray;
   opacity: 1;
-  cursor: pointer;
-  align-content: center;
+  align-items: flex-start;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ccc;
+  border-radius: 16px;
+  max-width: 65vw;
+  overflow: clip;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 10px;
 }
 
-.searchResult>img {
-  flex: 1 1 auto;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-  width: 560px;
-  min-width: 0px;
-  max-width: 560px;
-  height: 100%;
+.searchResultImg {
+  display: flex;
   overflow: hidden;
+  justify-items: center;
+  align-items: center;
+}
+
+.searchResult_infotop {
+  display: flex;
+  flex-flow: column wrap;
+  width: 40vw;
+  margin: 0 20px 25px 20px;
+}
+
+.searchResultImg>img {
+  margin: auto;
+  width: 75vw;
+  height: 55.5vh;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  overflow: hidden;
+  object-fit: cover;
+  opacity: 1;
+  transition: opacity 0.5s ease;
 }
 
 img:hover {
   opacity: 0.85;
+  transition: all 0.5s ease;
+}
+
+.searchResult_info {
+  display: flex;
+  flex: 1 1 auto;
 }
 
 .searchResult_info {
@@ -34,16 +63,24 @@ img:hover {
   position: absolute;
   top: 20px;
   right: 40px;
+  cursor: pointer;
 }
 
-.searchResult_infotop {
-  width: 40vw;
+.searchResult_heart:hover {
+  color: red;
+  transform: scale(1.25);
+  transition: all .5s ease;
 }
 
 .searchResult_infotop>h3 {
   font-weight: 1000;
   font-size: 25px;
-  margin-top: 10px;
+  margin-top: 15%;
+}
+
+#description {
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 
 .searchResult_infotop>p {
@@ -83,4 +120,9 @@ img:hover {
   font-weight: 500;
   font-size: 14px;
   color: rgb(30, 30, 30);
+}
+
+.searchResult_infotop>label {
+  font-weight: 500;
+  margin-top: 10%;
 }
