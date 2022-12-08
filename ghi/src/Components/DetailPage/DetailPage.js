@@ -79,23 +79,22 @@ function Details() {
               hoursFriday={hours.friday}
               hoursSaturday={hours.saturday}
               hoursSunday={hours.sunday}
+              rating={<Rating name="size-large" defaultValue={2} size="large" />}
             />)
         })}
-        <div className='right-container'>
-          <div className='map-section'>
-            <Map pins={[details && details.length && ({
-              lat: Number(details[0].latitude),
-              lng: Number(details[0].longitude),
-              title: details[0].fullName,
-              image: details[0].images[0].url,
-              name: details[0].fullName,
-              description: details[0].description,
-              src: details[0].images[0].url,
-              contact: details[0].contacts.emailAddresses[0].emailAddress,
-              latLong: details[0].latLong,
-              parkCode: details[0].parkCode
-            })]} style={containerStyle} />
-          </div>
+        <div className='mapDetailsPage'>
+          <Map pins={[details && details.length && ({
+            lat: Number(details[0].latitude),
+            lng: Number(details[0].longitude),
+            title: details[0].fullName,
+            image: details[0].images[0].url,
+            name: details[0].fullName,
+            description: details[0].description,
+            src: details[0].images[0].url,
+            contact: details[0].contacts.emailAddresses[0].emailAddress,
+            latLong: details[0].latLong,
+            parkCode: details[0].parkCode
+          })]} style={containerStyle} />
         </div>
       </div>
       <div className='review-section'>

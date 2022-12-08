@@ -134,7 +134,7 @@ function AdvancedSearchForm() {
                     <div className="">
                         <h1>Filter Search</h1>
                         <form onSubmit={handleSubmit} id="advanced-search-form">
-                            <div className="mb-3">
+                            <div className="">
                                 <select onChange={handleStateTerritoryChange} name="state" id="state" className="form-select">
                                     <option value="">Choose a state</option>
                                     {states.map(state => {
@@ -154,7 +154,7 @@ function AdvancedSearchForm() {
                                     })}
                                 </select>
                             </div>
-                            <div className="mb-3">
+                            <div className="">
                                 <select onChange={handleDesignationChange} name="designation" id="designation" className="form-select">
                                     <option value="">Choose an NPS location type</option>
                                     {designations.map(designation => {
@@ -164,11 +164,11 @@ function AdvancedSearchForm() {
                                     })}
                                 </select>
                             </div>
-                            <div className="form-floating mb-3">
+                            <div className="">
                                 <input value={radius} onChange={handleRadiusChange} placeholder="Distance is in miles" type="" name="radius" id="radius" className="form-control" />
                                 <label htmlFor="last_name"><p>Search Radius (In Miles)</p></label>
                             </div>
-                            <button className="btn btn-primary">Search</button>
+                            <button className="">Search</button>
                         </form>
                     </div>
                 </div>
