@@ -73,7 +73,7 @@ class Profile(ProfileIn):
     account_id: str | None = None
 
 class ProfileOut(BaseModel):
-    id: str
+    # id: str
     city: Optional[str]
     state: Optional[str]
     description: Optional[str]

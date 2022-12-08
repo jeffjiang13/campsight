@@ -24,7 +24,7 @@ export const profileApi = createApi({
         getProfiles: builder.query({
             query: () => {
                 return {
-                    url: `/api/profiles`,
+                    url: `/api/profiles/`,
                 };
             },
             providesTags: ["Profiles"],

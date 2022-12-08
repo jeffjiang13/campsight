@@ -3,8 +3,6 @@ import { useGetTokenQuery } from "../../app/api"
 function Profile() {
     const [update] = useUpdateProfileMutation();
     const { data: token } = useGetTokenQuery();
-
-
     const { data, isLoading } = useGetProfilesQuery();
     if (isLoading) {
         return <progress className="progress is-primary" max="100"></progress>;
