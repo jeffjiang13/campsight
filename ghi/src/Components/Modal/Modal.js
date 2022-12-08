@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import "./Modal.css";
 import { Button } from "@mui/material";
 import { HighlightOff } from "@mui/icons-material"
@@ -25,3 +25,4 @@ const Modal = ({ isOpen = false, setIsOpen, children }) => {
 }
 
 export default Modal;
+

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./Banner.css";
 import { Button } from "@mui/material";
 import Search from "../Search/Search";
-import Navbar from 'react-bootstrap/Navbar'
 
 function Banner() {
   const [showSearch, setShowSearch] = useState(false);

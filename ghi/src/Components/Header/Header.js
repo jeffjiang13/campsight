@@ -46,7 +46,7 @@ const NavBar = () => {
                 {token ? <a href='/profile/:id' > Profile </a> : null}
                 {token ? <a href="/events" > Events </a> : null}
                 {token ? null : <a href="/signup" > Sign Up </a>}
-                {token ? <a onClick={logOut} > Log Out </a> : <a href="/login" > Login </a>}
+                {token ? <a onClick={logOut} href="/"> Log Out </a> : <a href="/login" > Login </a>}
               </div>}
           </div>
         </div>

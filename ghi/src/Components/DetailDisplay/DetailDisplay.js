@@ -1,6 +1,7 @@
 import React from 'react'
 import './DetailDisplay.css'
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { Rating } from '@mui/material';
 
 function DetailDisplay({
   img,
@@ -36,7 +37,7 @@ function DetailDisplay({
         <h4 className='details'>Saturday: {hoursSaturday}</h4>
         <h4 className='details'>Sunday: {hoursSunday}</h4>
         <label>Rating</label>
-        <strong>{rating}</strong>
+        <strong>{<Rating name="size-large" defaultValue={5} value={Number(rating)} size="large" />}</strong>
       </div>
     </div>
   );

@@ -79,6 +79,7 @@ function Details() {
               hoursFriday={hours.friday}
               hoursSaturday={hours.saturday}
               hoursSunday={hours.sunday}
+              rating={rating}
             />)
         })}
         <div className='right-container'>
