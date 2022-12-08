@@ -10,9 +10,9 @@ function Profile() {
 
     return (
         <div className="login2">
-            <div className="">
+            <div>
                 <form>
-                    <table className="">
+                    <table>
                         <thead>
                             <tr>
                                 <th>Name</th>

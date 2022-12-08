@@ -46,7 +46,6 @@ function Details() {
 
   useEffect(() => {
     getDetails()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const containerStyle = {
@@ -100,7 +99,7 @@ function Details() {
         </div>
       </div>
       <div className='review-section'>
-        <Review />
+        <Review className="reviewStars"/>
         <Rating name="size-large" defaultValue={5} size="large" />
       </div>
     </>

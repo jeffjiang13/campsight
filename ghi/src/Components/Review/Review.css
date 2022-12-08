@@ -1,0 +1,12 @@
+.submitButton {
+  border-radius: 30px;
+  border-color: lightgray;
+  margin: 5px;
+  padding: 6px 24px;
+  border-style: solid;
+  cursor: pointer;
+  }
+
+  .submitButton:hover {
+  border-color: #d07737;
+  }
