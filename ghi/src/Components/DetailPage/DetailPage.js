@@ -58,11 +58,6 @@ function Details() {
     <div className="search-wrapper">
       {details.map((details, index) => {
         const hours = details.operatingHours[0].standardHours
-    <>
-      <div className="searchPage">
-        {details.map((details, index) => {
-          const hours = details.operatingHours[0].standardHours
-
         return (
           < DetailDisplay key={index}
             img={details.images[0].url}
@@ -84,7 +79,7 @@ function Details() {
         <Rating name="size-large" defaultValue={5} size="large" />
       </div>
       <div />
-      {/* <div className='mapDetailsPage'>
+      <div className='mapDetailsPage'>
         <Map pins={[details && details.length && ({
           lat: Number(details[0].latitude),
           lng: Number(details[0].longitude),
@@ -97,7 +92,7 @@ function Details() {
           latLong: details[0].latLong,
           parkCode: details[0].parkCode
         })]} style={containerStyle} />
-      </div> */}
+      </div>
     </div>
   );
 }
