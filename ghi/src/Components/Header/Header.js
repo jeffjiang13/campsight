@@ -22,9 +22,9 @@ const NavBar = () => {
     <header>
       <nav>
         <div className="logo-container">
-          <a href="/">
+          <Link to="/">
             <img src={LogoPNG} alt="Camp Sight Logo" title="Camp Sight" />
-          </a>
+          </Link>
         </div>
         <div className="header_center">
           <input type="text" />
