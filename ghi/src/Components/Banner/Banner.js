@@ -21,7 +21,7 @@ function Banner() {
       <div className="banner_info">
         <h1>Go Free, Go Lively, Go Camping</h1>
         <h5>Enough of your city life; it's time for some Camping</h5>
-        <Button variant="outlined" onClick={event => window.location.href = "/advancedsearch"}>Explore</Button>
+        <Button variant="outlined" onClick={event => window.location.href = "advancedsearch"}>Explore</Button>
       </div>
     </div>
   );
