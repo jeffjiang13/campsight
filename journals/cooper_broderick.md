@@ -78,3 +78,4 @@ Ratings from reviews now display in MUI rating stars on detail pages
 ## 12/8/22
 
 Handled all ESLint errors and cleaned up code
+Started and Completed Deployment to Render, MongoDB, Git pages
