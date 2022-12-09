@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Home from "../Home/Home";
 import { isPointWithinRadius } from "geolib";
+import { useGetTokenQuery } from "../../app/api";
 
 function AdvancedSearchForm() {
+    const { data: tokenData } = useGetTokenQuery();
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [allParks, setAllParks] = useState();
     const [filteredParks, setFilteredParks] = useState();
@@ -107,6 +109,7 @@ function AdvancedSearchForm() {
 
     const handleStateTerritoryChange = (event) => {
         setStateTerritory(event.target.value);
+        console.log(tokenData);
     }
 
     const handleActivityChange = (event) => {
