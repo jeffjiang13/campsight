@@ -23,8 +23,8 @@ function App() {
     <BrowserRouter basename={basename}>
       <Header />
       <Routes>
-        <Route path="/search/:parkCode" element={<Details />} />
-        <Route path="/" element={<Home />} />
+        <Route path="search/:parkCode" element={<Details />} />
+        <Route path="" element={<Home />} />
         <Route path="profile/:id" element={<Profile />} />
         <Route path="login" element={<LogIn />} />
         <Route path="signup" element={<SignUp />} />

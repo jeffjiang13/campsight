@@ -7,7 +7,7 @@ from models import (
     Error,
 )
 from .auth import authenticator
-from models import AccountOut, Account
+from models import AccountOut
 from routers.sockets import socket_manager
 from queries.review import ReviewQueries
 
@@ -41,7 +41,8 @@ async def get_all_reviews(
 ):
     return repo.get_all()
 
-@router.get("/api/by-parkcode/{parkCode}", response_model=Union[List[ReviewOut], Error])
+
+@router.get("/api/by-parkcode/{parkCode}", response_model=Union[List[ReviewOut], Error])  # noqa E501
 async def get_park_reviews(parkCode: str, repo: ReviewQueries = Depends()):
     return repo.get_parks(parkCode)
 
@@ -52,7 +53,7 @@ async def create_review(
     account_data: dict = Depends(authenticator.get_current_account_data),
     repo: ReviewQueries = Depends(),
 ):
-    account = AccountOut(**account_data)
+    account = AccountOut(**account_data)  # noqa: F841
     review = repo.create(review)
     await socket_manager.broadcast_refetch()
     return review
@@ -74,5 +75,5 @@ async def delete_review(
     account_data: dict = Depends(authenticator.get_current_account_data),
     repo: ReviewQueries = Depends(),
 ) -> bool:
-     repo.delete(review_id)
-     return True
+    repo.delete(review_id)
+    return True

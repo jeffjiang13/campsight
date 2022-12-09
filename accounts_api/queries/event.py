@@ -29,11 +29,11 @@ class EventQueries(Queries):
             event_props["id"] = str(event_props["_id"])
         return [EventOut(**event) for event in event_props_list]
 
-    def update(self, id:str, info:EventIn):
+    def update(self, id: str, info: EventIn):
         filter = {
                 "_id": ObjectId(id),
             }
         event = self.collection.find_one(filter)
-        updated_event = self.collection.find_one_and_update(event, {"$set":info.dict()}, return_document=ReturnDocument.AFTER)
+        updated_event = self.collection.find_one_and_update(event, {"$set": info.dict()}, return_document=ReturnDocument.AFTER)  # noqa: 501
         updated_event["id"] = str(updated_event["_id"])
         return EventOut(**updated_event)

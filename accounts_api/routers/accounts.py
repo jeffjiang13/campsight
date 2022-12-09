@@ -20,7 +20,7 @@ from models import (
     AccountOut,
 )
 from queries.profiles import ProfileQueries
-from models import Profile, ProfileIn, ProfileOut
+from models import ProfileIn
 from queries.sessions import SessionQueries
 
 
@@ -29,9 +29,6 @@ not_authorized = HTTPException(
     detail="Invalid authentication credentials",
     headers={"WWW-Authenticate": "Bearer"},
 )
-
-
-
 
 
 class AccountForm(BaseModel):
@@ -140,6 +137,7 @@ async def delete_account(
 ):
     repo.delete(account_id)
     return True
+
 
 @router.delete("/api/sessions/{account_id}", response_model=bool)
 async def delete_session(
