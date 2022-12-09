@@ -17,7 +17,9 @@ const Modal = ({ isOpen = false, setIsOpen, children }) => {
     <Button onClick={() => setIsOpen(true)} variant='outlined'>Show Map</Button></div> : (
     <div className='overlay'>
       <div className='modalContainer'>
-        <span className="ModalOpen" onClick={() => setIsOpen(!isOpen)}><HighlightOff fontSize="large" /></span>
+        <span className="ModalOpen" onClick={() => setIsOpen(!isOpen)}>
+          <HighlightOff fontSize="large" />
+        </span>
         {children}
       </div>
     </div>
@@ -25,4 +27,3 @@ const Modal = ({ isOpen = false, setIsOpen, children }) => {
 }
 
 export default Modal;
-

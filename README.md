@@ -8,7 +8,7 @@ Define our approach to the website
 
 ## Deliverables
 
--![Wire-frame diagram](./CampSIghtWireFrame.png "Campsight")
+![Wire-frame diagram](./CampSIghtWireFrame.png "Campsight")
 
 - [ ] API documentation
 - [ ] Project is deployed to Render.com/GitLab-pages

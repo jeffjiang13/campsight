@@ -18,17 +18,21 @@ function Map(props) {
   const [userLocation, setUserLocation] = useState(center);
 
   useEffect(() => {
-
     window.navigator.geolocation.getCurrentPosition(location => {
       setUserLocation({ lat: location.coords.latitude, lng: location.coords.longitude })
     })
-
   }, [])
+
+  const windowLocation = window.location.pathname === '/';
+  const pinLocation = windowLocation ? userLocation : {
+    lat: Number(props.pins[0].lat),
+    lng: Number(props.pins[0].lng)
+  };
 
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={props.style}
-      center={userLocation}
+      center={pinLocation}
       zoom={9.5}
     >
       {JSON.stringify(props.pins)}
@@ -42,16 +46,13 @@ function Map(props) {
             src={SelectedMarker.src}
             title={SelectedMarker.name}
             description={SelectedMarker.description}
-            contact={SelectedMarker.contact}
             latLong={SelectedMarker.latLong}
             parkCode={SelectedMarker.parkCode}
           />
         </InfoWindow>}
     </GoogleMap>
   ) : (
-    <>
-
-    </>
+    <></>
   );
 }
 

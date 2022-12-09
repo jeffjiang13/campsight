@@ -1,12 +1,14 @@
 import React from 'react'
 import './Card.css'
 
-function Card({ src, title, description, latLong, contact, parkCode }) {
+function Card({ src, title, description, latLong, parkCode }) {
   const loc = `/Search/${parkCode}`
-  return (
+  const windowLocation = window.location.pathname === '/';
+
+  return windowLocation ? (
     <a href={loc}>
       <div className='card'>
-        <img src={src} alt='' />
+        <img src={src} alt={title} title={title} />
         <div className='card_info'>
           <h2>{title}</h2>
           <h4>{latLong}</h4>
@@ -14,6 +16,11 @@ function Card({ src, title, description, latLong, contact, parkCode }) {
         </div>
       </div>
     </a>
+  ) : (
+    <div className='card_info'>
+      <h2>{title}</h2>
+      <h3>{description}</h3>
+    </div>
   )
 }
 
