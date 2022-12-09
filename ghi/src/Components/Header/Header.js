@@ -32,9 +32,9 @@ const NavBar = () => {
         </div>
         <div className="header_right">
           <div className="advanced-src-wrapper">
-            <a href="/advancedsearch">
+            <Link to="/advancedsearch">
               <p className='advancedSearchBtn'>Advanced Search</p>
-            </a>
+            </Link>
           </div>
           <div className="language-select">
             <LanguageIcon />

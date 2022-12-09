@@ -1,3 +1,4 @@
+# flake8: noqa
 steps = [
     [
         # "Up" SQL statement
