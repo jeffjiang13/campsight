@@ -48,15 +48,19 @@ function Home(props) {
 
   useEffect(() => {
     if (!modalOpen) return;
-    const populateMap = async () => {
-      const mapApiResponse = await fetch(`http://localhost:8000/maplist`)
-      if (mapApiResponse.ok) {
-        const data = await mapApiResponse.json();
-        console.log(data.data)
-        setParks(data.data)
+    console.log(props.parks);
+    if (props.parks) {
+      setParks(props.parks);
+    } else {
+      const populateMap = async () => {
+        const mapApiResponse = await fetch(`http://localhost:8000/maplist`)
+        if (mapApiResponse.ok) {
+          const data = await mapApiResponse.json();
+          setParks(data.data)
+        }
       }
+      populateMap();
     }
-    populateMap();
   }, [modalOpen]);
 
   const containerStyle = {

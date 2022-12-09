@@ -23,17 +23,22 @@ function Map(props) {
     })
   }, [])
 
-  const windowLocation = window.location.pathname === '/';
+  const windowLocation = window.location.pathname === '/'
+    || window.location.pathname === '/advancedsearch'
+    || window.location.path === '/project-gamma'
+    || window.location.path === '/project-gamma/advancedsearch';
   const pinLocation = windowLocation ? userLocation : {
     lat: Number(props.pins[0].lat),
     lng: Number(props.pins[0].lng)
   };
+  
+  const zoom = !windowLocation ? 12 : 5;
 
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={props.style}
       center={pinLocation}
-      zoom={9.5}
+      zoom={zoom}
     >
       {JSON.stringify(props.pins)}
       {(props.pins || []).map((pin, index) => <Marker position={{ lat: Number(pin.lat), lng: Number(pin.lng) }}
