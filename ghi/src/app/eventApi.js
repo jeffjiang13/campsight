@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const eventApi = createApi({
     reducerPath: "events",
     baseQuery: fetchBaseQuery({
-        baseUrl: process.env.REACT_APP_API_HOST,
+        baseUrl: process.env.REACT_APP_ACCOUNTS_API_HOST,
     }),
     tagTypes: ["Events"],
     endpoints: (builder) => ({

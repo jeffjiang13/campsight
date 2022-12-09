@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Card.css'
+import { Link } from 'react-router-dom'
 
 function Card({ src, title, description, latLong, parkCode }) {
   const loc = `/Search/${parkCode}`

@@ -51,7 +51,7 @@ function AdvancedSearchForm() {
 
     useEffect(() => {
         async function getAllParks() {
-            const parkResponse = await fetch('http://localhost:8000/allparks');
+            const parkResponse = await fetch(`${process.env.REACT_APP_PARKS_API_HOST}/allparks`);
             if (parkResponse.ok) {
                 const data = await parkResponse.json()
                 let tempParks = [];
@@ -60,7 +60,7 @@ function AdvancedSearchForm() {
             }
         }
         async function getActivities() {
-            const activityResponse = await fetch('http://localhost:8000/getactivities')
+            const activityResponse = await fetch(`${process.env.REACT_APP_PARKS_API_HOST}/getactivities`)
             if (activityResponse.ok) {
                 const data = await activityResponse.json()
                 let tempActivities = [];

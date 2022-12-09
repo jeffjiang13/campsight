@@ -1,6 +1,7 @@
 from bson.objectid import ObjectId
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import Optional
+from typing import List
 
 
 class PydanticObjectId(ObjectId):
@@ -13,9 +14,10 @@ class PydanticObjectId(ObjectId):
         if value:
             try:
                 ObjectId(value)
-            except:
+            except:  # noqa: E722
                 raise ValueError(f"Not a valid object id: {value}")
         return value
+
 
 class SessionOut(BaseModel):
     jti: str
@@ -43,6 +45,7 @@ class AccountOut(BaseModel):
     email: str
     full_name: str
 
+
 class EventIn(BaseModel):
     name: str
     date: str
@@ -50,12 +53,14 @@ class EventIn(BaseModel):
     rating: Optional[str]
     address: Optional[str]
 
+
 class Event(EventIn):
     id: PydanticObjectId
 
 
 class EventOut(EventIn):
     id: str
+
 
 class EventList(BaseModel):
     events: List[EventOut]
@@ -72,6 +77,7 @@ class Profile(ProfileIn):
     id: str
     account_id: str | None = None
 
+
 class ProfileOut(BaseModel):
     id: str
     city: Optional[str]
@@ -79,6 +85,7 @@ class ProfileOut(BaseModel):
     description: Optional[str]
     account_id: Optional[str]
     social_media: Optional[str]
+
 
 class Error(BaseModel):
     message: str
@@ -89,8 +96,10 @@ class ReviewIn(BaseModel):
     review: Optional[str]
     parkCode: str
 
+
 class Review(ReviewIn):
     id: str
+
 
 class ReviewOut(BaseModel):
     id: str

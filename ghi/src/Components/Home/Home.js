@@ -23,7 +23,8 @@ function Home(props) {
       if (props.parks) {
         data = props.parks;
       } else {
-        const apiResponse = await fetch(`http://localhost:8000/list?start=${nextPage}`)
+        console.log(process.env.REACT_APP_PARKS_API_HOST)
+        const apiResponse = await fetch(`${process.env.REACT_APP_PARKS_API_HOST}/list?start=${nextPage}`)
         if (apiResponse.ok) {
           const temp = await apiResponse.json()
           data = temp.data

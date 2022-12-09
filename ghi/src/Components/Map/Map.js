@@ -54,6 +54,7 @@ function Map(props) {
             latLong={SelectedMarker.latLong}
             parkCode={SelectedMarker.parkCode}
           />
+          {/* icon="https://i.ibb.co/f92RGJ9/tent.png" */}
         </InfoWindow>}
     </GoogleMap>
   ) : (
