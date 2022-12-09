@@ -22,9 +22,9 @@ const NavBar = () => {
     <header>
       <nav>
         <div className="logo-container">
-          <a href="/">
+          <Link to="/">
             <img src={LogoPNG} alt="Camp Sight Logo" title="Camp Sight" />
-          </a>
+          </Link>
         </div>
         <div className="header_center">
           <input type="text" />
@@ -32,9 +32,9 @@ const NavBar = () => {
         </div>
         <div className="header_right">
           <div className="advanced-src-wrapper">
-            <a href="/advancedsearch">
+            <Link to="/advancedsearch">
               <p className='advancedSearchBtn'>Advanced Search</p>
-            </a>
+            </Link>
           </div>
           <div className="language-select">
             <LanguageIcon />

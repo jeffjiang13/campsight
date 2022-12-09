@@ -6,13 +6,18 @@ from routers.auth import authenticator
 from models import AccountOut
 
 client = TestClient(app)
-fake_account = AccountOut(id="accountID", email="cooper@gmail", full_name="cooper")
-fake_account_token = AccountToken(access_token="accesstoken", type="Bearer", account=fake_account)
+fake_account = AccountOut(id="accountID", email="cooper@gmail", full_name="cooper")  # noqa: E501
+fake_account_token = AccountToken(access_token="accesstoken", type="Bearer", account=fake_account)  # noqa: E501
+
+
 async def override_get_token():
     return fake_account.dict()
+
+
 class EmptyReviewRepository:
     def get_all(self):
         return []
+
 
 def test_get_all_reviews():
     app.dependency_overrides[ReviewQueries] = EmptyReviewRepository

@@ -1,10 +1,11 @@
 import React from 'react'
 import './Card.css'
+import { Link } from 'react-router-dom'
 
 function Card({ src, title, description, latLong, contact, parkCode }) {
-  const loc = `/Search/${parkCode}`
+  const loc = `Search/${parkCode}`
   return (
-    <a href={loc}>
+    <Link to={loc}>
       <div className='card'>
         <img src={src} alt='' />
         <div className='card_info'>
@@ -13,7 +14,7 @@ function Card({ src, title, description, latLong, contact, parkCode }) {
           <h3>{description}</h3>
         </div>
       </div>
-    </a>
+    </Link>
   )
 }
 
