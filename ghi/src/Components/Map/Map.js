@@ -31,7 +31,7 @@ function Map(props) {
     lat: Number(props.pins[0].lat),
     lng: Number(props.pins[0].lng)
   };
-  
+
   const zoom = !windowLocation ? 12 : 5;
 
   return isLoaded ? (
@@ -42,7 +42,7 @@ function Map(props) {
     >
       {JSON.stringify(props.pins)}
       {(props.pins || []).map((pin, index) => <Marker position={{ lat: Number(pin.lat), lng: Number(pin.lng) }}
-        key={pin.id} visible={true} icon="https://i.ibb.co/f92RGJ9/tent.png" anchor={Marker} clickable={true} onClick={() =>
+        key={pin.id} visible={true} anchor={Marker} clickable={true} onClick={() =>
           setSelectedMarker(pin)} />)}
       {SelectedMarker &&
         <InfoWindow position={{ lat: Number(SelectedMarker.lat), lng: Number(SelectedMarker.lng) }}
