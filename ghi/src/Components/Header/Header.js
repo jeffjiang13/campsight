@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import "./Header.css";
+import { Link } from 'react-router-dom';
 import SearchIcon from "@mui/icons-material/Search";
 import LanguageIcon from "@mui/icons-material/Language";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -43,10 +44,10 @@ const NavBar = () => {
             <Avatar className="avatar" onClick={handleClick} />
             {dropdown &&
               <div className="dropdown-options">
-                {token ? <a href='/profile/:id' > Profile </a> : null}
-                {token ? <a href="/events" > Events </a> : null}
-                {token ? null : <a href="/signup" > Sign Up </a>}
-                {token ? <a onClick={logOut} href="/"> Log Out </a> : <a href="/login" > Login </a>}
+                {token ? <Link to='/profile/:id' > Profile </Link> : null}
+                {token ? <Link to="/events" > Events </Link> : null}
+                {token ? null : <Link to="/signup" > Sign Up </Link>}
+                {token ? <a onClick={logOut} href="/"> Log Out </a> : <Link to="/login" > Login </Link>}
               </div>}
           </div>
         </div>
