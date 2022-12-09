@@ -4,7 +4,7 @@ import { clearForm } from "./accountSlice";
 export const apiSlice = createApi({
     reducerPath: "token",
     baseQuery: fetchBaseQuery({
-        baseUrl: process.env.REACT_APP_API_HOST,
+        baseUrl: process.env.REACT_APP_ACCOUNTS_API_HOST,
         prepareHeaders: (headers, { getState }) => {
             const selector = apiSlice.endpoints.getToken.select();
             const { data: tokenData } = selector(getState());
@@ -40,17 +40,20 @@ export const apiSlice = createApi({
         }),
 
         logIn: builder.mutation({
-            query: (info) => {
+            query: info => {
                 let formData = null;
                 if (info instanceof HTMLElement) {
                     formData = new FormData(info);
-                    formData.append("username", info.email.value);
+                } else {
+                    formData = new FormData();
+                    formData.append('username', info.username);
+                    formData.append('password', info.password);
                 }
                 return {
-                    url: "/token",
-                    method: "post",
+                    url: '/token',
+                    method: 'post',
                     body: formData,
-                    credentials: "include",
+                    credentials: 'include',
                 };
             },
             providesTags: ["Account"],

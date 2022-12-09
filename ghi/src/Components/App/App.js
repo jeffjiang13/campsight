@@ -12,13 +12,6 @@ import Events from '../Event/Event'
 import CreateEvent from '../Event/CreateEvent'
 import AdvancedSearchForm from '../Search/AdvancedSearchForm'
 import { useGetTokenQuery } from "../../app/api";
-import { AuthProvider, useToken } from '../App/Authorization';
-
-
-function GetToken() {
-  useToken();
-  return null
-}
 
 
 function App() {
@@ -28,22 +21,19 @@ function App() {
 
   return (
     <BrowserRouter basename={basename}>
-      <AuthProvider>
-        <GetToken />
-        <Header />
-        <Routes>
-          <Route path="/search/:parkCode" element={<Details />} />
-          <Route path="/" element={<Home />} />
-          <Route path="profile/:id" element={<Profile />} />
-          <Route path="login" element={<LogIn />} />
-          <Route path="signup" element={<SignUp />} />
-          <Route path="profile/edit/:id" element={<EditProfile />} />
-          <Route path="events" element={<Events />} />
-          <Route path="create" element={<CreateEvent />} />
-          <Route path="advancedsearch" element={<AdvancedSearchForm />} />
-        </Routes>
-        <Footer />
-      </AuthProvider>
+      <Header />
+      <Routes>
+        <Route path="/search/:parkCode" element={<Details />} />
+        <Route path="/" element={<Home />} />
+        <Route path="profile/:id" element={<Profile />} />
+        <Route path="login" element={<LogIn />} />
+        <Route path="signup" element={<SignUp />} />
+        <Route path="profile/edit/:id" element={<EditProfile />} />
+        <Route path="events" element={<Events />} />
+        <Route path="create" element={<CreateEvent />} />
+        <Route path="advancedsearch" element={<AdvancedSearchForm />} />
+      </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

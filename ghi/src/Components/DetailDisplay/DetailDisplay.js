@@ -2,7 +2,6 @@ import React from 'react'
 import './DetailDisplay.css'
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Rating } from '@mui/material';
-import { useAuthContext } from '../App/Authorization';
 
 function DetailDisplay({
   parkCode,
@@ -21,20 +20,17 @@ function DetailDisplay({
   phone,
 }) {
 
-  const { token } = useAuthContext();
-
   async function handleFavoriteClick(event) {
     event.preventDefault();
-    const response = await fetch('http://localhost:8001/api/favorites', {
+    await fetch(`${process.env.REACT_APP_ACCOUNTS_API_HOST}/api/favorites`, {
       method: 'POST',
+      credentials: 'include',
       body: JSON.stringify({
         favorited: true,
         park_code: { parkCode }
       }),
       headers: {
-        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',
-        Accept: 'application/json'
       },
     })
   }

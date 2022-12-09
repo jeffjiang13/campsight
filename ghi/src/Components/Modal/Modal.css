@@ -10,13 +10,13 @@
 }
 
 .modalContainer {
-  height: 100%;
+  height: 50%;
   width: 100%;
 }
 
 .ModalOpen {
   position: absolute;
-  top: 150px;
+  top: 100px;
   right: 100px;
   z-index: 15;
   color: white;
