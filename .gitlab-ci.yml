@@ -29,8 +29,7 @@ build-front-end-job:
   image: node:lts-bullseye
   needs:
     - lint-test-job
-  variables:
-    REACT_APP_SAMPLE_SERVICE_API_HOST: https://WEBSERVICE_NAME.onrender.com
+    - api-unit-test-job
   script:
     - cd ghi
     - npm install
