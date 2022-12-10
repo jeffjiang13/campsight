@@ -69,7 +69,7 @@ function Details() {
           return (
             < DetailDisplay key={index}
               parkCode={details.parkCode}
-              img={details.images[0].url}
+              img={details.images}
               location={details.states}
               title={details.fullName}
               phone={getPhoneNumber(details.contacts.phoneNumbers)}

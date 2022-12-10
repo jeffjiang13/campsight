@@ -25,4 +25,4 @@ Deployement information
 
 ### GitLab repo/project
 
-GitLab and team setup info
+GitLab and team setup info 

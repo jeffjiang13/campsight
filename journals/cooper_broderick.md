@@ -82,4 +82,9 @@ Started and Completed Deployment to Render, MongoDB, Git pages
 
 ## 12/9/22
 
-Redeployed
+Redeployed - fixed most minor bugs
+
+## 12/10/22
+
+Added image carousel on park details page
+Fixed redirect when clicking homepage logo taking you to blank page

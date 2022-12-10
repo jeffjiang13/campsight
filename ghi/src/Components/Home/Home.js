@@ -23,18 +23,20 @@ function Home(props) {
       if (props.parks) {
         data = props.parks;
       } else {
-        console.log(process.env.REACT_APP_PARKS_API_HOST)
         const apiResponse = await fetch(`${process.env.REACT_APP_PARKS_API_HOST}/list?start=${nextPage}`)
         if (apiResponse.ok) {
           const temp = await apiResponse.json()
           data = temp.data
+          console.log(typeof data)
         }
       }
       const requests = [];
       requests.push(data);
+      console.log(requests)
       let i = 0;
       const templist = ([[], [], []])
       for (let item of requests[0]) {
+        console.log(item)
         templist[i].push(item);
         i = i + 1;
         if (i > 2) {

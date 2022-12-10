@@ -25,8 +25,10 @@ function Map(props) {
 
   const windowLocation = window.location.pathname === '/'
     || window.location.pathname === '/advancedsearch'
-    || window.location.pathname === '/project-gamma'
-    || window.location.pathname === '/project-gamma/advancedsearch';
+    || window.location.pathname === '/project-gamma/'
+    || window.location.pathname === '/project-gamma/advancedsearch'
+    || window.location.pathname === '/project-gamma';
+
   const pinLocation = windowLocation ? userLocation : {
     lat: Number(props.pins[0].lat),
     lng: Number(props.pins[0].lng)
