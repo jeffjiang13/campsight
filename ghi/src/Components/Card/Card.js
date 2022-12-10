@@ -7,7 +7,8 @@ function Card({ src, title, description, latLong, parkCode }) {
   const windowLocation = window.location.pathname === '/'
     || window.location.pathname === '/advancedsearch'
     || window.location.pathname === '/project-gamma/'
-    || window.location.pathname === '/project-gamma/advancedsearch';
+    || window.location.pathname === '/project-gamma/advancedsearch'
+    || window.location.pathname === '/project-gamma';
 
   return windowLocation ? (
     <Link to={loc}>
