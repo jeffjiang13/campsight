@@ -49,7 +49,6 @@ function Home(props) {
 
   useEffect(() => {
     if (!modalOpen) return;
-    console.log(props.parks);
     if (props.parks) {
       setParks(props.parks);
     } else {
@@ -62,6 +61,7 @@ function Home(props) {
       }
       populateMap();
     }
+    // eslint-disable-next-line
   }, [modalOpen]);
 
   const containerStyle = {
