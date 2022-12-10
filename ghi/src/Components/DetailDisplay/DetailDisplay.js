@@ -2,6 +2,7 @@ import React from 'react'
 import './DetailDisplay.css'
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Rating } from '@mui/material';
+import Carousel from 'react-material-ui-carousel'
 import { useGetTokenQuery } from "../../app/api";
 
 function DetailDisplay({
@@ -40,11 +41,56 @@ function DetailDisplay({
     })
   }
 
+
+  {
+    const images = []
+    images.push(img)
+    var items = []
+    for (let image of images[0]) {
+      items.push({
+        name: image.title,
+        url: image.url
+      })
+    }
+    console.log(items)
+  }
+
+  function Item(props) {
+    console.log("props=", props)
+    return (
+      <div className='searchResultImg'>
+        <img alt={props.item.name} src={props.item.url} />
+      </div>
+    )
+  }
+
   return (
     <div className="searchResult">
-      <div className='searchResultImg'>
-        <img src={img} alt={title} title={title} />
-      </div>
+      <Carousel
+        stopAutoPlayOnHover='True'
+        navButtonsAlwaysVisible='True'
+        changeOnFirstRender='True'
+        interval='4000'
+        indicatorIconButtonProps={{
+          style: {
+            padding: '10px',
+            align: 'center',
+            marginTop: '-50px'
+          }
+        }}
+        indicatorContainerProps={{
+          style: {
+            margin: 'auto',
+            display: 'flex',
+            width: '50vw',
+            overflow: 'hidden',
+            textAlign: 'right' // 4
+          }
+        }}>
+        {
+          items.map((item, i) => <Item key={i} item={item} />)
+        }
+      </Carousel>
       <div className="searchResult_infotop">
         <FavoriteBorderIcon className="searchResult_heart" onClick={handleFavoriteClick} />
         <p>{location}</p>
@@ -61,7 +107,7 @@ function DetailDisplay({
         <label>Rating</label>
         <strong>{<Rating name="size-large" defaultValue={5} value={Number(rating)} size="large" />}</strong>
       </div>
-    </div>
+    </div >
   );
 }
 
