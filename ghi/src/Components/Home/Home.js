@@ -53,7 +53,7 @@ function Home(props) {
       setParks(props.parks);
     } else {
       const populateMap = async () => {
-        const mapApiResponse = await fetch(`http://localhost:8000/maplist`)
+        const mapApiResponse = await fetch(`${process.env.REACT_APP_PARKS_API_HOST}/maplist`)
         if (mapApiResponse.ok) {
           const data = await mapApiResponse.json();
           setParks(data.data)
