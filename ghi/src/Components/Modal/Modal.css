@@ -49,3 +49,9 @@
   color: black;
   border-color: #d07737;
 }
+
+.gm-ui-hover-effect {
+  margin-top: 10px !important;
+  margin-right: 10px !important;
+  opacity: 1 !important;
+}
