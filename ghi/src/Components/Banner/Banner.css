@@ -15,13 +15,13 @@
   padding-top: 20px;
   padding-left: 50px;
   padding-right: 50px;
-  padding-bottom: 60px;
-  margin-top: 12.5vh;
+  padding-bottom: 50px;
+  margin-top: 11.5vh;
   width: 23.5vh;
   min-width: 20vh;
   opacity: 0.9;
   border-radius: 8px;
-  margin-left: 1rem;
+  margin-left: 2rem;
   display: flex;
   flex-flow: column nowrap;
   overflow: hidden;
@@ -31,14 +31,17 @@
   background-color: #d07737;
   color: white;
   text-transform: inherit;
-  margin-top: 20px;
+  margin-top: 10px;
   font-weight: 600;
+  height: 30px;
+  border-radius: 5px;
   border-color: transparent;
 }
 
 .banner_info>button:hover {
   background-color: white;
   color: #d07737;
+  cursor: pointer;
 }
 
 .banner_info>h5 {

@@ -25,8 +25,8 @@ function Map(props) {
 
   const windowLocation = window.location.pathname === '/'
     || window.location.pathname === '/advancedsearch'
-    || window.location.path === '/project-gamma'
-    || window.location.path === '/project-gamma/advancedsearch';
+    || window.location.pathname === '/project-gamma'
+    || window.location.pathname === '/project-gamma/advancedsearch';
   const pinLocation = windowLocation ? userLocation : {
     lat: Number(props.pins[0].lat),
     lng: Number(props.pins[0].lng)
@@ -54,7 +54,6 @@ function Map(props) {
             latLong={SelectedMarker.latLong}
             parkCode={SelectedMarker.parkCode}
           />
-          {/* icon="https://i.ibb.co/f92RGJ9/tent.png" */}
         </InfoWindow>}
     </GoogleMap>
   ) : (
