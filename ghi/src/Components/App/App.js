@@ -12,13 +12,6 @@ import Events from '../Event/Event'
 import CreateEvent from '../Event/CreateEvent'
 import AdvancedSearchForm from '../Search/AdvancedSearchForm'
 import { useGetTokenQuery } from "../../app/api";
-import { AuthProvider, useToken } from '../App/Authorization';
-
-
-function GetToken() {
-  useToken();
-  return null
-}
 
 
 function App() {

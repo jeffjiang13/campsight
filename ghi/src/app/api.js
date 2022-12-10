@@ -40,17 +40,20 @@ export const apiSlice = createApi({
         }),
 
         logIn: builder.mutation({
-            query: (info) => {
+            query: info => {
                 let formData = null;
                 if (info instanceof HTMLElement) {
                     formData = new FormData(info);
-                    formData.append("username", info.email.value);
+                } else {
+                    formData = new FormData();
+                    formData.append('username', info.username);
+                    formData.append('password', info.password);
                 }
                 return {
-                    url: "/token",
-                    method: "post",
+                    url: '/token',
+                    method: 'post',
                     body: formData,
-                    credentials: "include",
+                    credentials: 'include',
                 };
             },
             providesTags: ["Account"],

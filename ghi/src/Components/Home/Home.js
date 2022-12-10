@@ -11,6 +11,7 @@ function Home(props) {
   const [parkColumns, setparkColumns] = useState([])
   const [nextPage, setnextPage] = useState(0)
   const [parks, setParks] = useState([])
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     // eslint-disable-next-line
@@ -33,7 +34,6 @@ function Home(props) {
       requests.push(data);
       let i = 0;
       const templist = ([[], [], []])
-
       for (let item of requests[0]) {
         templist[i].push(item);
         i = i + 1;
@@ -48,29 +48,21 @@ function Home(props) {
   }, [nextPage]);
 
   useEffect(() => {
-    // eslint-disable-next-line
-    async function populateMap() {
-      var mapdata;
-      const locationArray = []
-      const parklist = []
-      if (props.parks) {
-        mapdata = props.parks;
-      } else {
-        const mapapiResponse = await fetch(`${process.env.REACT_APP_PARKS_API_HOST}/maplist`)
-        if (mapapiResponse.ok) {
-          const temp = await mapapiResponse.json();
-          mapdata = temp.data;
+    if (!modalOpen) return;
+    if (props.parks) {
+      setParks(props.parks);
+    } else {
+      const populateMap = async () => {
+        const mapApiResponse = await fetch(`${process.env.REACT_APP_PARKS_API_HOST}/maplist`)
+        if (mapApiResponse.ok) {
+          const data = await mapApiResponse.json();
+          setParks(data.data)
         }
       }
-      parklist.push(mapdata)
-      for (let park of parklist[0]) {
-        locationArray.push(park)
-      }
-      setParks(locationArray)
+      populateMap();
     }
-    populateMap()
     // eslint-disable-next-line
-  },);
+  }, [modalOpen]);
 
   const containerStyle = {
     width: '65vw',
@@ -82,7 +74,6 @@ function Home(props) {
     border: '6px solid white',
   };
 
-  const [isModalOpen, setModalOpen] = useState(false);
   function ParkColumn(parkColumns) {
     return (
       <div className="col">
@@ -117,17 +108,15 @@ function Home(props) {
         </div>
         <div className="flex-parent jc-center"><ArrowBackIosNewIcon className="right" onClick={() => setnextPage(nextPage - 9)} variant='outlined'></ArrowBackIosNewIcon>
           <ArrowForwardIosIcon className="left" onClick={() => setnextPage(nextPage + 9)} variant='outlined'></ArrowForwardIosIcon></div>
-        <Modal setIsOpen={setModalOpen} isOpen={isModalOpen}>
+        <Modal setIsOpen={setModalOpen} isOpen={modalOpen}>
           <Map pins={parks.map(park => ({
             id: park.id,
-            lat: park.latitude,
-            lng: park.longitude,
+            lat: Number(park.latitude),
+            lng: Number(park.longitude),
             title: park.fullName,
-            image: park.images[0].url, //[0]
             name: park.fullName,
             description: park.description,
-            src: park.images[0].url,  //[0]
-            contact: park.contacts.emailAddresses[0].emailAddress, //[0]
+            src: park.images[0].url,
             latLong: park.latLong,
             parkCode: park.parkCode
           }))} style={containerStyle} />

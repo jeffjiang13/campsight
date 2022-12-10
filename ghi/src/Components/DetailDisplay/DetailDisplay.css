@@ -34,7 +34,7 @@
   display: flex;
   flex-flow: column wrap;
   width: 40vw;
-  margin: 0 20px 25px 20px;
+  margin: 0 20px 15px 20px;
 }
 
 .searchResultImg>img {
@@ -122,4 +122,5 @@ img:hover {
 .searchResult_infotop>label {
   font-weight: 800;
   margin-top: 10%;
+  margin-bottom: 15px;
 }
