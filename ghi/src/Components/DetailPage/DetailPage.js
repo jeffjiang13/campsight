@@ -68,7 +68,7 @@ function Details() {
           const hours = details.operatingHours[0].standardHours
           return (
             < DetailDisplay key={index}
-              img={details.images[0].url}
+              img={details.images}
               location={details.states}
               title={details.fullName}
               phone={getPhoneNumber(details.contacts.phoneNumbers)}
