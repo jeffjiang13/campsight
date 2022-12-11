@@ -91,11 +91,9 @@ function DetailDisplay({
         url: image.url
       })
     }
-    console.log(items)
   }
 
   function Item(props) {
-    console.log("props=", props)
     return (
       <div className='searchResultImg'>
         <img alt={props.item.name} src={props.item.url} />
