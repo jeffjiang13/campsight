@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, Response
+from typing import List
 from models import (
     FavoriteIn,
     FavoriteOut,

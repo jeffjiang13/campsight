@@ -1,13 +1,9 @@
 from .client import Queries
-<<<<<<< HEAD
-=======
 from typing import List
-from bson.objectid import ObjectId
-from pymongo import ReturnDocument
->>>>>>> ted
 from models import (
     FavoriteIn,
     Favorite,
+    FavoriteOut,
 )
 
 
@@ -22,7 +18,7 @@ class FavoriteQueries(Queries):
         props["id"] = str(props["_id"])
         return Favorite(**props)
 
-    def get_all_favorites_in_account(self, account_id: str) -> List[FavoriteOut]:
+    def get_all_favorites_in_account(self, account_id: str) -> List[FavoriteOut]:  # noqa: E501
         db = self.collection.find({"account_id": account_id})
         favorites = []
         for favorite in db:
@@ -31,10 +27,9 @@ class FavoriteQueries(Queries):
         return favorites
 
     def delete_favorites(self, account_id: str, park_code: str):
-        response = self.collection.delete_many(
+        self.collection.delete_many(
             {
                 "account_id": account_id,
                 "park_code": park_code,
             }
         )
-        print(response)

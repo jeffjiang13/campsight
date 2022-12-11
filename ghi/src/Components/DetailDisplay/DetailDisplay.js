@@ -28,7 +28,6 @@ function DetailDisplay({
 
   useEffect(() => {
     async function getFavorite() {
-      console.log(tokenData);
       const favoriteResponse = await fetch(`${process.env.REACT_APP_ACCOUNTS_API_HOST}/api/favorites/${tokenData.account.id}`, {
         method: 'GET',
         credentials: 'include',
@@ -37,7 +36,6 @@ function DetailDisplay({
         },
       });
       const data = await favoriteResponse.json();
-      console.log(data);
       if (data.find(favorite => favorite.park_code === parkCode) !== undefined) {
         setIsFavorited(true);
       }
@@ -48,7 +46,6 @@ function DetailDisplay({
   async function handleCreateFavoriteClick(event) {
     event.preventDefault();
     if (!tokenData) {
-      console.log("User not logged in");
       return
     }
     setIsFavorited(true);
