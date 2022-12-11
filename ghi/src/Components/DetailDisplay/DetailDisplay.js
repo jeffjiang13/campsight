@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from 'react'
 import './DetailDisplay.css'
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Rating } from '@mui/material';
 import Carousel from 'react-material-ui-carousel'
 import { useGetTokenQuery } from "../../app/api";
@@ -24,34 +23,9 @@ function DetailDisplay({
 }) {
 
   const { data: tokenData } = useGetTokenQuery();
-  const [isFavorited, setIsFavorited] = useState(false);
 
-  useEffect(() => {
-    async function getFavorite() {
-      console.log(tokenData);
-      const favoriteResponse = await fetch(`${process.env.REACT_APP_ACCOUNTS_API_HOST}/api/favorites/${tokenData.account.id}`, {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
-          'Authorization': `Bearer ${tokenData.access_token}`,
-        },
-      });
-      const data = await favoriteResponse.json();
-      console.log(data);
-      if (data.find(favorite => favorite.park_code === parkCode) !== undefined) {
-        setIsFavorited(true);
-      }
-    }
-    getFavorite();
-  }, [tokenData, parkCode])
-
-  async function handleCreateFavoriteClick(event) {
+  async function handleFavoriteClick(event) {
     event.preventDefault();
-    if (!tokenData) {
-      console.log("User not logged in");
-      return
-    }
-    setIsFavorited(true);
     await fetch(`${process.env.REACT_APP_ACCOUNTS_API_HOST}/api/favorites`, {
       method: 'POST',
       credentials: 'include',
@@ -62,19 +36,6 @@ function DetailDisplay({
       }),
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${tokenData.access_token}`,
-      },
-    })
-  }
-
-
-  async function handleDeleteFavoriteClick(event) {
-    event.preventDefault();
-    setIsFavorited(false);
-    await fetch(`${process.env.REACT_APP_ACCOUNTS_API_HOST}/api/favorites/${tokenData.account.id}/${parkCode}`, {
-      method: 'DELETE',
-      credentials: 'include',
-      headers: {
         'Authorization': `Bearer ${tokenData.access_token}`,
       },
     })
@@ -131,10 +92,7 @@ function DetailDisplay({
         }
       </Carousel>
       <div className="searchResult_infotop">
-        {isFavorited
-          ? <FavoriteIcon className="searchResult_heart" onClick={handleDeleteFavoriteClick} />
-          : <FavoriteBorderIcon className="searchResult_heartBorder" onClick={handleCreateFavoriteClick} />
-        }
+        <FavoriteBorderIcon className="searchResult_heart" onClick={handleFavoriteClick} />
         <p>{location}</p>
         <h3>{title}</h3>
         <h4 id='description'>{description}</h4>

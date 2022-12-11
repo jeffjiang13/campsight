@@ -66,34 +66,17 @@ img:hover {
   padding-left: 20px;
 }
 
-.searchResult_heartBorder {
-  position: absolute;
-  top: 20px;
-  right: 40px;
-  cursor: pointer;
-}
-
-.searchResult_heartBorder:hover {
-  color: red;
-  transform: scale(1.25);
-  transition: all .5s ease;
-  transition-delay: .5s;
-}
-
 .searchResult_heart {
-  color: red;
   position: absolute;
   top: 20px;
   right: 40px;
-  transform: scale(1.25);
   cursor: pointer;
 }
 
 .searchResult_heart:hover {
-  color: black;
-  transform: scale(1);
+  color: red;
+  transform: scale(1.25);
   transition: all .5s ease;
-  transition-delay: .5s;
 }
 
 .searchResult_infotop>h3 {

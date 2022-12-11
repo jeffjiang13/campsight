@@ -11,6 +11,7 @@ import EditProfile from "../Profile/EditProfile"
 import Events from '../Event/Event'
 import CreateEvent from '../Event/CreateEvent'
 import AdvancedSearchForm from '../Search/AdvancedSearchForm'
+import { useGetTokenQuery } from "../../app/api";
 
 
 function App() {
