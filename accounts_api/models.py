@@ -115,14 +115,11 @@ class FavoriteIn(BaseModel):
 
 
 class Favorite(FavoriteIn):
-    id: str
+    id: PydanticObjectId
 
 
-class FavoriteOut(BaseModel):
+class FavoriteOut(FavoriteIn):
     id: str
-    favorited: bool
-    park_code: str
-    account_id: str
 
 
 class VisitedIn(BaseModel):
@@ -132,17 +129,8 @@ class VisitedIn(BaseModel):
 
 
 class Visited(VisitedIn):
+    id: PydanticObjectId
+
+
+class VisitedOut(VisitedIn):
     id: str
-
-
-class VisitedOut(BaseModel):
-    id: str
-    visited: bool
-    park_code: str
-    account_id: str
-
-
-class FavoriteIn(BaseModel):
-    favorited: bool
-    park_code: str
-    account_id: str

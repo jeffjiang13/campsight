@@ -61,3 +61,11 @@
 # Wednesday 12/7
 
 * Worked on making unit tests and continued working on favorites.
+
+# Thursday 12/8
+
+* Researched on our codebase and on the cookbooks to get a token to pass in properly.
+
+# Friday 12/9
+
+* Figured out how to pass in a token with the useGetTokenQuery hook and got favorites to save to a user and park.
