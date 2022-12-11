@@ -88,7 +88,6 @@ export const profileApi = createApi({
 
                 delete data["id"];
                 const profileId = data["id"];
-                console.log(data);
                 return {
                     method: "put",
                     url: `/api/profiles/${profileId}`,

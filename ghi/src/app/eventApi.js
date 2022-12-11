@@ -75,7 +75,6 @@ export const eventApi = createApi({
                 data["date"] = data.date + "T00:00:00.000Z";
                 delete data["id"];
                 const eventId = data["id"];
-                console.log(data);
                 return {
                     method: "put",
                     url: `/api/events/${eventId}`,

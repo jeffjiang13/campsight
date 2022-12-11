@@ -27,16 +27,13 @@ function Home(props) {
         if (apiResponse.ok) {
           const temp = await apiResponse.json()
           data = temp.data
-          console.log(typeof data)
         }
       }
       const requests = [];
       requests.push(data);
-      console.log(requests)
       let i = 0;
       const templist = ([[], [], []])
       for (let item of requests[0]) {
-        console.log(item)
         templist[i].push(item);
         i = i + 1;
         if (i > 2) {
