@@ -1,13 +1,7 @@
 from .client import Queries
-from bson.objectid import ObjectId
-from pymongo import ReturnDocument
 from models import (
     FavoriteIn,
     Favorite,
-    FavoriteOut,
-    VisitedIn,
-    Visited,
-    VisitedOut
 )
 
 
