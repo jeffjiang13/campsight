@@ -21,6 +21,7 @@ fake_account_token = AccountToken(
 async def override_get_token():
     return fake_account.dict()
 
+
 class MockProfileRepo:
 
     def create(self, profile):
@@ -33,8 +34,6 @@ class MockProfileRepo:
         }
         response.update(profile)
         return response
-
-
 
 
 def test_create_profile():

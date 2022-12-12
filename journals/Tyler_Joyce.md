@@ -57,3 +57,22 @@ feat: adding infowindow cards to google maps api.
 feat: Added review component for review section on details page.
 fix: Fixed styling on login, logout, advanced search.
 bug: fixed bug on dropdown menu of home page where spacing on hover made the dropdown hard to access.
+
+## 12/5/2022
+
+fix: minor styling on advanced search page
+fix: merge conflicts.
+
+## 12/7/2022
+
+fix: redesigned details page
+fix: Switched nav bootstrap components for dropdown to use react hooks. My css was not happy with bootstrap.
+
+## 12/8/2022
+
+fix: worked on fixing the loading issue with google maps.
+
+## 12/9/2022
+
+fix: finished fixing the loading issue with google maps.
+Also, removed tent icon on google maps. Set back to pin icon.

@@ -5,7 +5,7 @@ import { apiSlice } from "./api";
 export const profileApi = createApi({
     reducerPath: "profiles",
     baseQuery: fetchBaseQuery({
-        baseUrl: process.env.REACT_APP_API_HOST,
+        baseUrl: process.env.REACT_APP_ACCOUNTS_API_HOST,
         prepareHeaders: (headers, { getState }) => {
             const selector = apiSlice.endpoints.getToken.select();
             const { data: tokenData } = selector(getState());

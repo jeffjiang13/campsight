@@ -18,22 +18,33 @@ function Map(props) {
   const [userLocation, setUserLocation] = useState(center);
 
   useEffect(() => {
-
     window.navigator.geolocation.getCurrentPosition(location => {
       setUserLocation({ lat: location.coords.latitude, lng: location.coords.longitude })
     })
-
   }, [])
+
+  const windowLocation = window.location.pathname === '/'
+    || window.location.pathname === '/advancedsearch'
+    || window.location.pathname === '/project-gamma/'
+    || window.location.pathname === '/project-gamma/advancedsearch'
+    || window.location.pathname === '/project-gamma';
+
+  const pinLocation = windowLocation ? userLocation : {
+    lat: Number(props.pins[0].lat),
+    lng: Number(props.pins[0].lng)
+  };
+
+  const zoom = !windowLocation ? 12 : 5;
 
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={props.style}
-      center={userLocation}
-      zoom={9.5}
+      center={pinLocation}
+      zoom={zoom}
     >
       {JSON.stringify(props.pins)}
       {(props.pins || []).map((pin, index) => <Marker position={{ lat: Number(pin.lat), lng: Number(pin.lng) }}
-        key={pin.id} visible={true} icon="https://i.ibb.co/f92RGJ9/tent.png" anchor={Marker} clickable={true} onClick={() =>
+        key={pin.id} visible={true} anchor={Marker} clickable={true} onClick={() =>
           setSelectedMarker(pin)} />)}
       {SelectedMarker &&
         <InfoWindow position={{ lat: Number(SelectedMarker.lat), lng: Number(SelectedMarker.lng) }}
@@ -42,16 +53,13 @@ function Map(props) {
             src={SelectedMarker.src}
             title={SelectedMarker.name}
             description={SelectedMarker.description}
-            contact={SelectedMarker.contact}
             latLong={SelectedMarker.latLong}
             parkCode={SelectedMarker.parkCode}
           />
         </InfoWindow>}
     </GoogleMap>
   ) : (
-    <>
-
-    </>
+    <></>
   );
 }
 

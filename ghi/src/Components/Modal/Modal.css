@@ -10,13 +10,13 @@
 }
 
 .modalContainer {
-  height: 100%;
+  height: 50%;
   width: 100%;
 }
 
 .ModalOpen {
   position: absolute;
-  top: 150px;
+  top: 100px;
   right: 100px;
   z-index: 15;
   color: white;
@@ -48,4 +48,10 @@
 .modal-popup>button:hover {
   color: black;
   border-color: #d07737;
+}
+
+.gm-ui-hover-effect {
+  margin-top: 10px !important;
+  margin-right: 10px !important;
+  opacity: 1 !important;
 }

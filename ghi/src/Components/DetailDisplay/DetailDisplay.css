@@ -1,23 +1,62 @@
+@media screen and (max-width: 1000px) {
+  .searchResult_infotop>label {
+    display: None;
+  }
+}
+
+
 .searchResult {
   display: flex;
+  flex: 2 1 auto;
   position: relative;
-  margin: 20px;
-  padding: 20px;
-  border-bottom: 1px solid lightgray;
   opacity: 1;
-  cursor: pointer;
-  align-content: center;
+  align-items: flex-start;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ccc;
+  border-radius: 16px;
+  max-width: 65vw;
+  overflow: clip;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 10px;
 }
 
-.searchResult>img:hover {
+.searchResultImg {
+  display: flex;
+  overflow: hidden;
+  justify-items: center;
+  align-items: center;
+}
+
+.searchResult_infotop {
+  display: flex;
+  flex-flow: column wrap;
+  width: 40vw;
+  margin: 0 20px 15px 20px;
+}
+
+.searchResultImg>img {
+  margin: auto;
+  width: 75vw;
+  height: 55.5vh;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  overflow: hidden;
+  object-fit: cover;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+img:hover {
   opacity: 0.85;
+  transition: all 0.5s ease;
 }
 
-.searchResult>img {
-  border-radius: 30px;
-  max-width: 1200px;
-  max-height: 900px;
-  overflow: hidden
+.searchResult_info {
+  display: flex;
+  flex: 1 1 auto;
 }
 
 .searchResult_info {
@@ -27,20 +66,45 @@
   padding-left: 20px;
 }
 
-.searchResult_heart {
+.searchResult_heartBorder {
   position: absolute;
   top: 20px;
   right: 40px;
+  cursor: pointer;
 }
 
-.searchResult_infotop {
-  width: 40vw;
+.searchResult_heartBorder:hover {
+  color: red;
+  transform: scale(1.25);
+  transition: all .5s ease;
+  transition-delay: .5s;
+}
+
+.searchResult_heart {
+  color: red;
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  transform: scale(1.25);
+  cursor: pointer;
+}
+
+.searchResult_heart:hover {
+  color: black;
+  transform: scale(1);
+  transition: all .5s ease;
+  transition-delay: .5s;
 }
 
 .searchResult_infotop>h3 {
   font-weight: 1000;
   font-size: 25px;
-  margin-top: 10px;
+  margin-top: 5%;
+}
+
+#description {
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 .searchResult_infotop>p {
@@ -52,6 +116,7 @@
 .searchResult_infotop>h4 {
   font-size: 13px;
   margin-top: 10px;
+  font-weight: 400;
 }
 
 .searchResult_infotop>h5 {
@@ -65,12 +130,14 @@
   font-size: 30px;
 }
 
-.searchResults_Other {
-  text-align: right;
+.details {
+  font-weight: 500;
+  font-size: 14px;
+  color: rgb(30, 30, 30);
 }
 
-.searchResults_Other {
-  position: absolute;
-  bottom: 20px;
-  right: 30px;
+.searchResult_infotop>label {
+  font-weight: 800;
+  margin-top: 5%;
+  margin-bottom: 15px;
 }

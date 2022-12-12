@@ -58,3 +58,39 @@ Linked data from cards on mainpage/map to /search
 Updated details page to reflect more information
 Updated data display of cards on home/search page
 Fixed previous button on home page displaying null return
+
+## 12/2/22
+
+Minor improvements to site load speeds
+Code cleanup, GIT maintenance
+Explore button redirects to search page
+
+## 12/6/22
+
+Began implementing back-end review with front-end
+
+## 12/7/22 
+
+Got full back end review functionality working
+Implemented parkCode tags for reviews and search reviews by parkCode
+Ratings from reviews now display in MUI rating stars on detail pages
+
+## 12/8/22
+
+Handled all ESLint errors and cleaned up code
+Started and Completed Deployment to Render, MongoDB, Git pages
+
+## 12/9/22
+
+Redeployed - fixed most minor bugs
+
+## 12/10/22
+
+Added image carousel on park details page
+Fixed redirect when clicking homepage logo taking you to blank page
+
+## 12/12/22
+
+Reviews can now be created an posted from the front end react application
+Review posting is now authenticated with user token
+Reviews now display on detail page

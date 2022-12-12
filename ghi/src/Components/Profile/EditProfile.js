@@ -17,7 +17,6 @@ export default function EditProfile(props) {
     const [updateProfile] = useUpdateProfileMutation();
     const { profileData } = useGetProfilesQuery();
     const { data: tokenData } = useGetTokenQuery();
-    const accountId = tokenData.account.id;
     console.log(profileData, tokenData)
     // const profile = profileData.find(p => p.account_id === accountId)
     async function submitHandler(e) {
@@ -30,7 +29,7 @@ export default function EditProfile(props) {
             social_media: social_media,
         };
 
-        updateProfile(profile.id, body);
+        updateProfile(tokenData, body);
         navigate("/profile");
         console.log(body)
 

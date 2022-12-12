@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Home from "../Home/Home";
 import { isPointWithinRadius } from "geolib";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 function AdvancedSearchForm() {
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -51,7 +53,7 @@ function AdvancedSearchForm() {
 
     useEffect(() => {
         async function getAllParks() {
-            const parkResponse = await fetch('http://localhost:8000/allparks');
+            const parkResponse = await fetch(`${process.env.REACT_APP_PARKS_API_HOST}/allparks`);
             if (parkResponse.ok) {
                 const data = await parkResponse.json()
                 let tempParks = [];
@@ -60,7 +62,7 @@ function AdvancedSearchForm() {
             }
         }
         async function getActivities() {
-            const activityResponse = await fetch('http://localhost:8000/getactivities')
+            const activityResponse = await fetch(`${process.env.REACT_APP_PARKS_API_HOST}/getactivities`)
             if (activityResponse.ok) {
                 const data = await activityResponse.json()
                 let tempActivities = [];
@@ -105,6 +107,14 @@ function AdvancedSearchForm() {
         setFilteredParks(parks);
     }
 
+    function CircularIndeterminate() {
+        return (
+            <Box className={{ display: 'flex' }}>
+                <CircularProgress className="loadingAnimation" />
+            </Box>
+        );
+    }
+
     const handleStateTerritoryChange = (event) => {
         setStateTerritory(event.target.value);
     }
@@ -131,45 +141,48 @@ function AdvancedSearchForm() {
         return (
             <div className="advanceSearch">
                 <div className="row">
-                    <div className="">
+                    <div className="filterSearchTitle">
                         <h1>Filter Search</h1>
-                        <form onSubmit={handleSubmit} id="advanced-search-form">
-                            <div className="mb-3">
-                                <select onChange={handleStateTerritoryChange} name="state" id="state" className="form-select">
-                                    <option value="">Choose a state</option>
-                                    {states.map(state => {
-                                        return (
-                                            <option key={state} value={state}>{state}</option>
-                                        )
-                                    })}
-                                </select>
-                            </div>
-                            <div>
-                                <select onChange={handleActivityChange} name="activity" id="activity" className="form-select">
-                                    <option value="">Choose an activity</option>
-                                    {activities.map(activity => {
-                                        return (
-                                            <option key={activity} value={activity}>{activity}</option>
-                                        )
-                                    })}
-                                </select>
-                            </div>
-                            <div className="mb-3">
-                                <select onChange={handleDesignationChange} name="designation" id="designation" className="form-select">
-                                    <option value="">Choose an NPS location type</option>
-                                    {designations.map(designation => {
-                                        return (
-                                            <option key={designation} value={designation}>{designation}</option>
-                                        )
-                                    })}
-                                </select>
-                            </div>
-                            <div className="form-floating mb-3">
-                                <input value={radius} onChange={handleRadiusChange} placeholder="Distance is in miles" type="" name="radius" id="radius" className="form-control" />
-                                <label htmlFor="last_name">Search Radius (In Miles)</label>
-                            </div>
-                            <button className="btn btn-primary">Search</button>
-                        </form>
+                        {!allParks
+                            ? <CircularIndeterminate />
+                            : <form onSubmit={handleSubmit} id="advanced-search-form">
+                                <div>
+                                    <select onChange={handleStateTerritoryChange} name="state" id="state" className="form-select">
+                                        <option value="">Choose a state</option>
+                                        {states.map(state => {
+                                            return (
+                                                <option key={state} value={state}>{state}</option>
+                                            )
+                                        })}
+                                    </select>
+                                </div>
+                                <div>
+                                    <select onChange={handleActivityChange} name="activity" id="activity" className="form-select">
+                                        <option value="">Choose an activity</option>
+                                        {activities.map(activity => {
+                                            return (
+                                                <option key={activity} value={activity}>{activity}</option>
+                                            )
+                                        })}
+                                    </select>
+                                </div>
+                                <div>
+                                    <select onChange={handleDesignationChange} name="designation" id="designation" className="form-select">
+                                        <option value="">Choose an NPS location type</option>
+                                        {designations.map(designation => {
+                                            return (
+                                                <option key={designation} value={designation}>{designation}</option>
+                                            )
+                                        })}
+                                    </select>
+                                </div>
+                                <div className="searchRadius">
+                                    <input value={radius} onChange={handleRadiusChange} placeholder="Distance is in miles" type="" name="radius" id="radius" className="form-control" />
+                                    <label htmlFor="last_name"><p>Search Radius (In Miles)</p></label>
+                                </div>
+                                <button className="filterBtn">Search</button>
+                            </form>
+                        }
                     </div>
                 </div>
             </div>
