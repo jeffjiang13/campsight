@@ -11,26 +11,42 @@ export default function EditProfile() {
     const [state, setState] = useState("");
     const [description, setDescription] = useState("");
     const [social_media, setSocialMedia] = useState("");
-    const [updateProfile] = useUpdateProfileMutation();
-    const { profileData } = useGetProfilesQuery();
     const { data: tokenData } = useGetTokenQuery();
-    const accountId = tokenData.account.id;
-    console.log(profileData, tokenData)
-    // const profile = profileData.find(p => p.account_id === accountId)
+    const [profileId, setProfile] = useState([])
+    const accountId = tokenData && tokenData.account && tokenData.account.id;
+
+    useEffect(() => {
+        getProfile()
+        async function getProfile() {
+            const profileResponse = await fetch(`${process.env.REACT_APP_ACCOUNTS_API_HOST}/api/profiles/`, { credentials: 'include' })
+            if (profileResponse.ok) {
+                const data = await profileResponse.json()
+                setProfile(await data.filter((p) => p.account_id === accountId))
+            }
+        }
+        // eslint-disable-next-line
+    }, [])
+
     async function submitHandler(e) {
         e.preventDefault();
-
-        const body = {
-            city: city,
-            state: state,
-            description: description,
-            social_media: social_media,
-        };
-
-        updateProfile(profile.id, body);
-        navigate("/profile");
-        console.log(body)
-
+        console.log(profileId[0].id)
+        const update = await fetch(`${process.env.REACT_APP_ACCOUNTS_API_HOST}/api/profiles/${profileId[0].id}`, {
+            method: 'PUT',
+            credentials: 'include',
+            body: JSON.stringify({
+                city: city,
+                state: state,
+                description: description,
+                social_media: social_media,
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${tokenData.access_token}`,
+            },
+        })
+        if (update.ok) {
+            navigate("/profile")
+        }
     }
 
     function cityChangeHandler(e) {
