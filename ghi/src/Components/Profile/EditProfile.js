@@ -1,52 +1,70 @@
-
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/esm/Container";
 import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
-import { useGetProfilesQuery, useUpdateProfileMutation } from "../../app/profileApi";
+import React, { useEffect, useState } from "react";
 import { useGetTokenQuery } from "../../app/api"
 
 
-
-export default function EditProfile(props) {
+export default function EditProfile() {
     const navigate = useNavigate();
     const [city, setCity] = useState("");
     const [state, setState] = useState("");
     const [description, setDescription] = useState("");
     const [social_media, setSocialMedia] = useState("");
-    const [updateProfile] = useUpdateProfileMutation();
-    const { profileData } = useGetProfilesQuery();
     const { data: tokenData } = useGetTokenQuery();
-    console.log(profileData, tokenData)
-    // const profile = profileData.find(p => p.account_id === accountId)
+    const [profileId, setProfile] = useState([])
+    const accountId = tokenData && tokenData.account && tokenData.account.id;
+
+    useEffect(() => {
+        getProfile()
+        async function getProfile() {
+            const profileResponse = await fetch(`${process.env.REACT_APP_ACCOUNTS_API_HOST}/api/profiles/`, { credentials: 'include' })
+            if (profileResponse.ok) {
+                const data = await profileResponse.json()
+                setProfile(await data.filter((p) => p.account_id === accountId))
+            }
+        }
+        // eslint-disable-next-line
+    }, [])
+
     async function submitHandler(e) {
         e.preventDefault();
-
-        const body = {
-            city: city,
-            state: state,
-            description: description,
-            social_media: social_media,
-        };
-
-        updateProfile(tokenData, body);
-        navigate("/profile");
-        console.log(body)
-
+        console.log(profileId[0].id)
+        const update = await fetch(`${process.env.REACT_APP_ACCOUNTS_API_HOST}/api/profiles/${profileId[0].id}`, {
+            method: 'PUT',
+            credentials: 'include',
+            body: JSON.stringify({
+                city: city,
+                state: state,
+                description: description,
+                social_media: social_media,
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${tokenData.access_token}`,
+            },
+        })
+        if (update.ok) {
+            navigate("/profile")
+        }
     }
 
     function cityChangeHandler(e) {
         setCity(e.target.value);
     }
+
     function stateChangeHandler(e) {
         setState(e.target.value);
     }
+
     function socialMediaChangeHandler(e) {
         setSocialMedia(e.target.value);
     }
+
     function descriptionChangeHandler(e) {
         setDescription(e.target.value);
     }
+
     return (
         <div className="login" >
             <Container>
@@ -93,9 +111,11 @@ export default function EditProfile(props) {
                             Submit
                         </button>
                     </div>
+                    <div>
+                        In order to see the changes take effect on your profile, refresh the page after being redirected.
+                    </div>
                 </Form>
             </Container>
         </div>
-
     );
 }

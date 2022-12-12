@@ -98,7 +98,8 @@ td {
 .createAccountBtn {
   border-radius: 30px;
   border-color: lightgray;
-  margin: 30px;
+  margin: 15px;
+  margin-left: 100px;
   padding: 6px 24px;
   border-style: solid;
   cursor: pointer;

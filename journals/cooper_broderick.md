@@ -94,3 +94,5 @@ Fixed redirect when clicking homepage logo taking you to blank page
 Reviews can now be created an posted from the front end react application
 Review posting is now authenticated with user token
 Reviews now display on detail page
+Homepage Banner is now a carousel
+Fixed edit profile page, now it works.

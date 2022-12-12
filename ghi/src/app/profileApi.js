@@ -27,8 +27,6 @@ export const profileApi = createApi({
                 return {
                     url: `/api/profiles/`,
                     credentials: 'include',
-
-
                 };
             },
             providesTags: ["Profiles"],
