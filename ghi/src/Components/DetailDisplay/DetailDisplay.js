@@ -142,7 +142,7 @@ function DetailDisplay({
         <h4 className='details'>Saturday: {hoursSaturday}</h4>
         <h4 className='details'>Sunday: {hoursSunday}</h4>
         <label>Rating</label>
-        <strong>{<Rating name="size-large" defaultValue={5} value={Number(rating)} size="large" />}</strong>
+        <strong>{<Rating name="size-large" defaultValue={5} readOnly={true} value={Number(rating)} size="large" />}</strong>
       </div>
     </div >
   );
