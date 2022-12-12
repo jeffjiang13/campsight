@@ -30,7 +30,7 @@ We layed out login/logout/signup, the park details pages, the main page with the
 We are laying out a quick search function for the search bar on the main page, the profile page for users, tying accounts to reviews rather than reviews being anonymous, advanced search as a drop down on the main page where the calendar search is now, allowing users to mark parks as visited, implementing dynamic weather data to the details page, and allowing for selecting multiple options on the advanced search page.
 
 ## Setup
-1. Fork and Clone repo [https://gitlab.com/hack-reactor2/project-gamma]
+1. Fork and Clone repo [https://gitlab.com/campsight/project-gamma]
 2. CD into ghi directory.
 3. Create a .env file
 4. Set REACT_APP_MAPS_API to your Google Maps API key
@@ -55,8 +55,8 @@ Tyler - Test Profiles (accounts_api\tests\test_profiles.py)
 ![Wire-frame diagram](./CampSIghtWireFrame.png "Campsight")
 
 - [API documentation] (docs\api-design.md)
-- [Project is deployed to Render.com/GitLab-pages]  (https://hack-reactor2.gitlab.io/project-gamma/)
-- [GitLab issue board is setup and in use] (https://gitlab.com/hack-reactor2/project-gamma/-/issues)
+- [Project is deployed to Render.com/GitLab-pages]  (https://campsight.gitlab.io/project-gamma/)
+- [GitLab issue board is setup and in use] (https://gitlab.com/campsight/project-gamma/-/issues)
 - [Cooper Journal] (journals\cooper_broderick.md)
 - [Ted Journal] (journals\edward_obrien.md)
 - [Jeff Journal] (journals\jeff.md)
