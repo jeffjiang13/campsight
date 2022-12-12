@@ -71,21 +71,21 @@ Tyler - Test Profiles (accounts_api\tests\test_profiles.py)
 |   |   models.py\
 |   |   requirements.txt\
 |   |   token_auth.py\
-|   |\
+|   |
 |   +---.pytest_cache\
 |   |   |   .gitignore\
 |   |   |   CACHEDIR.TAG\
 |   |   |   README.md\
-|   |   |\
+|   |   |
 |   |   \---v\
 |   |       \---cache\
 |   |               lastfailed\
 |   |               nodeids\
 |   |               stepwise\
-|   |\
+|   |
 |   +---migrations\
 |   |       __init__.py\
-|   |\
+|   |
 |   +---queries\
 |   |   |   accounts.py\
 |   |   |   client.py\
@@ -95,7 +95,7 @@ Tyler - Test Profiles (accounts_api\tests\test_profiles.py)
 |   |   |   review.py\
 |   |   |   sessions.py\
 |   |   |   __init__.py\
-|   |   |\
+|   |   |
 |   |   \---__pycache__\
 |   |           accounts.cpython-310.pyc\
 |   |           client.cpython-310.pyc\
@@ -105,7 +105,7 @@ Tyler - Test Profiles (accounts_api\tests\test_profiles.py)
 |   |           review.cpython-310.pyc\
 |   |           sessions.cpython-310.pyc\
 |   |           __init__.cpython-310.pyc\
-|   |\
+|   |
 |   +---routers\
 |   |   |   accounts.py\
 |   |   |   auth.py\
@@ -115,7 +115,7 @@ Tyler - Test Profiles (accounts_api\tests\test_profiles.py)
 |   |   |   review.py\
 |   |   |   sockets.py\
 |   |   |   __init__.py\
-|   |   |\
+|   |   |
 |   |   \---__pycache__\
 |   |           accounts.cpython-310.pyc\
 |   |           auth.cpython-310.pyc\
@@ -125,7 +125,7 @@ Tyler - Test Profiles (accounts_api\tests\test_profiles.py)
 |   |           review.cpython-310.pyc\
 |   |           sockets.cpython-310.pyc\
 |   |           __init__.cpython-310.pyc\
-|   |\
+|   |
 |   +---tests\
 |   |   |   test_account.py\
 |   |   |   test_favorite.py\
@@ -133,7 +133,7 @@ Tyler - Test Profiles (accounts_api\tests\test_profiles.py)
 |   |   |   test_profiles.py\
 |   |   |   test_reviews.py\
 |   |   |   __init__.py\
-|   |   |\
+|   |   |
 |   |   \---__pycache__\
 |   |           test_account.cpython-310-pytest-7.2.0.pyc\
 |   |           test_favorite.cpython-310-pytest-7.2.0.pyc\
@@ -141,11 +141,11 @@ Tyler - Test Profiles (accounts_api\tests\test_profiles.py)
 |   |           test_profiles.cpython-310-pytest-7.2.0.pyc\
 |   |           test_reviews.cpython-310-pytest-7.2.0.pyc\
 |   |           __init__.cpython-310.pyc\
-|   |\
+|   |
 |   \---__pycache__\
 |           main.cpython-310.pyc\
 |           models.cpython-310.pyc\
-|\
+|
 +---api\
 |   +---queries\
 |   |   \---__pycache__\
@@ -153,21 +153,21 @@ Tyler - Test Profiles (accounts_api\tests\test_profiles.py)
 |   |           client.cpython-310.pyc\
 |   |           profiles.cpython-310.pyc\
 |   |           __init__.cpython-310.pyc\
-|   |\
+|   |
 |   +---routers\
 |   |   \---__pycache__\
 |   |           accounts.cpython-310.pyc\
 |   |           auth.cpython-310.pyc\
 |   |           profiles.cpython-310.pyc\
 |   |           __init__.cpython-310.pyc\
-|   |\
+|   |
 |   \---__pycache__\
 |           main.cpython-310.pyc\
 |           models.cpython-310.pyc\
-|\
+|
 +---docs\
 |       api-design.md\
-|\
+|
 +---ghi\
 |   |   .env\
 |   |   .gitignore\
@@ -175,7 +175,7 @@ Tyler - Test Profiles (accounts_api\tests\test_profiles.py)
 |   |   package.json\
 |   |   windows-setup.js\
 |   |   yarn.lock\
-|   |\
+|   |
 |   +---public\
 |   |       favicon.ico\
 |   |       index.html\
@@ -183,14 +183,14 @@ Tyler - Test Profiles (accounts_api\tests\test_profiles.py)
 |   |       logo512.png\
 |   |       manifest.json\
 |   |       robots.txt\
-|   |\
+|   |
 |   \---src\
 |       |   index.css\
 |       |   index.js\
 |       |   logo.svg\
 |       |   reportWebVitals.js\
 |       |   yarn.lock\
-|       |\
+|       |
 |       +---app\
 |       |       accountSlice.js\
 |       |       api.js\
@@ -199,47 +199,47 @@ Tyler - Test Profiles (accounts_api\tests\test_profiles.py)
 |       |       searchSlice.js\
 |       |       store.js\
 |       |       utils.js\
-|       |\
+|       |
 |       \---Components\
 |           +---App\
 |           |       App.css\
 |           |       App.js\
-|           |\
+|           |
 |           +---Banner\
 |           |       Banner.css\
 |           |       Banner.js\
 |           |       Bg1.jpg\
 |           |       Bg2.jpg\
 |           |       Bg3.jpg\
-|           |\
+|           |
 |           +---Card\
 |           |       Card.css\
 |           |       Card.js\
-|           |\
+|           |
 |           +---DetailDisplay\
 |           |       DetailDisplay.css\
 |           |       DetailDisplay.js\
-|           |\
+|           |
 |           +---DetailPage\
 |           |       DetailPage.css\
 |           |       DetailPage.js\
-|           |\
+|           |
 |           +---Event\
 |           |       CreateEvent.js\
 |           |       Event.css\
 |           |       Event.js\
 |           |       keys.js\
-|           |\
+|           |
 |           +---Footer\
 |           |       Footer.css\
 |           |       Footer.js\
-|           |\
+|           |
 |           +---Header\
 |           |       campSight.png\
 |           |       campSight.svg\
 |           |       Header.css\
 |           |       Header.js\
-|           |\
+|           |
 |           +---Home\
 |           |       Home.css\
 |           |       Home.js\
@@ -248,68 +248,68 @@ Tyler - Test Profiles (accounts_api\tests\test_profiles.py)
 |           |       Login.css\
 |           |       Login.js\
 |           |       SignUp.js\
-|           |\
+|           |
 |           +---Map\
 |           |       Map.js\
-|           |\
+|           |
 |           +---Modal\
 |           |       Modal.css\
 |           |       Modal.js\
-|           |\
+|           |
 |           +---Profile\
 |           |       EditProfile.js\
 |           |       ProfilePage.js\
-|           |\
+|           |
 |           +---Review\
 |           |       Review.css\
 |           |       Review.js\
-|           |\
+|           |
 |           \---Search\
 |                   AdvancedSearchForm.js\
 |                   Search.css\
 |                   Search.js\
-|\
+|
 +---journals\
 |       cooper_broderick.md\
 |       edward_obrien.md\
 |       jeff.md\
 |       Tyler_Joyce.md\
-|\
+|
 +---parks_api\
 |   |   Dockerfile\
 |   |   Dockerfile.dev\
 |   |   keys.py\
 |   |   main.py\
 |   |   requirements.txt\
-|   |\
+|   |
 |   +---migrations\
 |   |       001_sample_migration.py\
 |   |       __init__.py\
 |   |       __main__.py\
-|   |\
+|   |
 |   +---routers\
 |   |   |   parks.py\
-|   |   |\
+|   |   |
 |   |   \---__pycache__\
 |   |           parks.cpython-310.pyc\
-|   |\
+|   |
 |   \---__pycache__\
 |           keys.cpython-310.pyc\
 |           main.cpython-310.pyc\
-|\
+|
 +---sample_service\
 |   +---routers\
 |   |   \---__pycache__\
 |   |           parks.cpython-310.pyc\
-|   |\
+|   |
 |   \---__pycache__\
 |           keys.cpython-310.pyc\
 |           main.cpython-310.pyc\
-|\
+|
 \---setup\
     +---mongo-express\
     |       Dockerfile.dev\
-    |\
+    |
     \---mongodb\
             01-create-unique-account-index.js\
             Dockerfile.dev\
