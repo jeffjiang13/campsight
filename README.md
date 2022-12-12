@@ -313,13 +313,3 @@ Tyler - Test Profiles (accounts_api\tests\test_profiles.py)
     \---mongodb
             01-create-unique-account-index.js
             Dockerfile.dev
-
-
-
-## CI/CD information
-
-Deployement information
-
-### GitLab repo/project
-
-GitLab and team setup info
