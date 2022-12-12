@@ -39,6 +39,16 @@ body {
 }
 
 
+.login3 {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ccc;
+  padding: 20px;
+  width: 700px;
+  margin: 10px auto;
+}
+
 .profile_circle {
   border-radius: 100ch;
   height: 4rem;

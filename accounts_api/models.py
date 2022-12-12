@@ -47,8 +47,7 @@ class EventIn(BaseModel):
     name: str
     date: str
     location: str
-    rating: Optional[str]
-    address: Optional[str]
+    description: Optional[str]
 
 class Event(EventIn):
     id: PydanticObjectId
@@ -73,7 +72,7 @@ class Profile(ProfileIn):
     account_id: str | None = None
 
 class ProfileOut(BaseModel):
-    # id: str
+    id: Optional[str]
     city: Optional[str]
     state: Optional[str]
     description: Optional[str]

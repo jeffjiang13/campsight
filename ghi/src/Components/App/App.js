@@ -27,10 +27,10 @@ function App() {
       <Routes>
         <Route path="/search/:parkCode" element={<Details />} />
         <Route path="/" element={<Home />} />
-        <Route path="profile/:id" element={<Profile />} />
+        <Route path="profile" element={<Profile />} />
         <Route path="login" element={<LogIn />} />
         <Route path="signup" element={<SignUp />} />
-        <Route path="profile/edit/:id" element={<EditProfile />} />
+        <Route path="edit" element={<EditProfile />} />
         <Route path="events" element={<Events />} />
         <Route path="create" element={<CreateEvent />} />
         <Route path="advancedsearch" element={<AdvancedSearchForm />} />

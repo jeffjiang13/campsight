@@ -1,16 +1,28 @@
 import { useGetEventsQuery, useDeleteEventMutation } from "../../app/eventApi";
+import { Link } from "react-router-dom";
+
 import "./Event.css"
 function Events() {
     const [deleteEvent] = useDeleteEventMutation();
     const { data, isLoading } = useGetEventsQuery();
     if (isLoading) {
-        return <progress className="progress is-primary" max="100"></progress>;
+        return <div>Loading...</div>
     }
 
     return (
-        <div className="login2">
+        <div className="login3">
             <div className="">
                 <form>
+                    <h2>Events</h2>
+                    <div className="loginText">
+                        <p>want to add an event?</p>
+                        <p>
+                            Click{" "}
+                            <Link className="link" to="/create">
+                                here!
+                            </Link>
+                        </p>
+                    </div>
                     <table className="events">
                         <thead>
                             <tr>

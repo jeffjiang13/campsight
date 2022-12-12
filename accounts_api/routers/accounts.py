@@ -47,16 +47,15 @@ class HttpError(BaseModel):
     detail: str
 
 
-router = APIRouter(tags=["accounts"])
+router = APIRouter()
 
 
-# This endpoint takes care of getting tokens.
 @router.get("/token", response_model=AccountToken | None)
 async def get_token(
     request: Request,
     account: Account = Depends(authenticator.try_get_current_account_data),
 ) -> AccountToken | None:
-    if authenticator.cookie_name in request.cookies:
+    if account and authenticator.cookie_name in request.cookies:
         return {
             "access_token": request.cookies[authenticator.cookie_name],
             "type": "Bearer",
@@ -65,7 +64,7 @@ async def get_token(
 
 
 @router.put(
-    "/api/account/{account_id}",
+    "/api/accounts/{account_id}",
     response_model=AccountToken | HttpError,
 )
 async def update_account(
@@ -94,7 +93,7 @@ async def update_account(
     return AccountToken(account=account, **token.dict())
 
 
-@router.post("/api/account/", response_model=AccountToken | HttpError)
+@router.post("/api/accounts/", response_model=AccountToken | HttpError)
 async def create_account(
     info: AccountIn,
     profile: ProfileIn,

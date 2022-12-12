@@ -17,11 +17,14 @@ class ProfileQueries(Queries):
         "profiles"
     )
 
-    def get_one(self, id : str) -> ProfileOut:
+    def get_one(self, id : str):
         props = self.collection.find_one({"_id": ObjectId(id)})
         if props is None:
             return None
         props["id"] = str(props["_id"])
+        props["account_id"] = str(props["account_id"])
+
+
         return ProfileOut(**props)
 
     def get_all(self) -> list[ProfileOut]:
@@ -29,6 +32,7 @@ class ProfileQueries(Queries):
         accounts = []
         for account in db:
             account["id"] =  str(account["_id"])
+            account["account_id"] = str(account["account_id"])
             accounts.append(ProfileOut(**account))
         return accounts
 
@@ -46,7 +50,7 @@ class ProfileQueries(Queries):
 
 
     def create(
-        self, info: ProfileIn) -> Profile:
+        self, info: ProfileIn) -> ProfileOut:
         props = info.dict()
         self.collection.insert_one(props)
         props["id"] = str(props["_id"])

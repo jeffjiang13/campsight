@@ -25,7 +25,7 @@ def get_one_profile(
     profile_id: str,
     account_data: dict = Depends(authenticator.get_current_account_data),
     repo: ProfileQueries = Depends(),
-) -> ProfileOut:
+):
     profile = repo.get_one(profile_id)
 
     if profile is None:

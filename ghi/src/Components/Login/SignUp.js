@@ -94,6 +94,8 @@ function SignUp() {
                             placeholder="Describe yourself"
                             name="description"
                             onChange={field}
+                            as="textarea"
+                            rows={3}
                             value={description}
                         />
                     </Form.Group>

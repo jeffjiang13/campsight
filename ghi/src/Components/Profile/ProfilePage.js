@@ -1,48 +1,42 @@
-import { useGetProfilesQuery, useUpdateProfileMutation } from "../../app/profileApi";
+import { useGetProfilesQuery } from "../../app/profileApi";
 import { useGetTokenQuery } from "../../app/api"
+import { useNavigate } from "react-router-dom";
+
+
 function Profile() {
-    const [update] = useUpdateProfileMutation();
-    const { data: token } = useGetTokenQuery();
+    const navigate = useNavigate();
+    const { data: tokenData } = useGetTokenQuery();
+    const accountId = tokenData && tokenData.account && tokenData.account.id;
     const { data, isLoading } = useGetProfilesQuery();
     if (isLoading) {
-        return <progress className="progress is-primary" max="100"></progress>;
-    }
+        return <div>Loading...</div>
+    } else {
 
-    return (
-        <div className="login2">
-            <div className="">
-                <form>
-                    {token ? <table className="">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>city</th>
-                                <th>state</th>
-                                <th>Description</th>
-                                <th>social media</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {data.profile.map((p) => (
-                                <tr key={p.id}>
-                                    <td>{p.name}</td>
-                                    <td>{p.city}</td>
-                                    <td>{p.state}</td>
-                                    <td>{p.description}</td>
-                                    <td>{p.social_media}</td>
-                                    <td>
-                                        <button onClick={() => update(p.id)}>
-                                            update
-                                        </button>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table> : null}
-                </form>
+        return (
+            <div className="login">
+                <div className="">
+                    <form>
+                        <h2>Name: {tokenData.account.full_name}</h2>
+                        {data.filter((p) => p.account_id === accountId).map((p) => (
+                            <div key={p.id}>
+                                <p>City, State:
+                                    {p.city}, {p.state}</p>
+                                <p>Bio:
+                                    {p.description}</p>
+                                <p>Social media:
+                                    {p.social_media}</p>
+
+                                <button className="createAccountBtn" type="submit" onClick={() => navigate("/edit")}>
+                                    Update
+                                </button>
+
+                            </div>
+                        ))}
+                    </form>
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
 
 export default Profile;

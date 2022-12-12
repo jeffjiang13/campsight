@@ -14,54 +14,44 @@ export const profileApi = createApi({
                     "Authorization",
                     `${tokenData.token_type} ${tokenData.access_token}`
                 );
+
             }
             return headers;
         },
 
     }),
-    tagTypes: ["Profiles"],
+    tagTypes: ["Profiles, Token"],
     endpoints: (builder) => ({
         getProfiles: builder.query({
             query: () => {
                 return {
                     url: `/api/profiles/`,
+                    credentials: 'include',
+
+
                 };
             },
             providesTags: ["Profiles"],
         }),
-        addProfile: builder.mutation({
-            query: (form) => {
-                const formData = new FormData(form);
-                const entries = Array.from(formData.entries());
-                const data = entries.reduce((acc, [key, value]) => {
-                    acc[key] = value;
-                    return acc;
-                }, {});
-                if (data.id) {
-                    const id = data.id.slice(0, 24);
-                    const state = data.id.slice(25);
-                    data["id"] = id
-                    data[" description"] = data.description
-                    data["state"] = state;
-                    return {
-                        method: "post",
-                        url: `/api/profiles`,
-                        credentials: "include",
-                        body: data,
-                    };
-                } else {
-                    const id = data.id;
-                    data["id"] = id;
-                    delete data["id"];
-                    return {
-                        method: "post",
-                        url: `/api/profiles`,
-                        credentials: "include",
-                        body: data,
-                    };
-                }
+        getOneProfile: builder.query({
+            query: (profileId) => {
+                return {
+                    method: "get",
+                    url: `/api/profiles/${profileId}`,
+                    credentials: "include",
+
+                };
             },
             invalidatesTags: ["Profiles"],
+        }),
+        addProfile: builder.mutation({
+            query: (data) => ({
+                url: "/api/profiles",
+                method: "post",
+                body: data,
+                credentials: "include",
+            }),
+            invalidatesTags: [""],
         }),
         deleteProfile: builder.mutation({
             query: (profileId) => {
@@ -73,34 +63,19 @@ export const profileApi = createApi({
             invalidatesTags: ["Profiles"],
         }),
         updateProfile: builder.mutation({
-            query: (form) => {
-                const formData = new FormData(form);
-                const entries = Array.from(formData.entries());
-                const data = entries.reduce((acc, [key, value]) => {
-                    acc[key] = value;
-                    return acc;
-                }, {});
-                const id = data.id.slice(0, 24);
-                const state = data.id.slice(25);
-                data["id"] = id
-                data[" description"] = data.description
-                data["state"] = state;
-
-                delete data["id"];
-                const profileId = data["id"];
-                console.log(data);
-                return {
-                    method: "put",
-                    url: `/api/profiles/${profileId}`,
-                    credentials: "include",
-                    body: data,
-                };
-            },
+            query: (profileId, body) => ({
+                url: `/api/profiles/${profileId}`,
+                method: "put",
+                credentials: "include",
+                body: body,
+            }),
+            invalidatesTags: ["Profiles"],
         }),
     }),
 });
 
 export const {
+    useGetOneProfileQuery,
     useGetProfilesQuery,
     useAddProlfiletMutation,
     useDeleteProfileMutation,

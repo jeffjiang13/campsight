@@ -16,38 +16,12 @@ export const eventApi = createApi({
             providesTags: ["Events"],
         }),
         addEvent: builder.mutation({
-            query: (form) => {
-                const formData = new FormData(form);
-                const entries = Array.from(formData.entries());
-                const data = entries.reduce((acc, [key, value]) => {
-                    acc[key] = value;
-                    return acc;
-                }, {});
-                if (data.id) {
-                    const id = data.id.slice(0, 24);
-                    const location = data.id.slice(25);
-                    data["id"] = id
-                    data[" description"] = data.description
-                    data["location"] = location;
-                    data["date"] = data.date + "T00:00:00.000Z";
-                    return {
-                        method: "post",
-                        url: `/api/events`,
-                        credentials: "include",
-                        body: data,
-                    };
-                } else {
-                    const id = data.id;
-                    data["id"] = id;
-                    delete data["id"];
-                    return {
-                        method: "post",
-                        url: `/api/events`,
-                        credentials: "include",
-                        body: data,
-                    };
-                }
-            },
+            query: (data) => ({
+                url: "/api/events",
+                method: "post",
+                body: data,
+                credentials: "include",
+            }),
             invalidatesTags: ["Events"],
         }),
         deleteEvent: builder.mutation({
@@ -60,29 +34,12 @@ export const eventApi = createApi({
             invalidatesTags: ["Events"],
         }),
         updateEvent: builder.mutation({
-            query: (form) => {
-                const formData = new FormData(form);
-                const entries = Array.from(formData.entries());
-                const data = entries.reduce((acc, [key, value]) => {
-                    acc[key] = value;
-                    return acc;
-                }, {});
-                const id = data.id.slice(0, 24);
-                const location = data.id.slice(25);
-                data["id"] = id;
-                data[" description"] = data.description
-                data["location"] = location;
-                data["date"] = data.date + "T00:00:00.000Z";
-                delete data["id"];
-                const eventId = data["id"];
-                console.log(data);
-                return {
-                    method: "put",
-                    url: `/api/events/${eventId}`,
-                    credentials: "include",
-                    body: data,
-                };
-            },
+            query: (eventId) => ({
+                url: `/api/events/${eventId}`,
+                method: "put",
+                credentials: "include",
+            }),
+            invalidatesTags: ["Events"],
         }),
     }),
 });

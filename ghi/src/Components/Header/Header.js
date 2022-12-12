@@ -8,11 +8,16 @@ import Avatar from "@mui/material/Avatar";
 import LogoPNG from "./campSight.png";
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useLogOutMutation, useGetTokenQuery } from "../../app/api";
+import { useNavigate } from "react-router-dom";
 
 function NavBar() {
   const { data: token } = useGetTokenQuery();
   const [logOut] = useLogOutMutation();
-
+  const navigate = useNavigate();
+  function handleLogout() {
+    logOut();
+    navigate("/");
+  }
   return (
     <header>
       <Navbar.Brand href="/">
@@ -34,10 +39,10 @@ function NavBar() {
           </Dropdown.Toggle>
           <Dropdown.Menu>
             <div className="dropdown-content">
-              {token ? <Dropdown.Item href='/profile/:id' > Profile </Dropdown.Item> : null}
+              {token ? <Dropdown.Item href='/profile' > Profile </Dropdown.Item> : null}
               {token ? <Dropdown.Item href="/events" > Events </Dropdown.Item> : null}
               {token ? null : <Dropdown.Item href="/signup" > Sign-Up </Dropdown.Item>}
-              {token ? <Dropdown.Item onClick={logOut} > Log Out </Dropdown.Item> : <Dropdown.Item href="/login" > Login </Dropdown.Item>}
+              {token ? <Dropdown.Item onClick={handleLogout} > Log Out </Dropdown.Item> : <Dropdown.Item href="/login" > Login </Dropdown.Item>}
 
             </div>
           </Dropdown.Menu>
