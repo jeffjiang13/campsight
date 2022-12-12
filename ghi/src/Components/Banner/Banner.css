@@ -4,7 +4,7 @@
   height: 50vh;
   background-color: black;
   background-size: cover;
-  background-position-y: center;
+  background-position-y: 70%;
   width: 100%;
   overflow: hidden;
   z-index: -1;
@@ -16,6 +16,7 @@
   height: 50vh;
   background-color: black;
   background-size: cover;
+  background-position-y: 50%;
   width: 100%;
   overflow: hidden;
   z-index: -1;
@@ -27,7 +28,7 @@
   height: 50vh;
   background-color: black;
   background-size: cover;
-  background-position: 0px 550px;
+  background-position-y: 75%;
   width: 100%;
   overflow: hidden;
   z-index: -1;
