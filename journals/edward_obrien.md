@@ -69,3 +69,7 @@
 # Friday 12/9
 
 * Figured out how to pass in a token with the useGetTokenQuery hook and got favorites to save to a user and park.
+
+# Monday 12/12
+
+* Pushed up my work on implementing favorites into the detail pages, my unit test for favorites, and the loading animation for the advanced search.
