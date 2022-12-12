@@ -111,5 +111,9 @@
 
 .filterSearchTitle>h1 {
   margin-bottom: 5px;
-  margin-left: 20px;
+  margin-left: 15px;
+}
+
+.loadingAnimation {
+  margin-left: 85px;
 }
