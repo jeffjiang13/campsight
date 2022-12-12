@@ -49,3 +49,27 @@
 # Friday 12/2
 
 * Added Search Radius and Park Designation parameters to the search page.
+
+# Monday 12/5
+
+* Assessment and began work on integrating favorites into the database and React.
+
+# Tuesday 12/6
+
+* Continued working on favorites and visited markers for accounts.
+
+# Wednesday 12/7
+
+* Worked on making unit tests and continued working on favorites.
+
+# Thursday 12/8
+
+* Researched on our codebase and on the cookbooks to get a token to pass in properly.
+
+# Friday 12/9
+
+* Figured out how to pass in a token with the useGetTokenQuery hook and got favorites to save to a user and park.
+
+# Monday 12/12
+
+* Pushed up my work on implementing favorites into the detail pages, my unit test for favorites, and the loading animation for the advanced search.

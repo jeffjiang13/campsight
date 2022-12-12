@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import './DetailPage.css'
 import DetailDisplay from '../DetailDisplay/DetailDisplay';
 import Map from '../Map/Map';
-import { Rating } from '@mui/material';
 import { useParams } from 'react-router-dom'
 import Review from '../Review/Review';
 
@@ -12,24 +11,30 @@ function Details() {
   const parkCode = useParams().parkCode
   const [rating, setRating] = useState()
 
-  async function getDetails() {
-    const detailResponse = await fetch(`http://localhost:8000/details?parkCode=${parkCode}`)
-    if (detailResponse.ok) {
-      const data = await detailResponse.json();
-      setDetails(data.data)
-    }
-    const reviewResponse = await fetch(`http://localhost:8001/api/by-parkcode/${parkCode}`)
-    if (reviewResponse.ok) {
-      const reviewData = await reviewResponse.json()
-      const ratingList = []
-      var ratingAverage = 0
-      for (let reviewRating of reviewData) {
-        ratingList.push(Number(reviewRating.rating))
-        ratingAverage = ratingAverage + Number(reviewRating.rating)
+  useEffect(() => {
+    // eslint-disable-next-line
+    async function getDetails() {
+      const detailResponse = await fetch(`${process.env.REACT_APP_PARKS_API_HOST}/details?parkCode=${parkCode}`)
+      if (detailResponse.ok) {
+        const data = await detailResponse.json();
+        setDetails(data.data)
       }
-      setRating(ratingAverage / ratingList.length)
+      const reviewResponse = await fetch(`${process.env.REACT_APP_ACCOUNTS_API_HOST}/api/by-parkcode/${parkCode}`)
+      if (reviewResponse.ok) {
+        const reviewData = await reviewResponse.json()
+        const ratingList = []
+        var ratingAverage = 0
+        for (let reviewRating of reviewData) {
+          ratingList.push(Number(reviewRating.rating))
+          ratingAverage = ratingAverage + Number(reviewRating.rating)
+        }
+        setRating(ratingAverage / ratingList.length)
+      }
     }
-  }
+    getDetails()
+    // eslint-disable-next-line
+  }, []);
+
   function getPhoneNumber(phoneNumbers) {
     for (let i = 0; i < phoneNumbers.length; i++) {
       if (phoneNumbers[i].type === "Voice") {
@@ -44,30 +49,30 @@ function Details() {
     }
   }
 
-  useEffect(() => {
-    getDetails()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const containerStyle = {
-    width: 1500,
-    height: 500,
+    bottom: '.35vw',
+    display: 'flex',
+    alignItem: 'start',
+    justifyContent: 'start',
+    width: '30vw',
+    height: '55.5vh',
+    borderRadius: 16,
+    marginRight: 50,
   };
 
   return (
     <>
-      <div className="searchPage">
+      <div className="search-wrapper">
         {details.map((details, index) => {
           const hours = details.operatingHours[0].standardHours
-
           return (
             < DetailDisplay key={index}
-              img={details.images[0].url}
+              parkCode={details.parkCode}
+              img={details.images}
               location={details.states}
               title={details.fullName}
               phone={getPhoneNumber(details.contacts.phoneNumbers)}
               description={details.description}
-              weather={details.weatherInfo}
               hoursMonday={hours.monday}
               hoursTuesday={hours.tuesday}
               hoursWednesday={hours.wednesday}
@@ -75,27 +80,31 @@ function Details() {
               hoursFriday={hours.friday}
               hoursSaturday={hours.saturday}
               hoursSunday={hours.sunday}
-              rating={<Rating name="size-large" defaultValue={5} value={Number(rating)} size="large" />}
+              rating={rating}
             />)
         })}
-        <div className='mapDetailsPage'>
-          <Map pins={[details && details.length && ({
-            lat: Number(details[0].latitude),
-            lng: Number(details[0].longitude),
-            title: details[0].fullName,
-            image: details[0].images[0].url,
-            name: details[0].fullName,
-            description: details[0].description,
-            src: details[0].images[0].url,
-            contact: details[0].contacts.emailAddresses[0].emailAddress,
-            latLong: details[0].latLong,
-            parkCode: details[0].parkCode
-          })]} style={containerStyle} />
+        <div className='right-container'>
+          <div className='map-section'>
+            <Map pins={[details && details.length && ({
+              lat: Number(details[0].latitude),
+              lng: Number(details[0].longitude),
+              title: details[0].fullName,
+              name: details[0].fullName,
+              description: details[0].description,
+              src: details[0].images[0].url,
+              latLong: details[0].latLong,
+              parkCode: details[0].parkCode
+            })]} style={containerStyle} />
+          </div>
         </div>
       </div>
-      <div className='mapDetailsPage'>
-        <Review />
-      </div>
+      {details.map((details, index) => {
+        return (
+          <div className='review-section'>
+            <Review key={index} parkCode={details.parkCode} className="reviewStars" />
+          </div>
+        )
+      })}
     </>
   );
 }

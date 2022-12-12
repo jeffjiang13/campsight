@@ -6,7 +6,6 @@ from queries.accounts import AccountQueries
 from queries.sessions import SessionQueries
 
 
-
 class Auth(Authenticator):
     async def get_account_data(
         self, username: str, accounts: AccountQueries
@@ -36,5 +35,6 @@ class Auth(Authenticator):
 
     async def validate_jti(self, jti, session_repo):
         return session_repo.get(jti) is not None
+
 
 authenticator = Auth(os.environ["SIGNING_KEY"])

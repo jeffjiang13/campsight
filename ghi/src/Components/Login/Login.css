@@ -59,11 +59,13 @@ body {
   border: 3px solid #ffc507e0;
 
 }
-/* table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-} */
+
 th, td {
+  padding: 20px;
+}
+
+th,
+td {
   padding: 20px;
 }
 
@@ -96,7 +98,8 @@ th, td {
 .createAccountBtn {
   border-radius: 30px;
   border-color: lightgray;
-  margin: 30px;
+  margin: 15px;
+  margin-left: 100px;
   padding: 6px 24px;
   border-style: solid;
   cursor: pointer;

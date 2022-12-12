@@ -4,7 +4,7 @@ import { clearForm } from "./accountSlice";
 export const apiSlice = createApi({
     reducerPath: "token",
     baseQuery: fetchBaseQuery({
-        baseUrl: process.env.REACT_APP_API_HOST,
+        baseUrl: process.env.REACT_APP_ACCOUNTS_API_HOST,
         prepareHeaders: (headers, { getState }) => {
             const selector = apiSlice.endpoints.getToken.select();
             const { data: tokenData } = selector(getState());

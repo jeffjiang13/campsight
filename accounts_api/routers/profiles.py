@@ -7,7 +7,7 @@ from models import (
     Error,
 )
 from .auth import authenticator
-from models import AccountOut, Account
+from models import AccountOut
 from routers.sockets import socket_manager
 from queries.profiles import ProfileQueries
 
@@ -48,13 +48,13 @@ async def create_profile(
     account_data: dict = Depends(authenticator.get_current_account_data),
     repo: ProfileQueries = Depends(),
 ):
-    account = AccountOut(**account_data)
+    account = AccountOut(**account_data)  # noqa: F841
     profile = repo.create(profile)
     await socket_manager.broadcast_refetch()
     return profile
 
 
-@router.put("/api/profiles/{profile_id}", response_model=Union[Error, ProfileOut])
+@router.put("/api/profiles/{profile_id}", response_model=Union[Error, ProfileOut])  # noqa: E501
 async def update_profile(
     info: ProfileIn,
     profile_id: str,
@@ -70,5 +70,5 @@ async def delete_profile(
     account_data: dict = Depends(authenticator.get_current_account_data),
     repo: ProfileQueries = Depends(),
 ) -> bool:
-     repo.delete(profile_id)
-     return True
+    repo.delete(profile_id)
+    return True

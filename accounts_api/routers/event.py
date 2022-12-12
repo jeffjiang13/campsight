@@ -1,8 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
-from models import  EventIn, EventOut, EventList, AccountOut
+from models import EventIn, EventOut, EventList
 from queries.event import EventQueries
 from routers.sockets import socket_manager
-from .auth import authenticator
 
 router = APIRouter()
 
@@ -36,7 +35,6 @@ async def delete_event(
     await socket_manager.broadcast_refetch()
     repo.delete(id=event_id)
     return True
-
 
 
 @router.put("/events/{event_id}", response_model=EventOut)

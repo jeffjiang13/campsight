@@ -1,27 +1,22 @@
-
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/esm/Container";
 import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
-import { useGetProfilesQuery, useUpdateProfileMutation } from "../../app/profileApi";
+import React, { useEffect, useState } from "react";
 import { useGetTokenQuery } from "../../app/api"
 
 
-
-export default function EditProfile(props) {
+export default function EditProfile() {
     const navigate = useNavigate();
     const [city, setCity] = useState("");
     const [state, setState] = useState("");
     const [description, setDescription] = useState("");
     const [social_media, setSocialMedia] = useState("");
-    const { data: tokenData } = useGetTokenQuery();
-    const accountId = tokenData && tokenData.account && tokenData.account.id;
     const [updateProfile] = useUpdateProfileMutation();
     const { profileData } = useGetProfilesQuery();
-    console.log(profileData, "tokenData", tokenData, "accountId", accountId)
-
-    const profile = profileData.find(p => p.account_id === accountId)
-
+    const { data: tokenData } = useGetTokenQuery();
+    const accountId = tokenData.account.id;
+    console.log(profileData, tokenData)
+    // const profile = profileData.find(p => p.account_id === accountId)
     async function submitHandler(e) {
         e.preventDefault();
 
@@ -32,7 +27,7 @@ export default function EditProfile(props) {
             social_media: social_media,
         };
 
-        updateProfile(profile, body);
+        updateProfile(profile.id, body);
         navigate("/profile");
         console.log(body)
 
@@ -41,15 +36,19 @@ export default function EditProfile(props) {
     function cityChangeHandler(e) {
         setCity(e.target.value);
     }
+
     function stateChangeHandler(e) {
         setState(e.target.value);
     }
+
     function socialMediaChangeHandler(e) {
         setSocialMedia(e.target.value);
     }
+
     function descriptionChangeHandler(e) {
         setDescription(e.target.value);
     }
+
     return (
         <div className="login" >
             <Container>
@@ -96,9 +95,11 @@ export default function EditProfile(props) {
                             Submit
                         </button>
                     </div>
+                    <div>
+                        In order to see the changes take effect on your profile, refresh the page after being redirected.
+                    </div>
                 </Form>
             </Container>
         </div>
-
     );
 }
