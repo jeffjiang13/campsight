@@ -14,12 +14,14 @@ export default function EditProfile(props) {
     const [state, setState] = useState("");
     const [description, setDescription] = useState("");
     const [social_media, setSocialMedia] = useState("");
+    const { data: tokenData } = useGetTokenQuery();
+    const accountId = tokenData && tokenData.account && tokenData.account.id;
     const [updateProfile] = useUpdateProfileMutation();
     const { profileData } = useGetProfilesQuery();
-    const { data: tokenData } = useGetTokenQuery();
-    const accountId = tokenData.account.id;
-    console.log(profileData, tokenData)
-    // const profile = profileData.find(p => p.account_id === accountId)
+    console.log(profileData, "tokenData", tokenData, "accountId", accountId)
+
+    const profile = profileData.find(p => p.account_id === accountId)
+
     async function submitHandler(e) {
         e.preventDefault();
 
@@ -30,7 +32,7 @@ export default function EditProfile(props) {
             social_media: social_media,
         };
 
-        updateProfile(profile.id, body);
+        updateProfile(profile, body);
         navigate("/profile");
         console.log(body)
 
