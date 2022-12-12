@@ -19,12 +19,9 @@ function Profile() {
                         <h2>Name: {tokenData.account.full_name}</h2>
                         {data.filter((p) => p.account_id === accountId).map((p) => (
                             <div key={p.id}>
-                                <p>City, State:
-                                    {p.city}, {p.state}</p>
-                                <p>Bio:
-                                    {p.description}</p>
-                                <p>Social media:
-                                    {p.social_media}</p>
+                                <p>City, State: {p.city}, {p.state}</p>
+                                <p>Bio: {p.description}</p>
+                                <p>Social media: {p.social_media}</p>
 
                                 <button className="createAccountBtn" type="submit" onClick={() => navigate("/edit")}>
                                     Update
