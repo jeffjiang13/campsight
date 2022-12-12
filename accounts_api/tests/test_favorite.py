@@ -6,8 +6,8 @@ from routers.auth import authenticator
 from models import AccountOut
 
 client = TestClient(app)
-test_account = AccountOut(id="1234567890", email="paula_bean@catmail.com", full_name="Paula Bean")
-test_account_token = AccountToken(access_token="0987654321", type="Bearer", account=test_account)
+test_account = AccountOut(id="1234567890", email="paula_bean@catmail.com", full_name="Paula Bean")  # noqa: E501
+test_account_token = AccountToken(access_token="0987654321", type="Bearer", account=test_account)  # noqa: E501
 
 
 async def override_get_token():
