@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import './DetailPage.css'
 import DetailDisplay from '../DetailDisplay/DetailDisplay';
 import Map from '../Map/Map';
-import { Rating } from '@mui/material';
 import { useParams } from 'react-router-dom'
 import Review from '../Review/Review';
 
@@ -99,10 +98,13 @@ function Details() {
           </div>
         </div>
       </div>
-      <div className='review-section'>
-        <Review className="reviewStars" />
-        <Rating name="size-large" defaultValue={5} size="large" />
-      </div>
+      {details.map((details, index) => {
+        return (
+          <div className='review-section'>
+            <Review key={index} parkCode={details.parkCode} className="reviewStars" />
+          </div>
+        )
+      })}
     </>
   );
 }

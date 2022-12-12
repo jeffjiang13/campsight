@@ -88,3 +88,9 @@ Redeployed - fixed most minor bugs
 
 Added image carousel on park details page
 Fixed redirect when clicking homepage logo taking you to blank page
+
+## 12/12/22
+
+Reviews can now be created an posted from the front end react application
+Review posting is now authenticated with user token
+Reviews now display on detail page

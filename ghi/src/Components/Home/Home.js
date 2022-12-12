@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./Home.css";
-import Banner from "../Banner/Banner";
+import { Banner, Banner2, Banner3 } from "../Banner/Banner";
 import Card from "../Card/Card";
 import Modal from "../Modal/Modal";
 import Map from '../Map/Map';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import Carousel from "react-material-ui-carousel";
 
 function Home(props) {
   const [parkColumns, setparkColumns] = useState([])
@@ -95,7 +96,11 @@ function Home(props) {
   }
   return (
     <div className="home">
-      <Banner />
+      <Carousel>
+        <Banner />
+        <Banner2 />
+        <Banner3 />
+      </Carousel>
       <div className="container">
         <div className="home_section">
           {parkColumns.map((data, index) => {

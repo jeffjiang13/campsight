@@ -10,3 +10,25 @@
   .submitButton:hover {
   border-color: #d07737;
   }
+
+.menu {
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+}
+
+.menu li {
+    display: block;
+    width: 100%;
+    float: left;
+}
+
+.menu li:first-of-type {
+    border-bottom: none;
+    margin-top:15px
+}
+
+.menu li:last-of-type {
+    border-top: none;
+    margin-bottom:15px
+}

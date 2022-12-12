@@ -1,9 +1,34 @@
 .banner {
+  background: url("./Bg1.jpg"
+    ) center center;
+  height: 50vh;
+  background-color: black;
+  background-size: cover;
+  background-position-y: 70%;
+  width: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.banner2 {
   background: url("./Bg2.jpg"
     ) center center;
   height: 50vh;
   background-color: black;
   background-size: cover;
+  background-position-y: 50%;
+  width: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.banner3 {
+  background: url("./Bg3.jpg"
+    ) center center;
+  height: 50vh;
+  background-color: black;
+  background-size: cover;
+  background-position-y: 75%;
   width: 100%;
   overflow: hidden;
   z-index: -1;

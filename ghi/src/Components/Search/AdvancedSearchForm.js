@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Home from "../Home/Home";
 import { isPointWithinRadius } from "geolib";
-import { useGetTokenQuery } from "../../app/api";
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
