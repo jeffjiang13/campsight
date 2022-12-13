@@ -5,7 +5,7 @@ import Container from "react-bootstrap/esm/Container";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 
-function CreateEvent(props) {
+function CreateEvent() {
     const navigate = useNavigate();
     const [name, setName] = useState("");
     const [date, setDate] = useState("");
